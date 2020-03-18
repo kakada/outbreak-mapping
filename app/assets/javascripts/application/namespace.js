@@ -1,0 +1,1 @@
+window.OM = window.OM || {};

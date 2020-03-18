@@ -1,0 +1,13 @@
+- if flash[:notice]
+  .alert.alert-success.notify-message
+    %button.close{type: 'button', 'data-dismiss' => 'alert', 'aria-label' => 'Close'}
+    = flash[:notice]
+- if flash[:alert]
+  .alert.alert-danger.notify-message
+    %button.close{type: 'button', 'data-dismiss' => 'alert', 'aria-label' => 'Close'}
+    = flash[:alert]
+
+:javascript
+  setTimeout(function() {
+    $( ".alert" ).fadeOut( "slow" )
+  }, 3000);

@@ -1,0 +1,21 @@
+.container
+  .row.align-items-center
+    -# .card.mx-auto.session-card
+    .card.col-12.col-md-5.col-xl-4.my-5.mx-auto
+      .card-body
+        .text-center
+          %h2 Sign In
+          %p Signin to access your private resource
+        = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+          = f.input :email, input_html: { autofocus: true, autocomplete: "email" }
+          = f.input :password, input_html: { autocomplete: "current-password" }
+
+          - if devise_mapping.rememberable?
+            .form-check.form-group
+              = f.input_field :remember_me, as: :boolean, class: "form-check-input"
+              -# = f.check_box :remember_me, class: "form-check-input"
+              = f.label :remember_me, class: "form-check-label"
+          .actions.form-group
+            = f.submit "Log in", class: "btn btn-primary col-12"
+
+        = render "devise/shared/links"

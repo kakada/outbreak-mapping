@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.5"
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "~> 6.0.2", ">= 6.0.2.1"
 
 gem "pg", ">= 0.18", "< 2.0"
@@ -21,14 +21,17 @@ gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.7"
 
+gem "haml-rails",     "~> 2.0"
+gem "jquery-rails",   "~> 4.3.5"
 gem "bootstrap", "~> 4.4.1"
 gem "devise", "~> 4.7", ">= 4.7.1"
+gem "simple_form", "~> 5.0", ">= 5.0.2"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "rspec-rails", "~> 4.0.0.rc1"
   gem "ffaker", "~> 2.13.0"

@@ -1,0 +1,28 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #f8F9fc;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.header-body {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e3ebf6;
+}
+
+.header-title {
+  margin: 0;
+}
+
+.card-inactive {
+  border-color: #e3ebf6;
+  border-style: dashed;
+  background-color: transparent;
+  box-shadow: none;
+}
