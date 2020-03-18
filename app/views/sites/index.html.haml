@@ -1,0 +1,18 @@
+%h1 Sites
+
+%table.table
+  %tr
+    %th Site code
+    %th Cases
+    %th Heals
+    %th Deaths
+  - @sites.each do |site|
+    %tr
+      %td
+        = site.code
+      %td
+        = site.nations.sum(:cases)
+      %td
+        = site.nations.sum(:heals)
+      %td
+        = site.nations.sum(:deaths)
