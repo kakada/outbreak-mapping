@@ -1,18 +1,26 @@
-%h1 Sites
+.container
+  .row
+    .col-md-12
+      %h1 Sites
 
-%table.table
-  %tr
-    %th Site code
-    %th Cases
-    %th Heals
-    %th Deaths
-  - @sites.each do |site|
-    %tr
-      %td
-        = site.code
-      %td
-        = site.nations.sum(:cases)
-      %td
-        = site.nations.sum(:heals)
-      %td
-        = site.nations.sum(:deaths)
+      %table.table
+        %tr
+          %th Site code
+          %th Cases
+          %th Heals
+          %th Deaths
+        - @sites.each do |site|
+          %tr
+            %td
+              = site.code
+            %td
+              = site.num_cases
+            %td
+              = site.num_heals
+            %td
+              = site.num_deaths
+        %tr
+          %td total
+          %th= @total_cases
+          %th= @total_heals
+          %th= @total_deaths
