@@ -1,3 +1,11 @@
 = render "shared/user_nav_bar"
 
-#map.w-100
+#map.w-100{ "data-covid-19": @data.to_json }
+
+:javascript
+  locale = {
+    activeCase: "#{t('shared.active_case')}",
+    recoveredCase: "#{t('shared.recovered_case')}",
+    fatalCase: "#{t('shared.fatal_case')}",
+    totalCase: "#{t('shared.total_case')}"
+  }

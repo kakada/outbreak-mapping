@@ -1,0 +1,6 @@
+en:
+  shared:
+    active_case: Active case
+    recovered_case: Recovered case
+    fatal_case: Fatal case
+    total_case: Total case

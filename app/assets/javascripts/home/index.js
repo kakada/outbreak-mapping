@@ -1,8 +1,8 @@
 OM.HomeIndex = (() => {
   let map = null;
   let eventData = [];
-  const osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-  const osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
+  const osmUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+  const osmAttrib="Map data © <a href='https://openstreetmap.org'>OpenStreetMap</a> contributors";
   const cambodiaLat = 12.33233;
   const cambodiaLng = 104.875305;
 
@@ -11,14 +11,14 @@ OM.HomeIndex = (() => {
   }
 
   function init() {
-    eventData = $('#map').data('event-data');
+    eventData = $("#map").data("covid-19");
 
     _renderMap();
     // _initLegendSliding();
   }
 
   function _initLegendSliding() {
-    $('.btn-slide').on('click', function() {
+    $(".btn-slide").on("click", function() {
       posRight = $(this).parents('.slide-wrapper').width() - $(this).parent().width();
       right = '-=' + posRight;
 
@@ -33,14 +33,10 @@ OM.HomeIndex = (() => {
 
   function _renderMap() {
     map = new L.Map('map');
-    // if (eventData.length) {
-    //   _renderMarker();
-    // }
+    if (eventData.length) {
+      _renderMarker();
+    }
 
-    // map.fitBounds([
-    //   [10.801850, 102.626953833621],
-    //   [14.5933694933339, 107.341696521874]
-    // ])
     map.setView(new L.LatLng(cambodiaLat, cambodiaLng), 7);
 
     _renderOSM();
@@ -48,31 +44,19 @@ OM.HomeIndex = (() => {
 
   function _renderOSM() {
     let osm = new L.TileLayer(osmUrl, { minZoom: 7, maxZoom: 15, attribution: osmAttrib });
-    console.log('...')
     map.addLayer(osm);
   }
 
   function _renderMarker() {
-    let variant = 0;
-    let latCursor;
     let markers = [];
 
-    eventData.sort((a, b) => (a.lat > b.lat) ? 1 : -1);
-
     eventData.forEach( (data) => {
-      variant += 0.00025;
-
-      if (latCursor != data.lat) {
-        latCursor = data.lat;
-        variant = 0;
-      }
-
-      const extraRadius = Math.floor(data.total_count / 10) + 0.5;
-      const latlng = [ data.lat + variant, data.lng + variant];
+      const extraRadius = data.total / 2.5;
+      const latlng = [ data.lat, data.lng];
 
       const marker = L.circleMarker(latlng, {
-        color: data.event_type.color,
-        fillColor: data.event_type.color,
+        color: "red",
+        fillColor: "#fc7a4e",
         fillOpacity: 0.8,
         weight: 1,
         opacity: 1,
@@ -85,19 +69,24 @@ OM.HomeIndex = (() => {
   }
 
   function _buildMarkerPopupContent(data) {
-    let content = `<ul class='popup-content-wrapper'>`;
-    content += `<li><span class='type'>${locale.suspected_event}:</span> <span class='value'>${data.event_type.name}</span></li>`;
-    content += `<li><span class='type'>${locale.location}:</span> <span class='value'>${data.location}</span></li>`;
-    content += `<li><span class='type'>${locale.reported_count}:</span> <span class='value'>${data.total_count} (${locale.times})</span></li>`;
-    content += `<li><span class='type'>${locale.total_case}:</span> <span class='value'>${data.number_of_case || 0}</span></li>`;
+    let $content = $("<div>");
+    $titleInfo = $("<div>", { class: "title-info-box" }).text(data.location_name);
+    $activeCase = buildStatLine(locale.activeCase, "ongoing", data.active);
+    $recoveredCase = buildStatLine(locale.recoveredCase, "recovered", data.recovered);
+    $fatalCase = buildStatLine(locale.recoveredCase, "fatal", data.fatal);
+    $content.append([$titleInfo, $activeCase, $recoveredCase, $fatalCase]);
 
-    if(data.hasOwnProperty('number_of_hospitalized')) {
-      content += `<li><span class='type'>${locale.total_hospitalized}:</span> <span class='value'>${data.number_of_hospitalized || 0}</span></li>`;
-    }
-
-    content += `<li><span class='type'>${locale.total_death}:</span> <span class='value'>${data.number_of_death || 0}</span></li>`;
-    content += `</ul>`;
-
-    return content;
+    return $content[0];
   }
+
+  function buildStatLine(caseName, caseClass, count) {
+    let $statLine = $("<div>", { class: "stat-line" });
+    let $caseLegend = $("<div>", { class: `legend-color ${caseClass}` });
+    let $stat = $("<div>", { class: "stat" }).text(caseName);
+    let $statCount = $("<div>", { class: "stat-count" }).text(count);
+    $statLine.append([$caseLegend, $stat, $statCount]);
+
+    return $statLine;
+  }
+
 })();
