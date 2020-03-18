@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/dwilkie/pumi.git
+  revision: 9e2db0625b0b2d1438c2afb20fa97f85490b184a
+  specs:
+    pumi (0.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -325,6 +331,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
+  pumi!
   rails (~> 6.0.2, >= 6.0.2.1)
   rspec-rails (~> 4.0.0.rc1)
   rubocop-performance (~> 1.5.2)
