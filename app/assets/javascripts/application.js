@@ -17,8 +17,12 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require leaflet
 
-//= require_tree .
+//= require application/namespace
+//= require application/util
+
+//= require home/index
 
 $(document).on('ready turbolinks:load', () => {
   const currentPage = OM.Util.getCurrentPage();
