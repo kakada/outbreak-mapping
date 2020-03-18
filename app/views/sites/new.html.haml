@@ -1,3 +1,8 @@
-= simple_form_for :sites, url: sites_path do |f|
-  = f.input :file, as: :file
-  = f.submit
+.d-flex.justify-content-center.align-items-center.vh-100
+  .card
+    .card-header 
+      %h5 Choose sites
+    .card-body
+      = simple_form_for :sites, url: sites_path do |f|
+        = f.input :file, as: :file, label: false
+        = f.submit "Upload", class: "btn btn-primary"
