@@ -73,7 +73,7 @@ OM.HomeIndex = (() => {
     $titleInfo = $("<div>", { class: "title-info-box" }).text(data.location_name);
     $activeCase = buildStatLine(locale.activeCase, "ongoing", data.active);
     $recoveredCase = buildStatLine(locale.recoveredCase, "recovered", data.recovered);
-    $fatalCase = buildStatLine(locale.recoveredCase, "fatal", data.fatal);
+    $fatalCase = buildStatLine(locale.fatalCase, "fatal", data.fatal);
     $content.append([$titleInfo, $activeCase, $recoveredCase, $fatalCase]);
 
     return $content[0];

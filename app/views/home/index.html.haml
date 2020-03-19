@@ -1,6 +1,9 @@
 = render "shared/user_nav_bar"
+.desktop
+  .content
+    = render "info_sidebar"
 
-#map.w-100{ "data-covid-19": @data.to_json }
+    #map.w-100{ "data-covid-19": @data.to_json, style: "height: 100%; width: 100%; overflow: hidden;" }
 
 :javascript
   locale = {
