@@ -1,6 +1,6 @@
-en:
+km:
   shared:
-    active_case: Active case
-    recovered_case: Recovered case
-    fatal_case: Fatal case
-    total_case: Total case
+    active_case: ករណីអ្នកកំពុងផ្ទុកជំងឺ
+    recovered_case: ករណីជាសះស្បើយ
+    fatal_case: ករណីអ្នកជំងឺស្លាប់
+    total_case: ចំនួនអ្នកឆ្លងជំងឺសរុប

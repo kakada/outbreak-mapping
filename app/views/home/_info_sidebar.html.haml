@@ -18,6 +18,7 @@
       .color.fatal
       .description ករណីអ្នកជំងឺស្លាប់
       .total#fatal-case= @summary_report[:fatal]
+    .title.text-center (គិតត្រឹម 19 មិនា 2020)
   .areas
     .area.selected#00{ data: { total: @summary_report[:total], active: @summary_report[:active], recovered: @summary_report[:recovered], fatal: @summary_report[:fatal], location: @summary_report[:location_name] } }
       .area-name= @summary_report[:location_name]
