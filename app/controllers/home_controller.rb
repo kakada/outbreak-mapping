@@ -2,41 +2,46 @@
 
 class HomeController < ApplicationController
   def index
-    @data = mockup_data
+    @locations = Location.all
+    @reports = mockup_data
+    @summary_report = summary_report
   end
 
-  def mockup_data
-    [
+  private
+    def mockup_data
+      data = []
+      @locations.each do |loc|
+        total = rand(1...10)
+        report = {
+          id: loc.code,
+          total: rand(1...10),
+          location_name: loc.name_km,
+          total: total,
+          active: rand(1...total),
+          recovered: rand(0...2),
+          fatal: rand(0...2),
+          location: loc,
+          lat: loc.latitude,
+          lng: loc.longitude
+        }
+        data << report
+      end
+
+      data.sort_by { |d| d[:total] }.reverse
+    end
+
+    def summary_report
       {
-        id: 1,
-        total: 9,
-        location_name: "Phnom Penh",
-        active: 9,
-        recovered: 0,
-        fatal: 0,
-        lat: 11.562108,
-        lng: 104.888535
-      },
-      {
-        id: 2,
-        total: 1,
-        location_name: "Preah Sihanouk",
-        active: 0,
+        id: "00",
+        total: 40,
+        location_name: "ប្រទេសកម្ពុជា",
+        total: 40,
+        active: 39,
         recovered: 1,
         fatal: 0,
-        lat: 10.627543,
-        lng: 103.522141
-      },
-      {
-        id: 2,
-        total: 3,
-        location_name: "Kampong Cham",
-        active: 3,
-        recovered: 0,
-        fatal: 0,
-        lat: 12.05,
-        lng: 105.25
+        location: {},
+        lat: 12.33233,
+        lng: 104.875305
       }
-    ]
-  end
+    end
 end

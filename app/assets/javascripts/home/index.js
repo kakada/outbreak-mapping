@@ -1,6 +1,7 @@
 OM.HomeIndex = (() => {
   let map = null;
   let eventData = [];
+  let markers = {};
   const osmUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
   const osmAttrib="Map data © <a href='https://openstreetmap.org'>OpenStreetMap</a> contributors";
   const cambodiaLat = 12.33233;
@@ -15,6 +16,7 @@ OM.HomeIndex = (() => {
 
     _renderMap();
     // _initLegendSliding();
+    addEventToReport();
   }
 
   function _initLegendSliding() {
@@ -48,8 +50,6 @@ OM.HomeIndex = (() => {
   }
 
   function _renderMarker() {
-    let markers = [];
-
     eventData.forEach( (data) => {
       const extraRadius = data.total / 2.5;
       const latlng = [ data.lat, data.lng];
@@ -63,8 +63,17 @@ OM.HomeIndex = (() => {
         radius: 5 + extraRadius
       }).addTo(map);
 
-      markers.push(latlng);
-      marker.bindPopup(_buildMarkerPopupContent(data));
+      console.log("data.id: " + data.id)
+
+      markers[data.id] = marker.bindPopup(_buildMarkerPopupContent(data));
+
+      addEventToMarker(marker);
+    });
+  }
+
+  function addEventToMarker(marker) {
+    marker.on("click", function(e) {
+
     });
   }
 
@@ -89,4 +98,20 @@ OM.HomeIndex = (() => {
     return $statLine;
   }
 
+  function addEventToReport() {
+    $(".area").click(function(e) {
+      $(".areas .selected").removeClass("selected");
+      $area = $(e.currentTarget);
+      console.log($area.attr("id"))
+      $area.addClass("selected");
+
+      $("#location-name").text($area.data("location"))
+      $(".info-title #confirmed-case").text($area.data("total"))
+      $(".legend #active-case").text($area.data("active"));
+      $(".legend #recovered-case").text($area.data("recovered"));
+      $(".legend #fatal-case").text($area.data("fatal"));
+
+      markers[$area.attr("id")].openPopup();
+    })
+  }
 })();
