@@ -33,4 +33,7 @@ test:
   database: outbreak_mapping_test
 
 production:
-  url: <%= ENV['DATABASE_URL'] %>
+  <<: *default
+  database: outbreak_mapping_production
+  username: outbreak_mapping
+  password: <%= ENV['OUTBREAK_MAPPING_DATABASE_PASSWORD'] %>
