@@ -64,16 +64,7 @@ OM.HomeIndex = (() => {
       }).addTo(map);
 
       marker.id = data.id;
-
-      console.log("data.id: " + data.id)
-
       markers[data.id] = marker.bindPopup(_buildMarkerPopupContent(data));
-
-      marker.on("click", function(e) {
-        $(`.area#${e.target.id}`).click();
-
-        document.getElementById(e.target.id).scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
-      })
 
       addEventToMarker(marker);
     });
@@ -81,7 +72,8 @@ OM.HomeIndex = (() => {
 
   function addEventToMarker(marker) {
     marker.on("click", function(e) {
-
+      $(`.area#${e.target.id}`).click();
+      document.getElementById(e.target.id).scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
     });
   }
 
@@ -110,7 +102,6 @@ OM.HomeIndex = (() => {
     $(".area").click(function(e) {
       $(".areas .selected").removeClass("selected");
       $area = $(e.currentTarget);
-      console.log($area.attr("id"))
       $area.addClass("selected");
 
       $("#location-name").text($area.data("location"))
