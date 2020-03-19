@@ -73,7 +73,7 @@
   .desktop {
     .tab {
       width: 316px;
-      padding: 24px;
+      padding: 24px 24px 0;
       box-sizing: border-box;
       border-right: 1px solid rgba(0, 0, 0, 0.1);
       box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.05);
@@ -141,9 +141,9 @@
   }
 
   .areas {
-    padding: 24px;
+    padding: 24px 0;
     width: 100%;
-    margin-left: -24px;
+    margin-left: 0;
     height: calc(100% - 260px);
     overflow: hidden;
 
