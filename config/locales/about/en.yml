@@ -1,0 +1,11 @@
+en:
+  about:
+    title: 'Outbreak mapping'
+    introduction: 'Outbreak mapping is the visualization aid mapping out outbreak cases across Cambodia providing real-time update on number of cases of COVID-19 in different locations. The creation of the mapping is under the purpose of giving a better way of communication to Cambodian citizen by providing a trustful resource with easy to understanding mapping functions that allow citizen to have a central point to go to for update of infections number across the country. The outbreak mapping is created by a group of tech volunteers with collaboration from Communicable Disease Control (CDC) of Ministry of Health.'
+    data_provided_by: 'Data Provided by'
+    implemented_by: 'Implemented by'
+    kakada: 'CHHEANG KAKADA'
+    borey: 'LIM BOREY'
+    radin: 'RETH RADIN'
+    sokly: 'HENG SOKLY'
+    phalyka: 'SOK SOMPHOASPHALYKA'

@@ -1,0 +1,100 @@
+// Place all the styles related to the abouts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.view-center {
+  margin: 0 auto;
+}
+
+#content {
+  width: 100%;
+  padding: 20px;
+  padding-bottom: 0;
+  min-height: 100vh;
+  transition: all 0.3s;
+  overflow: scroll;
+}
+
+#content:after {
+  content: "";
+  height: 20px;
+  display: block;
+}
+
+#abouts-show {
+  .introduction {
+    // max-width: 900px;
+    text-align: justify;
+  }
+
+  .about-logo {
+    height: 80px;
+  }
+
+  .column {
+    height: auto;
+  }
+
+  .wrapper {
+    width: auto;
+  }
+
+  .program-logo {
+    img {
+      height: 140px;
+      border-radius: 50%;
+    }
+  }
+
+  // Team
+  .team-con {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    img {
+      width: 65%;
+    }
+  }
+
+  .img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .img-circle {
+    border-radius: 50%;
+  }
+
+  .img-center {
+    margin: 0 auto;
+  }
+
+  .team-image {
+    padding: 10px;
+  }
+
+  .team-detail {
+    min-height: 145px;
+    padding: 10px;
+
+    .name {
+      font-weight: bold;
+      margin: 10px;
+    }
+
+    .divider {
+      height: 2px;
+      width: 50%;
+      margin: 0 auto;
+      border-width: 0 0 2px;
+      border-style: solid;
+      border-color: #404040;
+    }
+
+    .postion {
+      padding: 10px;
+    }
+  }
+
+}

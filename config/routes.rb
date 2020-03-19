@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :reports, only: [:index, :new, :create]
   resources :videos, only: [:index, :new, :create]
+  resources :sites, only: [:index, :new, :create]
+
+  resource :about, only: [:show]
 end
