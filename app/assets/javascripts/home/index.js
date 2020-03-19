@@ -54,7 +54,7 @@ OM.HomeIndex = (() => {
       const extraRadius = data.total / 2.5;
       const latlng = [ data.lat, data.lng];
 
-      const marker = L.circleMarker(latlng, {
+      let marker = L.circleMarker(latlng, {
         color: "red",
         fillColor: "#fc7a4e",
         fillOpacity: 0.8,
@@ -63,9 +63,17 @@ OM.HomeIndex = (() => {
         radius: 5 + extraRadius
       }).addTo(map);
 
+      marker.id = data.id;
+
       console.log("data.id: " + data.id)
 
       markers[data.id] = marker.bindPopup(_buildMarkerPopupContent(data));
+
+      marker.on("click", function(e) {
+        $(`.area#${e.target.id}`).click();
+
+        document.getElementById(e.target.id).scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+      })
 
       addEventToMarker(marker);
     });
