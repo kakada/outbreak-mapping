@@ -1,0 +1,67 @@
+version: '3'
+
+volumes:
+  db:
+  nginx-certs:
+  nginx-dhparam:
+  nginx-vhost:
+  nginx-html:
+
+services:
+  db:
+    image: postgres:12.2
+    volumes:
+      - db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: CHANGEME
+
+  app: &rails
+    image: kakadachheang/outbreak-mapping:0.0.1
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      - LANG=C.UTF-8
+      - DATABASE_URL=postgres://postgres@CHANGEME/outbreak_mapping
+      - RAILS_SERVE_STATIC_FILES=true
+      - VIRTUAL_HOST=example.com
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=example.com
+      - LETSENCRYPT_EMAIL=kakada@instedd.org
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '5'
+    command:
+    - /bin/sh
+    - -c
+    - bundle exec puma -e production -b tcp://0.0.0.0:80
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - nginx-certs:/etc/nginx/certs:ro
+      - nginx-dhparam:/etc/nginx/dhparam
+      - nginx-vhost:/etc/nginx/vhost.d
+      - nginx-html:/usr/share/nginx/html
+    labels:
+      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
+    depends_on:
+      - app
+
+  letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    depends_on:
+      - nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - nginx-certs:/etc/nginx/certs:rw
+      - nginx-dhparam:/etc/nginx/dhparam
+      - nginx-vhost:/etc/nginx/vhost.d
+      - nginx-html:/usr/share/nginx/html
