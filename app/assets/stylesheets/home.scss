@@ -6,13 +6,6 @@
     overflow: hidden;
   }
 
-  #map {
-    display: block;
-    position: relative;
-    height: calc(100% - 64px);
-    width: 100%;
-  }
-
   .show {
     display: block;
   }
@@ -71,12 +64,29 @@
   }
 
   .desktop {
+    .map {
+      display: block;
+      position: relative;
+      height: calc(100% - 64px);
+      width: 100%;
+    }
+
     .tab {
       width: 316px;
       padding: 24px 24px 0;
       box-sizing: border-box;
       border-right: 1px solid rgba(0, 0, 0, 0.1);
       box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    #map {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .content {
+      position: absolute;
     }
   }
 
@@ -116,7 +126,6 @@
     display: flex;
     height: calc(100% - 64px);
     width: 100%;
-    position: absolute;
   }
 
   .legend {
@@ -190,5 +199,34 @@
 
   .area.selected, .area.selected .area-total, .area.selected .area-name {
     color: white;
+  }
+
+  .data-panel {
+    width: 100%;
+    padding-right: 20px;
+    overflow: hidden;
+  }
+
+  .video-title {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 20px;
+    color: #333333;
+    margin-bottom: 8px;
+  }
+
+  .secondary-info {
+    display: grid;
+    align-items: center;
+    grid-template-columns: min-content min-content;
+    grid-column-gap: 16px;
+  }
+
+  .dropdown-options {
+    width: 100%;
+    padding: 0 24px;
+    margin-left: -24px;
+    overflow: auto;
+    height: calc(100% - 24px);
   }
 }

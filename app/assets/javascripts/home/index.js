@@ -12,6 +12,7 @@ OM.HomeIndex = (() => {
   }
 
   function init() {
+    updateHeight();
     eventData = $("#map").data("covid-19");
 
     _renderMap();
@@ -110,7 +111,19 @@ OM.HomeIndex = (() => {
       $(".legend #recovered-case").text($area.data("recovered"));
       $(".legend #fatal-case").text($area.data("fatal"));
 
-      markers[$area.attr("id")].openPopup();
+      if ($area.attr("id") == "00") {
+        map.closePopup();
+      } else {
+        markers[$area.attr("id")].openPopup();
+      }
     })
+  }
+
+  function updateHeight() {
+    const mapHeight = $(window).height() - 187;
+
+    $(".user-navbar").css({ "position": "fixed", "top": 0, "width": "100%" })
+    $("#map").css({ "height": `${mapHeight}px`, "postion": "absolute", "margin-top": "48px" });
+    $(".information").css({ "margin-top": `${mapHeight}px`, "position": "absolute", "min-height": "287px" });
   }
 })();

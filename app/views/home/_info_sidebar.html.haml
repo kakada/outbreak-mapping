@@ -8,15 +8,15 @@
       37
     .legend
       .color.ongoing
-      .description ករណីអ្នកកំពុងផ្ទុកជំងឺ
+      .description= t('shared.active_case')
       .total#active-case= @summary_report[:active]
 
       .color.recovered
-      .description ករណីជាសះស្បើយ
+      .description= t('shared.recovered_case')
       .total#recovered-case= @summary_report[:recovered]
 
       .color.fatal
-      .description ករណីអ្នកជំងឺស្លាប់
+      .description= t('shared.fatal_case')
       .total#fatal-case= @summary_report[:fatal]
     .title.text-center (គិតត្រឹម 19 មិនា 2020)
   .areas
