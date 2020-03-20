@@ -16,22 +16,8 @@ OM.HomeIndex = (() => {
     eventData = $("#map").data("covid-19");
 
     _renderMap();
-    // _initLegendSliding();
     addEventToReport();
-  }
-
-  function _initLegendSliding() {
-    $(".btn-slide").on("click", function() {
-      posRight = $(this).parents('.slide-wrapper').width() - $(this).parent().width();
-      right = '-=' + posRight;
-
-      if(parseInt($('.slide-wrapper').css('right')) != 0) {
-        right = '+=' + posRight;
-      }
-
-      $('.slide-wrapper').animate({'right': right});
-      $(this).find('i').toggleClass('fa-angle-double-right');
-    });
+    initMobile();
   }
 
   function _renderMap() {
@@ -41,12 +27,11 @@ OM.HomeIndex = (() => {
     }
 
     map.setView(new L.LatLng(cambodiaLat, cambodiaLng), 7);
-
     _renderOSM();
   }
 
   function _renderOSM() {
-    let osm = new L.TileLayer(osmUrl, { minZoom: 7, maxZoom: 15, attribution: osmAttrib });
+    let osm = new L.TileLayer(osmUrl, { minZoom: 7, maxZoom: 10, attribution: osmAttrib });
     map.addLayer(osm);
   }
 
@@ -101,15 +86,13 @@ OM.HomeIndex = (() => {
 
   function addEventToReport() {
     $(".area").click(function(e) {
-      $(".areas .selected").removeClass("selected");
       $area = $(e.currentTarget);
-      $area.addClass("selected");
+      if (!$area.attr("id")) {
+        return;
+      }
 
-      $("#location-name").text($area.data("location"))
-      $(".info-title #confirmed-case").text($area.data("total"))
-      $(".legend #active-case").text($area.data("active"));
-      $(".legend #recovered-case").text($area.data("recovered"));
-      $(".legend #fatal-case").text($area.data("fatal"));
+      selectedArea($area);
+      updateInfo($area);
 
       if ($area.attr("id") == "00") {
         map.closePopup();
@@ -119,11 +102,62 @@ OM.HomeIndex = (() => {
     })
   }
 
+  function selectedArea($area) {
+    $(".areas .selected").removeClass("selected");
+    $area.addClass("selected");
+  }
+
+  function updateInfo($area) {
+    $("#location-name").text($area.data("location"))
+    $(".info-title #confirmed-case").text($area.data("total"))
+    $(".legend #active-case").text($area.data("active"));
+    $(".legend #recovered-case").text($area.data("recovered"));
+    $(".legend #fatal-case").text($area.data("fatal"));
+  }
+
   function updateHeight() {
     const mapHeight = $(window).height() - 187;
 
     $(".user-navbar").css({ "position": "fixed", "top": 0, "width": "100%" })
     $("#map").css({ "height": `${mapHeight}px`, "postion": "absolute", "margin-top": "48px" });
     $(".information").css({ "margin-top": `${mapHeight}px`, "position": "absolute", "min-height": "287px" });
+  }
+
+  function initMobile() {
+    addEventToInfoArea();
+    addEventToCloseLocation();
+    addEventToArea();
+  }
+
+  function addEventToInfoArea() {
+    $(".mobile .information .area").click(function(e) {
+      $(".location-list").show();
+      $(".location-list").removeClass("closing").addClass("opening");
+      $(".content").css("overflow", "hidden");
+      $(".information").hide();
+    });
+  }
+
+  function addEventToCloseLocation() {
+    $(".close-location").click(function() {
+      closeDropdown()
+    });
+  }
+
+  function closeDropdown() {
+    $(".information").show();
+    $(".location-list").removeClass("opening").addClass("closing");
+    $(".location-list").removeClass("closing");
+    $(".location-list").hide();
+
+  }
+
+  function addEventToArea() {
+    $(".dropdown-options .area").click(function(e) {
+      closeDropdown();
+      $area = $(e.currentTarget);
+      $(".information .area-name").text($area.data("location"));
+      $(".secondary-info .case-count").text($area.data("total"))
+    });
   }
 })();

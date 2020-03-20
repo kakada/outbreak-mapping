@@ -9,6 +9,7 @@
   .content
     #map.map{ "data-covid-19": @reports.to_json }
     = render "mobile_info_sidebar"
+  = render "location_dropdown"
 
 :javascript
   locale = {

@@ -1,0 +1,14 @@
+.location-list{ style: "display: none;" }
+  .dropdown
+    .page-title
+      %div ជ្រើសរើសតំបន់
+      .close-location
+        %i.fa.fa-close
+    .dropdown-options.areas
+      .area.selected#00{ data: { total: @summary_report[:total], active: @summary_report[:active], recovered: @summary_report[:recovered], fatal: @summary_report[:fatal], location: @summary_report[:location_name] } }
+        .area-name= @summary_report[:location_name]
+        .area-total 37
+      - @reports.each do |report|
+        .area{ id: report[:id], data: { total: report[:total], active: report[:active], recovered: report[:recovered], fatal: report[:fatal], location: report[:location_name] } }
+          .area-name= report[:location][:name_km]
+          .area-total= report[:total]

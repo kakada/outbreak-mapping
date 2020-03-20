@@ -229,4 +229,14 @@
     overflow: auto;
     height: calc(100% - 24px);
   }
+
+  .closing .dropdown {
+    animation: slideFromBottom 300ms ease-out;
+    animation-direction: reverse;
+    transform: translateY(100%);
+  }
+
+  .opening .dropdown {
+    animation: slideFromBottom 300ms ease-in;
+  }
 }
