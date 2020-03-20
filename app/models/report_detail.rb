@@ -3,7 +3,6 @@ class ReportDetail < ApplicationRecord
   belongs_to :report
 
   validates :field_name, :value, presence: true
-  validates :value, uniqueness: { scope: :field_name }
   validates :display_order, numericality: { greater_than: 0 }
 
   before_validation :ensure_reports

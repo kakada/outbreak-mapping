@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Reports</h2>
+      <table class="table">
+        <tr>
+          <th>Site code</th>
+          <th>total Cases</th>
+          <th>new cases</th>
+          <% @cols.each do |field| %>
+            <th><%= field %></th>
+          <% end %>
+        </tr>
+
+        <% @reports.each do |r| %>
+          <tr>
+            <td><%= r.location_code %></td>
+            <td><%= r.total_cases %></td>
+            <td><%= r.new_cases %></td>
+            <% ReportDetail.where(report_id: r.id).each do |rd| %>
+              <% @cols.each do |c| %>
+                <% if rd.field_name == c %>
+                  <td><%= rd.value %></td>
+                <% end %>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
