@@ -10,28 +10,6 @@ class HomeController < ApplicationController
   end
 
   private
-    def mockup_data
-      data = []
-      @locations.each do |loc|
-        total = rand(1...10)
-        report = {
-          id: loc.code,
-          total: rand(1...10),
-          location_name: loc.name_km,
-          total: total,
-          active: rand(1...total),
-          recovered: rand(0...2),
-          fatal: rand(0...2),
-          location: loc,
-          lat: loc.latitude,
-          lng: loc.longitude
-        }
-        data << report
-      end
-
-      data.sort_by { |d| d[:total] }.reverse
-    end
-
     def summary_report
       total_cases, recovered_cases, death_cases = Report.pluck("SUM(total_cases)", "SUM(recovered_cases)", "SUM(death_cases)").flatten
       active_cases = total_cases - recovered_cases - death_cases
