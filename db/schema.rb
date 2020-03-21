@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_18_143558) do
+ActiveRecord::Schema.define(version: 2020_03_20_140824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,30 +26,24 @@ ActiveRecord::Schema.define(version: 2020_03_18_143558) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "nations", force: :cascade do |t|
-    t.string "name", default: ""
+  create_table "report_details", force: :cascade do |t|
+    t.text "field_name"
+    t.text "field_value"
+    t.integer "display_order", default: 1
+    t.bigint "report_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_nations_on_name"
+    t.index ["report_id"], name: "index_report_details_on_report_id"
   end
 
   create_table "reports", force: :cascade do |t|
-    t.integer "cases", default: 0
-    t.integer "heals", default: 0
-    t.integer "deaths", default: 0
-    t.bigint "site_id", null: false
-    t.bigint "nation_id", null: false
+    t.string "location_code", null: false
+    t.integer "total_cases", default: 0
+    t.integer "new_cases", default: 0
+    t.integer "recovered_cases", default: 0
+    t.integer "death_cases", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["nation_id"], name: "index_reports_on_nation_id"
-    t.index ["site_id"], name: "index_reports_on_site_id"
-  end
-
-  create_table "sites", force: :cascade do |t|
-    t.string "code", default: ""
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["code"], name: "index_sites_on_code"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,6 +58,5 @@ ActiveRecord::Schema.define(version: 2020_03_18_143558) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "reports", "nations"
-  add_foreign_key "reports", "sites"
+  add_foreign_key "report_details", "reports"
 end

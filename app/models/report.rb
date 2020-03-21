@@ -1,8 +1,10 @@
 class Report < ApplicationRecord
-  # belongs_to :site
-  # belongs_to :nation
+  has_many :report_details, dependent: :destroy
 
-  def self.sum_results
-    pluck("sum(reports.cases), sum(reports.heals), sum(reports.deaths)")[0]
-  end
+  validates :location_code, presence: true
+  validates :location_code, uniqueness: true
+  validates :total_cases, numericality: { greater_than_or_equal_to: 0 }
+  validates :new_cases, numericality: { greater_than_or_equal_to: 0 }
+
+  belongs_to :location, class_name: 'Location', foreign_key: 'location_code'
 end

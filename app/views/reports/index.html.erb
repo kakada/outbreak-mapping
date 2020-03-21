@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to "New", new_report_path, class: "btn btn-primary mb-4 mt-2" %>
+      <h2>Reports: <b><%= @reports.count %></b></h2>
+      <%
+        i = 0
+        total_cases = 0
+        total_cases = 0
+        total_new_cases = 0
+        total_recovered_cases = 0
+        total_death_cases = 0
+      %>
+
+      <table class="table">
+        <tr>
+          <th>#</th>
+          <th>Location Name</th>
+          <th>Total Cases</th>
+          <th>New cases</th>
+          <th>Recovered cases</th>
+          <th>Death cases</th>
+          <% @cols.each do |field| %>
+            <th><%= field %></th>
+          <% end %>
+        </tr>
+
+        <% @reports.each do |r| %>
+          <%
+            total_cases += r.total_cases
+            total_new_cases += r.new_cases
+            total_recovered_cases += r.recovered_cases
+            total_death_cases += r.death_cases
+          %>
+          <tr>
+            <td><%= i+=1 %></td>
+            <td><%= r.location.try(:name_km) %></td>
+            <td><%= r.total_cases %></td>
+            <td>
+              <%if r.new_cases > 0 %>
+                <font color='blue'><%= r.new_cases %></font>
+              <% else %>
+                -
+              <% end %>
+            </td>
+            <td>
+              <%if r.recovered_cases > 0 %>
+                <font color='green'><%= r.recovered_cases %></font>
+              <% else %>
+                -
+              <% end %>
+            <td>
+              <%if r.death_cases > 0 %>
+                <font color='red'><%= r.death_cases %></font>
+              <% else %>
+                -
+              <% end %>
+              </td>
+            <% ReportDetail.where(report_id: r.id).each do |rd| %>
+              <% @cols.each do |c| %>
+                <% if rd.field_name == c %>
+                  <td><%= rd.field_value %></td>
+                <% end %>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan=2><h3>Total:</h3></td>
+          <td><h3><%= total_cases %></h3></td>
+          <td>
+            <%if total_new_cases > 0 %>
+              <h3><font color='blue'><%= total_new_cases %></font></h3>
+            <% else %>
+              -
+            <% end %>
+          </td>
+          <td>
+            <%if total_recovered_cases > 0 %>
+              <h3><font color='green'><%= total_recovered_cases %></font></h3>
+            <% else %>
+              -
+            <% end %>
+          </td>
+          <td>
+            <%if total_death_cases > 0 %>
+              <h3><font color='red'><%= total_death_cases %></font></h3>
+            <% else %>
+              -
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
