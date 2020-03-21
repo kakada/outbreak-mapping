@@ -1,9 +1,7 @@
 class ReportsController < ApplicationController
   def index
-    # @sites = Site.sum_nations
-    # @total_cases, @total_heals, @total_deaths= Report.sum_results
     @cols = ReportDetail.order(display_order: :asc).pluck(:field_name).uniq
-    @reports = Report.all
+    @reports = Report.includes(:report_details)
   end
 
   def new
