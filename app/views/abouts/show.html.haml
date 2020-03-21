@@ -10,7 +10,7 @@
       = t('about.introduction')
 
     .d-flex.justify-content-center.align-items-center.mt-5.mb-3
-      %h5= t('about.data_provided_by')
+      %h5= t('about.extract_info_from')
 
     .d-flex.justify-content-center.align-items-center.program-logo
       = link_to 'http://cdcmoh.gov.kh/', target: '_blank' do
@@ -24,7 +24,8 @@
         - @teams.each do |team|
           .col-xs-12.col-sm-4.col-md-3.team-col.float-left
             .team-image
-              %img.img-responsive.img-circle.img-center{ src: team[:image_url] }
+              = image_tag team[:image_url], class: 'img-responsive img-circle img-center'
+
             .team-detail.text-center
               .name= team[:name]
               .divider
