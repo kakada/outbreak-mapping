@@ -7,7 +7,7 @@ class ReportService
 
     Report.destroy_all if file_name.inquiry.reports?
 
-    ::CSV.foreach(path, headers: true) do |row|
+    ::CSV.foreach(path, headers: true, encoding: "bom|utf-8") do |row|
       hash = row.to_hash
 
       klass.create(hash)

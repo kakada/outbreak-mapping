@@ -2,7 +2,7 @@ class ReportDetail < ApplicationRecord
   attr_accessor :location_code
   belongs_to :report
 
-  validates :field_name, :value, presence: true
+  validates :field_name, :field_value, presence: true
   validates :display_order, numericality: { greater_than: 0 }
 
   before_validation :ensure_reports

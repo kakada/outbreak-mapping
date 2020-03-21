@@ -1,12 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+      <%= link_to "New", new_report_path, class: "btn btn-primary mb-4 mt-2" %>
       <h2>Reports</h2>
       <table class="table">
         <tr>
           <th>Site code</th>
-          <th>total Cases</th>
-          <th>new cases</th>
+          <th>Total Cases</th>
+          <th>New cases</th>
+          <th>Recovered cases</th>
+          <th>Death cases</th>
           <% @cols.each do |field| %>
             <th><%= field %></th>
           <% end %>
@@ -17,10 +20,12 @@
             <td><%= r.location_code %></td>
             <td><%= r.total_cases %></td>
             <td><%= r.new_cases %></td>
+            <td><%= r.recovered_cases %></td>
+            <td><%= r.death_cases %></td>
             <% ReportDetail.where(report_id: r.id).each do |rd| %>
               <% @cols.each do |c| %>
                 <% if rd.field_name == c %>
-                  <td><%= rd.value %></td>
+                  <td><%= rd.field_value %></td>
                 <% end %>
               <% end %>
             <% end %>

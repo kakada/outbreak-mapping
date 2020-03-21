@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 2020_03_20_140824) do
   end
 
   create_table "report_details", force: :cascade do |t|
-    t.string "field_name"
-    t.string "value"
+    t.text "field_name"
+    t.text "field_value"
     t.integer "display_order", default: 1
     t.bigint "report_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -37,9 +37,11 @@ ActiveRecord::Schema.define(version: 2020_03_20_140824) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.string "location_code"
+    t.string "location_code", null: false
     t.integer "total_cases", default: 0
     t.integer "new_cases", default: 0
+    t.integer "recovered_cases", default: 0
+    t.integer "death_cases", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
