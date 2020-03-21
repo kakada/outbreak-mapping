@@ -1,29 +1,29 @@
 .country.tab
   .page-name#location-name
-    = @summary_report[:location_name]
+    = @summary_report[:location][:name_km]
   .info-title
     .title{ title: "Total Confirm Cases" }
       ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
     .confirmed#confirmed-case
-      37
+      = @summary_report[:total_cases]
     .legend
       .color.ongoing
       .description= t('shared.active_case')
-      .total#active-case= @summary_report[:active]
+      .total#active-case= @summary_report[:active_cases]
 
       .color.recovered
       .description= t('shared.recovered_case')
-      .total#recovered-case= @summary_report[:recovered]
+      .total#recovered-case= @summary_report[:recovered_cases]
 
       .color.fatal
       .description= t('shared.fatal_case')
-      .total#fatal-case= @summary_report[:fatal]
+      .total#fatal-case= @summary_report[:death_cases]
     .title.text-center (គិតត្រឹម 19 មិនា 2020)
   .areas
-    .area.selected#00{ data: { total: @summary_report[:total], active: @summary_report[:active], recovered: @summary_report[:recovered], fatal: @summary_report[:fatal], location: @summary_report[:location_name] } }
-      .area-name= @summary_report[:location_name]
-      .area-total 37
+    .area.selected#00{ data: { total: @summary_report[:total_cases], active: @summary_report[:active_cases], recovered: @summary_report[:recovered_cases], fatal: @summary_report[:fatal], location: @summary_report[:location][:name_km] } }
+      .area-name= @summary_report[:location][:name_km]
+      .area-total= @summary_report[:total_cases]
     - @reports.each do |report|
-      .area{ id: report[:id], data: { total: report[:total], active: report[:active], recovered: report[:recovered], fatal: report[:fatal], location: report[:location_name] } }
-        .area-name= report[:location][:name_km]
-        .area-total= report[:total]
+      .area{ id: report.location.code, data: { total: report.total_cases, active: active_cases(report), recovered: report.recovered_cases, fatal: report.death_cases, location: report.location.name_km } }
+        .area-name= report.location.name_km
+        .area-total= report.total_cases

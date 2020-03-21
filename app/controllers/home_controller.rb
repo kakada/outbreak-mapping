@@ -3,7 +3,8 @@
 class HomeController < ApplicationController
   def index
     @locations = Location.all
-    @reports = mockup_data
+    @reports = Report.includes(:location).all
+    @json_reports = @reports.to_json(include: { location: { only: [:name_km, :latitude, :longitude] } })
     @summary_report = summary_report
     @device = DeviceDetector.new(request.user_agent)
   end
@@ -32,17 +33,22 @@ class HomeController < ApplicationController
     end
 
     def summary_report
+      total_cases, recovered_cases, death_cases = Report.pluck("SUM(total_cases)", "SUM(recovered_cases)", "SUM(death_cases)").flatten
+      active_cases = total_cases - recovered_cases - death_cases
+
       {
-        id: "00",
-        total: 40,
-        location_name: "ប្រទេសកម្ពុជា",
-        total: 40,
-        active: 39,
-        recovered: 1,
-        fatal: 0,
-        location: {},
-        lat: 12.33233,
-        lng: 104.875305
+        id: 0,
+        total_cases: total_cases,
+        active_cases: active_cases,
+        death_cases: death_cases,
+        recovered_cases: recovered_cases,
+        location: {
+          code: "00",
+          name_km: "ប្រទេសកម្ពុជា",
+          latitude: 12.33233,
+          longitude: 104.875305
+        },
+        location_code: "00"
       }
     end
 end
