@@ -63,33 +63,6 @@
     margin-bottom: 7px;
   }
 
-  .desktop {
-    .map {
-      display: block;
-      position: relative;
-      height: calc(100% - 64px);
-      width: 100%;
-    }
-
-    .tab {
-      width: 316px;
-      padding: 24px 24px 0;
-      box-sizing: border-box;
-      border-right: 1px solid rgba(0, 0, 0, 0.1);
-      box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.05);
-    }
-
-    #map {
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .content {
-      position: absolute;
-    }
-  }
-
   .country {
     z-index: 201;
     background-color: white;
@@ -238,5 +211,47 @@
 
   .opening .dropdown {
     animation: slideFromBottom 300ms ease-in;
+  }
+
+  .mobile-menu {
+    width: 100%;
+    background-color: white;
+    padding: 16px;
+    height: 100%;
+    position: absolute;
+    transform: translateX(0);
+    right: 0;
+    top: 0;
+    z-index: 999;
+  }
+
+  .menu-options {
+    margin-top: 40px;
+  }
+
+  .menu-option {
+    display: flex;
+    font-size: 16px;
+    line-height: 1.2em;
+    padding: 12px 0;
+    align-items: center;
+    border-bottom: #DDD 1px solid;
+    color: #000;
+
+    & > i {
+      margin-right: 12px;
+    }
+
+    a:link {
+      text-decoration: inherit;
+      color: inherit;
+      cursor: auto;
+    }
+
+    a:visited {
+        text-decoration: inherit;
+        color: inherit;
+        cursor: auto;
+    }
   }
 }

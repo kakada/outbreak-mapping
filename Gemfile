@@ -29,6 +29,7 @@ gem "simple_form", "~> 5.0", ">= 5.0.2"
 gem "pumi", github: "dwilkie/pumi", require: "pumi/rails"
 
 gem "font-awesome-rails", "~> 4.7.0.5"
+gem "device_detector", "~> 1.0", ">= 1.0.3"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false

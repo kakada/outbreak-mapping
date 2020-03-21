@@ -19,6 +19,10 @@
       width: 100%;
     }
 
+    .mobile-menu-button {
+      font-size: 20px;
+    }
+
     .information {
       width: 100%;
       padding: 8px 16px 0 16px;
@@ -54,6 +58,28 @@
     .user-navbar {
       position: fixed;
       top: 0;
+    }
+
+    .mobile-header {
+      display: flex;
+      padding: 14px 16px;
+      box-sizing: border-box;
+      line-height: 1.2em;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      width: 100%;
+      height: 53px;
+      z-index: 100;
+
+      .logo {
+        padding: 14px 16px;
+        position: relative;
+        top: -13px;
+        left: -16px;
+        box-sizing: border-box;
+        margin-right: 16px;
+      }
     }
   }
 

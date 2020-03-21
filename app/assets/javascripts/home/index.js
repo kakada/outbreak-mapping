@@ -12,16 +12,16 @@ OM.HomeIndex = (() => {
   }
 
   function init() {
-    updateHeight();
     eventData = $("#map").data("covid-19");
 
+    initMobile();
     _renderMap();
     addEventToReport();
-    initMobile();
   }
 
   function _renderMap() {
-    map = new L.Map('map');
+    map = new L.Map("map", { zoomControl: false });
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
     if (eventData.length) {
       _renderMarker();
     }
@@ -117,16 +117,18 @@ OM.HomeIndex = (() => {
 
   function updateHeight() {
     const mapHeight = $(window).height() - 187;
-
-    $(".user-navbar").css({ "position": "fixed", "top": 0, "width": "100%" })
-    $("#map").css({ "height": `${mapHeight}px`, "postion": "absolute", "margin-top": "48px" });
+    $("#map").css({ "height": `${mapHeight}px`, "postion": "absolute" });
     $(".information").css({ "margin-top": `${mapHeight}px`, "position": "absolute", "min-height": "287px" });
   }
 
   function initMobile() {
-    addEventToInfoArea();
-    addEventToCloseLocation();
-    addEventToArea();
+    if ($(".mobile .content").length > 0) {
+      updateHeight();
+      addEventToInfoArea();
+      addEventToCloseLocation();
+      addEventToArea();
+      addEventToMunu();
+    }
   }
 
   function addEventToInfoArea() {
@@ -158,6 +160,20 @@ OM.HomeIndex = (() => {
       $area = $(e.currentTarget);
       $(".information .area-name").text($area.data("location"));
       $(".secondary-info .case-count").text($area.data("total"))
+    });
+  }
+
+  function addEventToMunu() {
+    $(".mobile-menu-button").click(function(e) {
+      $(".mobile-menu").show();
+      $(".mobile-menu").removeClass("closing").addClass("opening");
+      $(".information").hide();
+    });
+
+    $(".mobile-menu .close-button").click(function(e) {
+      $(".mobile-menu").addClass("closing");
+      $(".mobile-menu").hide();
+      $(".information").show();
     });
   }
 })();

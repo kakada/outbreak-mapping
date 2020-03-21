@@ -1,15 +1,17 @@
-= render "shared/user_nav_bar"
--# .desktop
--#   .content
--#     = render "info_sidebar"
--#     #map.w-100{ "data-covid-19": @reports.to_json, style: "height: 100%; width: 100%; overflow: hidden;" }
--#     = render "mobile_info_sidebar"
+- if @device.device_type == "smartphone"
+  .mobile
+    .content
+      = render "shared/mobile_nav_bar"
+      #map.map{ "data-covid-19": @reports.to_json }
+      = render "mobile_info_sidebar"
+    = render "location_dropdown"
+- else
+  = render "shared/user_nav_bar"
+  .desktop
+    .content
+      = render "info_sidebar"
+      #map.w-100{ "data-covid-19": @reports.to_json, style: "height: 100%; width: 100%; overflow: hidden;" }
 
-.mobile
-  .content
-    #map.map{ "data-covid-19": @reports.to_json }
-    = render "mobile_info_sidebar"
-  = render "location_dropdown"
 
 :javascript
   locale = {

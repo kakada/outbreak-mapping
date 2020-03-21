@@ -1,0 +1,28 @@
+#home-index {
+  .desktop {
+    .map {
+      display: block;
+      position: relative;
+      height: calc(100% - 64px);
+      width: 100%;
+    }
+
+    .tab {
+      width: 316px;
+      padding: 24px 24px 0;
+      box-sizing: border-box;
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    #map {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .content {
+      position: absolute;
+    }
+  }
+}

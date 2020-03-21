@@ -25,17 +25,24 @@ services:
     tmpfs: /app/tmp
     depends_on:
       - db
-      - redis
+      # - redis
     env_file: app.env
     tty: true
     stdin_open: true
     ports:
       - "3000:3000"
 
-  redis:
-    image: redis:5.0.7
+  # redis:
+  #   image: redis:5.0.7
 
   # sidekiq:
   #   <<: *rails
   #   command: bundle exec sidekiq -C config/sidekiq.yml
   #   ports: []
+
+  ngrok:
+    image: wernight/ngrok
+    ports:
+      - 4040:4040
+    environment:
+      NGROK_PORT: 'web:3000'
