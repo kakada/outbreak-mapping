@@ -22,6 +22,8 @@
 //= require application/namespace
 //= require application/util
 
+//= require social-share-button
+
 //= require home/index
 
 $(document).on('ready turbolinks:load', () => {
