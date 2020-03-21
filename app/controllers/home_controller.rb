@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     @locations = Location.all
     @reports = mockup_data
     @summary_report = summary_report
+    @device = DeviceDetector.new(request.user_agent)
   end
 
   private

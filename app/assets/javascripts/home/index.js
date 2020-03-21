@@ -14,38 +14,24 @@ OM.HomeIndex = (() => {
   function init() {
     eventData = $("#map").data("covid-19");
 
+    initMobile();
     _renderMap();
-    // _initLegendSliding();
     addEventToReport();
   }
 
-  function _initLegendSliding() {
-    $(".btn-slide").on("click", function() {
-      posRight = $(this).parents('.slide-wrapper').width() - $(this).parent().width();
-      right = '-=' + posRight;
-
-      if(parseInt($('.slide-wrapper').css('right')) != 0) {
-        right = '+=' + posRight;
-      }
-
-      $('.slide-wrapper').animate({'right': right});
-      $(this).find('i').toggleClass('fa-angle-double-right');
-    });
-  }
-
   function _renderMap() {
-    map = new L.Map('map');
+    map = new L.Map("map", { zoomControl: false });
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
     if (eventData.length) {
       _renderMarker();
     }
 
     map.setView(new L.LatLng(cambodiaLat, cambodiaLng), 7);
-
     _renderOSM();
   }
 
   function _renderOSM() {
-    let osm = new L.TileLayer(osmUrl, { minZoom: 7, maxZoom: 15, attribution: osmAttrib });
+    let osm = new L.TileLayer(osmUrl, { minZoom: 7, maxZoom: 10, attribution: osmAttrib });
     map.addLayer(osm);
   }
 
@@ -100,17 +86,94 @@ OM.HomeIndex = (() => {
 
   function addEventToReport() {
     $(".area").click(function(e) {
-      $(".areas .selected").removeClass("selected");
       $area = $(e.currentTarget);
-      $area.addClass("selected");
+      if (!$area.attr("id")) {
+        return;
+      }
 
-      $("#location-name").text($area.data("location"))
-      $(".info-title #confirmed-case").text($area.data("total"))
-      $(".legend #active-case").text($area.data("active"));
-      $(".legend #recovered-case").text($area.data("recovered"));
-      $(".legend #fatal-case").text($area.data("fatal"));
+      selectedArea($area);
+      updateInfo($area);
 
-      markers[$area.attr("id")].openPopup();
+      if ($area.attr("id") == "00") {
+        map.closePopup();
+      } else {
+        markers[$area.attr("id")].openPopup();
+      }
     })
+  }
+
+  function selectedArea($area) {
+    $(".areas .selected").removeClass("selected");
+    $area.addClass("selected");
+  }
+
+  function updateInfo($area) {
+    $("#location-name").text($area.data("location"))
+    $(".info-title #confirmed-case").text($area.data("total"))
+    $(".legend #active-case").text($area.data("active"));
+    $(".legend #recovered-case").text($area.data("recovered"));
+    $(".legend #fatal-case").text($area.data("fatal"));
+  }
+
+  function updateHeight() {
+    const mapHeight = $(window).height() - 187;
+    $("#map").css({ "height": `${mapHeight}px`, "postion": "absolute" });
+    $(".information").css({ "margin-top": `${mapHeight}px`, "position": "absolute", "min-height": "287px" });
+  }
+
+  function initMobile() {
+    if ($(".mobile .content").length > 0) {
+      updateHeight();
+      addEventToInfoArea();
+      addEventToCloseLocation();
+      addEventToArea();
+      addEventToMunu();
+    }
+  }
+
+  function addEventToInfoArea() {
+    $(".mobile .information .area").click(function(e) {
+      $(".location-list").show();
+      $(".location-list").removeClass("closing").addClass("opening");
+      $(".content").css("overflow", "hidden");
+      $(".information").hide();
+    });
+  }
+
+  function addEventToCloseLocation() {
+    $(".close-location").click(function() {
+      closeDropdown()
+    });
+  }
+
+  function closeDropdown() {
+    $(".information").show();
+    $(".location-list").removeClass("opening").addClass("closing");
+    $(".location-list").removeClass("closing");
+    $(".location-list").hide();
+
+  }
+
+  function addEventToArea() {
+    $(".dropdown-options .area").click(function(e) {
+      closeDropdown();
+      $area = $(e.currentTarget);
+      $(".information .area-name").text($area.data("location"));
+      $(".secondary-info .case-count").text($area.data("total"))
+    });
+  }
+
+  function addEventToMunu() {
+    $(".mobile-menu-button").click(function(e) {
+      $(".mobile-menu").show();
+      $(".mobile-menu").removeClass("closing").addClass("opening");
+      $(".information").hide();
+    });
+
+    $(".mobile-menu .close-button").click(function(e) {
+      $(".mobile-menu").addClass("closing");
+      $(".mobile-menu").hide();
+      $(".information").show();
+    });
   }
 })();

@@ -1,0 +1,27 @@
+.information
+  .pullbar
+  .page-title ប្រពន្ធតាមដានជំងឺ COVID-19
+  .area
+    .area-name= @summary_report[:location_name]
+    .area-total
+      .secondary-info#confirmed-case
+        .case-count 47
+        %i.fa.fa-angle-down
+
+  .info-title
+    .legend
+      .color.ongoing
+      .description= t('shared.active_case')
+      .total#active-case= @summary_report[:active]
+
+      .color.recovered
+      .description= t('shared.recovered_case')
+      .total#recovered-case= @summary_report[:recovered]
+
+      .color.fatal
+      .description= t('shared.fatal_case')
+      .total#fatal-case= @summary_report[:fatal]
+    .title.text-center (គិតត្រឹម 19 មិនា 2020)
+
+  .data-panel
+    .video-title វីដេអូ

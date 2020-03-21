@@ -2,5 +2,5 @@ km:
   shared:
     active_case: ករណីអ្នកកំពុងផ្ទុកជំងឺ
     recovered_case: ករណីជាសះស្បើយ
-    fatal_case: ករណីអ្នកជំងឺស្លាប់
+    fatal_case: ករណីស្លាប់
     total_case: ចំនួនអ្នកឆ្លងជំងឺសរុប
