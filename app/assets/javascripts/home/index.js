@@ -167,13 +167,11 @@ OM.HomeIndex = (() => {
     $(".mobile-menu-button").click(function(e) {
       $(".mobile-menu").show();
       $(".mobile-menu").removeClass("closing").addClass("opening");
-      $(".information").hide();
     });
 
     $(".mobile-menu .close-button").click(function(e) {
       $(".mobile-menu").addClass("closing");
       $(".mobile-menu").hide();
-      $(".information").show();
     });
   }
 
