@@ -2,7 +2,7 @@
   .mobile
     .content
       = render "shared/mobile_nav_bar"
-      #map.map{ "data-covid-19": @reports.to_json }
+      #map.map{ "data-covid-19": @json_reports }
       = render "mobile_info_sidebar"
     = render "location_dropdown"
 - else
@@ -10,8 +10,7 @@
   .desktop
     .content
       = render "info_sidebar"
-      #map.w-100{ "data-covid-19": @reports.to_json, style: "height: 100%; width: 100%; overflow: hidden;" }
-
+      #map.w-100{ "data-covid-19": @json_reports, style: "height: 100%; width: 100%; overflow: hidden;" }
 
 :javascript
   locale = {

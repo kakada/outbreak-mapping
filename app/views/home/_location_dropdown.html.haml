@@ -5,10 +5,10 @@
       .close-location
         %i.fa.fa-close
     .dropdown-options.areas
-      .area.selected#00{ data: { total: @summary_report[:total], active: @summary_report[:active], recovered: @summary_report[:recovered], fatal: @summary_report[:fatal], location: @summary_report[:location_name] } }
-        .area-name= @summary_report[:location_name]
-        .area-total 37
+      .area.selected#00{ data: { total: @summary_report[:total_cases], active: @summary_report[:active_cases], recovered: @summary_report[:recovered_cases], fatal: @summary_report[:death_cases], location: @summary_report[:location][:name_km] } }
+        .area-name= @summary_report[:location][:name_km]
+        .area-total= @summary_report[:total_cases]
       - @reports.each do |report|
-        .area{ id: report[:id], data: { total: report[:total], active: report[:active], recovered: report[:recovered], fatal: report[:fatal], location: report[:location_name] } }
-          .area-name= report[:location][:name_km]
-          .area-total= report[:total]
+        .area{ id: report.location_code, data: { total: report.total_cases, active: active_cases(report), recovered: report.recovered_cases, fatal: report.death_cases, location: report.location.name_km } }
+          .area-name= report.location.name_km
+          .area-total= report.total_cases
