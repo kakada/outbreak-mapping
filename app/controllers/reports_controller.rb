@@ -9,7 +9,7 @@ class ReportsController < ApplicationController
 
   def create
     tempfile = file_params[:file]
-    ::ReportService.import(tempfile.path, tempfile.original_filename)
+    ::ReportImportService.process(tempfile.path)
 
     redirect_to reports_path, notice: "successfully imported"
   end

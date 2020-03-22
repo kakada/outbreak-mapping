@@ -1,0 +1,8 @@
+.d-flex.justify-content-center.align-items-center.vh-100
+  .card
+    .card-header 
+      %h5 Choose videos
+    .card-body
+      = simple_form_for :videos, url: videos_path do |f|
+        = f.input :file, as: :file, label: false
+        = f.submit "Upload", class: "btn btn-primary"
