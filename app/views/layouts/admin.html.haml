@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Admin | Outbreak Mapping
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
+    %link{:crossorigin => "anonymous", :href => "https://use.fontawesome.com/releases/v5.7.0/css/all.css", :integrity => "sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ", :rel => "stylesheet"}
+    = javascript_include_tag "application", "data-turbolinks-track": "reload"
+
+  %body{ id: css_class_name }
+    .container
+      .row
+        .col-md-12
+          = render "shared/notify_message"
+          .mt-3.d-flex
+            .mr-auto
+            %ul.list-inline
+              %li.list-inline-item
+                = link_to "New report", new_report_path, class: "btn btn-light"
+              %li.list-inline-item
+                = link_to "New videos", new_video_path, class: "btn btn-light"
+              %li.list-inline-item
+                = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-dark'
+          = yield
