@@ -11,17 +11,20 @@
     = javascript_include_tag "application", "data-turbolinks-track": "reload"
 
   %body{ id: css_class_name }
+    %nav.user-navbar.navbar.navbar-light.navbar-expand-lg
+      .container
+        = link_to "ជំងឺឆ្លង COVID-19", reports_path, class: "navbar-brand"
+        %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
+          %span.navbar-toggler-icon
+        #navbarNavDropdown.collapse.navbar-collapse
+          %ul.navbar-nav.mr-auto
+            %li.nav-item.active
+              = link_to "New Reports", new_report_path, class: "nav-link"
+            %li.nav-item
+              = link_to "New Videos", new_video_path, class: "nav-link"
+          = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-dark'
     .container
       .row
         .col-md-12
           = render "shared/notify_message"
-          .mt-3.d-flex
-            .mr-auto
-            %ul.list-inline
-              %li.list-inline-item
-                = link_to "New report", new_report_path, class: "btn btn-light"
-              %li.list-inline-item
-                = link_to "New videos", new_video_path, class: "btn btn-light"
-              %li.list-inline-item
-                = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-dark'
           = yield
