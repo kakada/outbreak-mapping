@@ -1,2 +1,5 @@
 en:
+  time:
+    formats:
+      custom: "(%p %d %B %Y)"
   hello: "Hello world"

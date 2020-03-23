@@ -19,7 +19,7 @@
       .description= t('shared.fatal_case')
       .total#fatal-case= @summary_report[:death_cases]
     .title.text-center
-      = ENV['LAST_UPDATED_AT']
+      = I18n.l(@reports.last&.updated_at, format: :custom)
   .areas
     .area.selected#00{ data: { total: @summary_report[:total_cases], active: @summary_report[:active_cases], recovered: @summary_report[:recovered_cases], fatal: @summary_report[:fatal], location: @summary_report[:location][:name_km] } }
       .area-name= @summary_report[:location][:name_km]
