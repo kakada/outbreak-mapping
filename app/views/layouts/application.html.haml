@@ -3,6 +3,9 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0, maximum-scale=2.0"}
+    %meta{:content => "Outbreak mapping", :property => "og:title"}
+    %meta{:content => asset_path('cdc.jpg'), :property => "og:image"}
+
     %title Outbreak Mapping
     = csrf_meta_tags
     = csp_meta_tag

@@ -128,7 +128,21 @@ OM.HomeIndex = (() => {
       addEventToCloseLocation();
       addEventToArea();
       addEventToMunu();
+      addEventToShare();
     }
+  }
+
+  function addEventToShare() {
+    $('.btn-share').on('click', function() {
+      if (navigator.share) {
+        navigator.share({
+          title: document.title,
+          text: "Cambodia event outbreaking",
+          url: window.location.href
+        }).then(() => console.log('Successful share'))
+        .catch(error => console.log('Error sharing:', error));
+      }
+    });
   }
 
   function addEventToInfoArea() {

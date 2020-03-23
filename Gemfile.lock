@@ -91,6 +91,13 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    coffee-rails (5.0.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 5.2.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     device_detector (1.0.3)
@@ -261,6 +268,8 @@ GEM
     simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
+    social-share-button (1.2.1)
+      coffee-rails
     solargraph (0.38.5)
       backport (~> 1.1)
       benchmark
@@ -347,6 +356,7 @@ DEPENDENCIES
   selenium-webdriver
   shoulda-matchers
   simple_form (~> 5.0, >= 5.0.2)
+  social-share-button
   solargraph (~> 0.38.5)
   spring
   spring-watcher-listen (~> 2.0.0)

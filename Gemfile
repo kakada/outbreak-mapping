@@ -33,6 +33,7 @@ gem "device_detector", "~> 1.0", ">= 1.0.3"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
+gem 'social-share-button'
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
