@@ -1,32 +1,38 @@
-.country.tab
-  .page-name#location-name
-    = @summary_report[:location][:name_km]
-  .info-title
-    .title{ title: "Total Confirm Cases" }
-      ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
-    .confirmed#confirmed-case
-      = @summary_report[:total_cases]
-      - if @summary_report[:new_cases].positive?
-        %span.new-case=" (#{@summary_report[:new_cases]} ថ្មី)"
-    .legend
-      .color.ongoing
-      .description= t('shared.active_case')
-      .total#active-case= "#{@summary_report[:active_cases]}"
+.tabs
+  .country.tab
+    .page-name#location-name
+      = @summary_report[:location][:name_km]
+    .info-title
+      .title{ title: "Total Confirm Cases" }
+        ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
+      .confirmed#confirmed-case
+        = @summary_report[:total_cases]
+        - if @summary_report[:new_cases].positive?
+          %span.new-case=" (#{@summary_report[:new_cases]} ថ្មី)"
+      .legend
+        .color.ongoing
+        .description= t('shared.active_case')
+        .total#active-case= "#{@summary_report[:active_cases]}"
 
-      .color.recovered
-      .description= t('shared.recovered_case')
-      .total#recovered-case= @summary_report[:recovered_cases]
+        .color.recovered
+        .description= t('shared.recovered_case')
+        .total#recovered-case= @summary_report[:recovered_cases]
 
-      .color.fatal
-      .description= t('shared.fatal_case')
-      .total#fatal-case= @summary_report[:death_cases]
-    .title.text-center
-      = ENV['LAST_UPDATED_AT']
-  .areas
-    .area.selected#00{ data: { total: @summary_report[:total_cases], active: @summary_report[:active_cases], recovered: @summary_report[:recovered_cases], fatal: @summary_report[:fatal], new_cases: @summary_report[:new_cases], location: @summary_report[:location][:name_km] } }
-      .area-name= @summary_report[:location][:name_km]
-      .area-total= @summary_report[:total_cases]
-    - @reports.each do |report|
-      .area{ id: report.location.code, data: { total: report.total_cases, active: active_cases(report), recovered: report.recovered_cases, fatal: report.death_cases, new_cases: report.new_cases, location: report.location.name_km } }
-        .area-name= report.location.name_km
-        .area-total= report.total_cases
+        .color.fatal
+        .description= t('shared.fatal_case')
+        .total#fatal-case= @summary_report[:death_cases]
+      .title.text-center
+        = ENV['LAST_UPDATED_AT']
+    .areas
+      .area.selected#00{ data: { total: @summary_report[:total_cases], active: @summary_report[:active_cases], recovered: @summary_report[:recovered_cases], fatal: @summary_report[:fatal], new_cases: @summary_report[:new_cases], location: @summary_report[:location][:name_km] } }
+        .area-name= @summary_report[:location][:name_km]
+        .area-total= @summary_report[:total_cases]
+      - @reports.each do |report|
+        .area{ id: report.location.code, data: { total: report.total_cases, active: active_cases(report), recovered: report.recovered_cases, fatal: report.death_cases, new_cases: report.new_cases, location: report.location.name_km } }
+          .area-name= report.location.name_km
+          .area-total= report.total_cases
+
+  .region.tab
+    #location-name.page-name
+      = @summary_report[:location][:name_km]
+    = render "video_list"

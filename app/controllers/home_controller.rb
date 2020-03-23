@@ -7,6 +7,7 @@ class HomeController < ApplicationController
     @json_reports = @reports.to_json(include: { location: { only: [:name_km, :latitude, :longitude] } })
     @summary_report = summary_report
     @device = DeviceDetector.new(request.user_agent)
+    @videos = Video.order(:display_order)
   end
 
   private

@@ -1,0 +1,15 @@
+.segment-panel
+  .segment-title
+    វីដេអូ
+  .video-content
+    - @videos.each_with_index do |video, index|
+      = link_to video.url, target: "_blank", rel: "noopener", class: ["video-card", ("mini-video-card" if index.positive?)] do
+        .thumbnail-container
+          = image_tag youtube_thumbnail(video.url), class: "video-image"
+          .play-icon
+            = render "play_icon"
+            -# %i.far.fa-play-circle
+        .info
+          .title= video.title
+          .source-container
+            .video-source= video.author
