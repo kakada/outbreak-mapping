@@ -22,7 +22,7 @@
       .description= t('shared.fatal_case')
       .total#fatal-case= @summary_report[:death_cases]
     .title.text-center
-      = ENV['LAST_UPDATED_AT']
+      = l(@reports.last&.updated_at, format: :custom)
 
   .data-panel
     .video-title វីដេអូ
