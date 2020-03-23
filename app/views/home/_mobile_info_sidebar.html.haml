@@ -5,7 +5,10 @@
     .area-name= @summary_report[:location][:name_km]
     .area-total
       .secondary-info#confirmed-case
-        .case-count= @summary_report[:total_cases]
+        .case-count
+          = "#{@summary_report[:total_cases]}"
+          - if @summary_report[:new_cases].positive?
+            %span.new-cass= " (#{@summary_report[:new_cases]} ថ្មី)"
         %i.fa.fa-angle-down
 
   .info-title

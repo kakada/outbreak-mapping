@@ -191,7 +191,7 @@
   .secondary-info {
     display: grid;
     align-items: center;
-    grid-template-columns: min-content min-content;
+    grid-template-columns: max-content min-content;
     grid-column-gap: 16px;
   }
 
@@ -284,5 +284,10 @@
     opacity: 0.5;
     position: fixed;
     top: 0;
+  }
+
+  .new-case {
+    font-size: 22px;
+    color: red;
   }
 }
