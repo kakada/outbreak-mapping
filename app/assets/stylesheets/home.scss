@@ -17,7 +17,7 @@
     align-items: center;
     height: 20px;
 
-    .divider {
+    &.divider {
       height: 1px;
       background: rgba(0, 0, 0, 0.2);
       margin: 5px 0 4px 0;
@@ -55,6 +55,10 @@
     line-height: 20px;
     text-align: right;
     color: #767676;
+
+    &.total {
+      color: #DE3700;
+    }
   }
 
   .legend-color {
@@ -76,6 +80,10 @@
   .country {
     z-index: 201;
     background-color: white;
+
+    .legend {
+      padding-top: 12px;
+    }
   }
 
   .page-name {
@@ -126,7 +134,7 @@
       border-radius: 8px;
     }
 
-    .legend .total {
+    .total {
       color: #767676;
       text-align: right;
     }
@@ -450,5 +458,11 @@
     width: 100%;
     padding-right: 0px;
     overflow: auto;
+  }
+
+  #case-detail-info {
+    font-size: 13px;
+    line-height: 1.8em;
+    margin-left: 14px;
   }
 }

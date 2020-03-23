@@ -67,7 +67,7 @@ OM.HomeIndex = (() => {
     let $content = $("<div>");
     $titleInfo = $("<div>", { class: "title-info-box" }).text(data.location.name_km);
     $totalCase = buildTotalStatLine(data.total_cases);
-    $statLineDevider = $("<div>", { class: "statLine divider" });
+    $statLineDevider = $("<div>", { class: "stat-line divider" });
     $activeCase = buildStatLine(locale.activeCase, "ongoing", getActiveCase(data));
     $recoveredCase = buildStatLine(locale.recoveredCase, "recovered", data.recovered_cases);
     $fatalCase = buildStatLine(locale.fatalCase, "fatal", data.death_cases);
@@ -88,7 +88,7 @@ OM.HomeIndex = (() => {
 
   function buildTotalStatLine(count) {
     let $statLine = $("<div>", { class: "stat-line" });
-    let $stat = $("<div>", { class: "stat total" }).text("ចំនួនឆ្លងករណីសរុប");
+    let $stat = $("<div>", { class: "stat total" }).text("ចំនួនករណីឆ្លងសរុប");
     let $statCount = $("<div>", { class: "stat-count total" }).text(count);
     $statLine.append([$stat, $statCount]);
 
@@ -139,6 +139,20 @@ OM.HomeIndex = (() => {
       $(".info-tile #confirmed-case").append($newCase)
       $(".secondary-info .case-count").append($newCase)
     }
+
+    updateDetailInfo($area);
+  }
+
+  function updateDetailInfo($area) {
+    var detailInfo = $area.data("detail");
+
+    if (detailInfo && detailInfo[0].field_value) {
+      $("#case-detail-info").html(detailInfo[0].field_value.replace(/;/g, "<br />"));
+    } else {
+      $("#case-detail-info").parent(".info-tile").hide();
+    }
+
+
   }
 
   function updateHeight() {

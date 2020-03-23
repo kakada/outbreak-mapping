@@ -27,4 +27,9 @@
     .title.text-center
       = ENV['LAST_UPDATED_AT']
 
-  = render "video_list"
+  .segment-panel
+    .region
+      .info-tile.detail-info{ style: "display: none" }
+        .title{ title: "ព័ត៌មានលម្អិត" }ព័ត៌មានលម្អិត
+        #case-detail-info
+    = render "video_list"

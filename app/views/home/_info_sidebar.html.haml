@@ -28,7 +28,7 @@
         .area-name= @summary_report[:location][:name_km]
         .area-total= @summary_report[:total_cases]
       - @reports.each do |report|
-        .area{ id: report.location.code, data: { total: report.total_cases, active: active_cases(report), recovered: report.recovered_cases, fatal: report.death_cases, new_cases: report.new_cases, location: report.location.name_km } }
+        .area{ id: report.location.code, data: { total: report.total_cases, active: active_cases(report), recovered: report.recovered_cases, fatal: report.death_cases, new_cases: report.new_cases, location: report.location.name_km, detail: report.report_details.nationalities.to_json } }
           .area-name= report.location.name_km
           .area-total= report.total_cases
 
@@ -55,6 +55,10 @@
         .color.fatal
         .description= t('shared.fatal_case')
         .total#fatal-case= @summary_report[:death_cases]
-      .title.text-center
-        = ENV['LAST_UPDATED_AT']
-    = render "video_list"
+
+
+    .segment-panel
+      .info-tile{ style: "display: none" }
+        .title{ title: "ព័ត៌មានលម្អិត" }ព័ត៌មានលម្អិត
+        #case-detail-info
+      = render "video_list"
