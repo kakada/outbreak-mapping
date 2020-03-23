@@ -11,7 +11,7 @@ class HomeController < ApplicationController
 
   private
     def summary_report
-      total_cases, recovered_cases, death_cases = Report.pluck("SUM(total_cases)", "SUM(recovered_cases)", "SUM(death_cases)").flatten
+      total_cases, recovered_cases, death_cases, new_cases = Report.pluck("SUM(total_cases)", "SUM(recovered_cases)", "SUM(death_cases)", "SUM(new_cases)").flatten
       active_cases = total_cases - recovered_cases - death_cases
 
       {
@@ -20,6 +20,7 @@ class HomeController < ApplicationController
         active_cases: active_cases,
         death_cases: death_cases,
         recovered_cases: recovered_cases,
+        new_cases: new_cases,
         location: {
           code: "00",
           name_km: "ប្រទេសកម្ពុជា",

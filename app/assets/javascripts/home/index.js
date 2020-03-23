@@ -113,6 +113,14 @@ OM.HomeIndex = (() => {
     $(".legend #active-case").text($area.data("active"));
     $(".legend #recovered-case").text($area.data("recovered"));
     $(".legend #fatal-case").text($area.data("fatal"));
+
+    var newCases = $area.data("new-cases");
+    if (newCases > 0) {
+      var $newCase = $("<span>", { class: "new-case" });
+      $newCase.text(` (${newCases} ថ្មី)`);
+      $(".info-title #confirmed-case").append($newCase)
+      $(".secondary-info .case-count").append($newCase)
+    }
   }
 
   function updateHeight() {
