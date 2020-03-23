@@ -373,7 +373,7 @@
       cursor: auto;
     }
 
-    a:visited {
+    &:link, &:visited, &:hover {
         text-decoration: inherit;
         color: inherit;
         cursor: auto;
