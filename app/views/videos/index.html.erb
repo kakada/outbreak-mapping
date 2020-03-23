@@ -1,26 +1,24 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <%= link_to "New", new_video_path, class: "btn btn-primary mb-4 mt-2" %>
-      <h2>Videos: <b><%= @videos.count %></b></h2>
-      <% i = 0 %>
-      <table class="table">
-        <tr>
-          <th>#</th>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Url</th>
-        </tr>
-
-        <% @videos.each do |video| %>
-          <tr>
-            <td><%= i+=1 %></td>
-            <td><%= video.title %></td>
-            <td><%= video.author %></td>
-            <td><%= link_to video.url, video.url, target: "_blank", rel: "noopener" %></td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-  </div>
+<div class="mt-3">
+  <%= link_to "New videos", new_video_path, class: "btn btn-primary float-right" %>
+  <h2>Videos: <b><%= @videos.count %></b></h2>
 </div>
+
+<% i = 0 %>
+<table class="table">
+  <tr>
+    <th>#</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Url</th>
+  </tr>
+
+  <% @videos.each do |video| %>
+    <tr>
+      <td><%= i+=1 %></td>
+      <td><%= video.title %></td>
+      <td><%= video.author %></td>
+      <td><%= link_to video.url, video.url, target: "_blank", rel: "noopener" %></td>
+    </tr>
+  <% end %>
+</table>
+

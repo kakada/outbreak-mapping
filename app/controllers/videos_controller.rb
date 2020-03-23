@@ -1,4 +1,4 @@
-class VideosController < ApplicationController
+class VideosController < AdminController
   def index
     @videos = Video.all.order(:display_order)
   end

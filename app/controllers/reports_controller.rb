@@ -1,4 +1,4 @@
-class ReportsController < ApplicationController
+class ReportsController < AdminController
   def index
     @cols = ReportDetail.order(display_order: :asc).pluck(:field_name).uniq
     @reports = Report.includes(:report_details)
