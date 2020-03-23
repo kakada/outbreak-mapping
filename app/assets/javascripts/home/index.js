@@ -66,10 +66,12 @@ OM.HomeIndex = (() => {
   function _buildMarkerPopupContent(data) {
     let $content = $("<div>");
     $titleInfo = $("<div>", { class: "title-info-box" }).text(data.location.name_km);
+    $totalCase = buildTotalStatLine(data.total_cases);
+    $statLineDevider = $("<div>", { class: "statLine divider" });
     $activeCase = buildStatLine(locale.activeCase, "ongoing", getActiveCase(data));
     $recoveredCase = buildStatLine(locale.recoveredCase, "recovered", data.recovered_cases);
     $fatalCase = buildStatLine(locale.fatalCase, "fatal", data.death_cases);
-    $content.append([$titleInfo, $activeCase, $recoveredCase, $fatalCase]);
+    $content.append([$titleInfo, $totalCase, $statLineDevider, $activeCase, $recoveredCase, $fatalCase]);
 
     return $content[0];
   }
@@ -80,6 +82,15 @@ OM.HomeIndex = (() => {
     let $stat = $("<div>", { class: "stat" }).text(caseName);
     let $statCount = $("<div>", { class: "stat-count" }).text(count);
     $statLine.append([$caseLegend, $stat, $statCount]);
+
+    return $statLine;
+  }
+
+  function buildTotalStatLine(count) {
+    let $statLine = $("<div>", { class: "stat-line" });
+    let $stat = $("<div>", { class: "stat total" }).text("ចំនួនឆ្លងករណីសរុប");
+    let $statCount = $("<div>", { class: "stat-count total" }).text(count);
+    $statLine.append([$stat, $statCount]);
 
     return $statLine;
   }
