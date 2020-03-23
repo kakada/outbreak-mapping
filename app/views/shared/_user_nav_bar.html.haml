@@ -7,9 +7,8 @@
     %a{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
       %i.fas.fa-share-square{style: 'font-size: 14px;'}
 
-    .dropdown-menu
-      %div.pl-1
-        = social_share_button_tag('Outbreak mapping', :url => root_path, desc: 'Outbreak mapping')
+    .dropdown-menu.p-0
+      = social_share_button_tag('Outbreak mapping', :url => root_path, desc: 'Outbreak mapping')
 
   %div{:title => t('shared.about')}
     = link_to '#' do

@@ -72,4 +72,17 @@
     box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.05);
     border-left: none;
   }
+
+  .social-share-button {
+    padding: 6px;
+    overflow: hidden;
+  }
+
+  .social-share-button .ssb-icon {
+    background-size: 36px 36px;
+    height: 36px;
+    width: 36px;
+    margin: 6px;
+    float: left;
+  }
 }
