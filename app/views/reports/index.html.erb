@@ -1,4 +1,7 @@
-<h2 class="mt-5">Reports: <b><%= @reports.count %></b></h2>
+<div class="mt-3">
+  <%= link_to "New reports", new_report_path, class: "btn btn-primary float-right" %>
+  <h2>Reports: <b><%= @reports.count %></b></h2>
+</div>
 
 <%
   i = 0
