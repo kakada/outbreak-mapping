@@ -7,22 +7,12 @@
     = csp_meta_tag
 
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
-    %link{:crossorigin => "anonymous", :href => "https://use.fontawesome.com/releases/v5.7.0/css/all.css", :integrity => "sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ", :rel => "stylesheet"}
     = javascript_include_tag "application", "data-turbolinks-track": "reload"
 
   %body{ id: css_class_name }
     %nav.user-navbar.navbar.navbar-light.navbar-expand-lg
       .container
-        = link_to "ជំងឺឆ្លង COVID-19", reports_path, class: "navbar-brand"
-        %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
-          %span.navbar-toggler-icon
-        #navbarNavDropdown.collapse.navbar-collapse
-          %ul.navbar-nav.mr-auto
-            %li.nav-item.active
-              = link_to "Reports", reports_path, class: "nav-link"
-            %li.nav-item
-              = link_to "Videos", videos_path, class: "nav-link"
-          = link_to "Sign out", destroy_user_session_path, method: :delete, data: { confirm: "Sign out?" }, class: 'btn btn-dark'
+        = render "shared/admin_navbar"
     .container
       .row
         .col-md-12
