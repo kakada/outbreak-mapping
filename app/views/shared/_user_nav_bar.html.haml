@@ -1,17 +1,15 @@
-%nav.user-navbar.navbar.navbar-light.navbar-expand-lg
-  %a.navbar-brand{:href => "#"} ជំងឺឆ្លង COVID-19
-  %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
-    %span.navbar-toggler-icon
-  #navbarNavDropdown.collapse.navbar-collapse
-    %ul.navbar-nav
-      %li.nav-item.active
-        %a.nav-link{:href => "#"}
-          ទំព័រដើម
-          %span.sr-only (current)
-      %li.nav-item
-        %a.nav-link{:href => "#"} អំពីកម្មវិធី
-      -# %li.nav-item
-      -#   = link_to "sites", new_site_path, class: "nav-link"
+%div
+  = link_to root_path do
+    = image_tag 'cdc.jpg', width: '24', class: 'rounded-circle'
 
-    .position-absolute{style: 'right: 10px;'}
-      = social_share_button_tag('Share to Facebook', :url => root_path, desc: 'Outbreak-mapping')
+.headerButtons
+  %div.dropup.dropright{:title => t('shared.share')}
+    %a{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
+      %i.fas.fa-share-square{style: 'font-size: 14px;'}
+
+    .dropdown-menu.p-0
+      = social_share_button_tag(t('shared.share_description'), :url => root_path, desc: t('shared.share_description'))
+
+  %div{:title => t('shared.about')}
+    = link_to '#' do
+      %i.fas.fa-info-circle{style: 'font-size: 16px;'}

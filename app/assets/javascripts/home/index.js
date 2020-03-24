@@ -170,6 +170,16 @@ OM.HomeIndex = (() => {
       addEventToMunu();
       addEventToShare();
     }
+
+    onclickBtnHome();
+  }
+
+  function onclickBtnHome() {
+    $(document).off('click', '.btn-home.active');
+    $(document).on('click', '.btn-home.active', function(e) {
+      e.preventDefault();
+      $('.close-button').click();
+    });
   }
 
   function addEventToShare() {
