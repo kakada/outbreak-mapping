@@ -24,6 +24,7 @@
 
 //= require social-share-button
 
+//= require common/mobile_menu
 //= require home/index
 
 $(document).on('ready turbolinks:load', () => {
@@ -31,6 +32,8 @@ $(document).on('ready turbolinks:load', () => {
   if (OM[currentPage]) {
     OM[currentPage].init();
   }
+
+  OM.Common.MobileMenu.init();
 
   $('[data-toggle="tooltip"]').tooltip()
 

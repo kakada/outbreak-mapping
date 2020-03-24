@@ -1,5 +1,5 @@
 class AboutsController < ApplicationController
   def show
-    @teams = Team.members
+    @device = DeviceDetector.new(request.user_agent)
   end
 end

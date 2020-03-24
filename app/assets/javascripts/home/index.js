@@ -165,34 +165,8 @@ OM.HomeIndex = (() => {
     if ($(".mobile .content").length > 0) {
       updateHeight();
       addEventToInfoArea();
-      addEventToCloseLocation();
       addEventToArea();
-      addEventToMunu();
-      addEventToShare();
     }
-
-    onclickBtnHome();
-  }
-
-  function onclickBtnHome() {
-    $(document).off('click', '.btn-home.active');
-    $(document).on('click', '.btn-home.active', function(e) {
-      e.preventDefault();
-      $('.close-button').click();
-    });
-  }
-
-  function addEventToShare() {
-    $('.btn-share').on('click', function() {
-      if (navigator.share) {
-        navigator.share({
-          title: document.title,
-          text: "Cambodia event outbreaking",
-          url: window.location.href
-        }).then(() => console.log('Successful share'))
-        .catch(error => console.log('Error sharing:', error));
-      }
-    });
   }
 
   function addEventToInfoArea() {
@@ -201,12 +175,6 @@ OM.HomeIndex = (() => {
       $(".location-list").removeClass("closing").addClass("opening");
       $(".content").css("overflow", "hidden");
       $(".information").hide();
-    });
-  }
-
-  function addEventToCloseLocation() {
-    $(".close-location").click(function() {
-      closeDropdown()
     });
   }
 
@@ -223,18 +191,6 @@ OM.HomeIndex = (() => {
       $area = $(e.currentTarget);
       $(".information .area-name").text($area.data("location"));
       $(".secondary-info .case-count").text($area.data("total"))
-    });
-  }
-
-  function addEventToMunu() {
-    $(".mobile-menu-button").click(function(e) {
-      $(".mobile-menu-panel").show();
-      $(".mobile-menu-panel").removeClass("closing").addClass("opening");
-    });
-
-    $(".mobile-menu .close-button, .mobile-menu-panel .overlay").click(function(e) {
-      $(".mobile-menu-panel").addClass("closing");
-      $(".mobile-menu-panel").hide();
     });
   }
 

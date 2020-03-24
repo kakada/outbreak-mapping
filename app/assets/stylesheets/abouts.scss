@@ -23,7 +23,7 @@
 
 #abouts-show {
   .introduction {
-    // max-width: 900px;
+    max-width: 900px;
     text-align: justify;
   }
 
@@ -31,70 +31,38 @@
     height: 80px;
   }
 
-  .column {
-    height: auto;
-  }
-
-  .wrapper {
-    width: auto;
-  }
-
   .program-logo {
     img {
-      height: 140px;
+      height: 150px;
       border-radius: 50%;
     }
   }
 
-  // Team
-  .team-con {
-    padding-top: 20px;
-    padding-bottom: 20px;
-
-    img {
-      width: 65%;
-    }
+  .about-wrapper {
+    width: 75%;
   }
+}
 
-  .img-responsive {
-    display: block;
-    max-width: 100%;
-    height: auto;
-  }
-
-  .img-circle {
-    border-radius: 50%;
-  }
-
-  .img-center {
-    margin: 0 auto;
-  }
-
-  .team-image {
-    padding: 10px;
-  }
-
-  .team-detail {
-    min-height: 145px;
-    padding: 10px;
-
-    .name {
-      font-weight: bold;
-      margin: 10px;
+@media only screen and (max-width: 600px) {
+  #abouts-show {
+    .introduction {
+      max-width: auto;
     }
 
-    .divider {
-      height: 2px;
-      width: 50%;
-      margin: 0 auto;
-      border-width: 0 0 2px;
-      border-style: solid;
-      border-color: #404040;
+    .about-logo {
+      height: 40px;
     }
 
-    .postion {
-      padding: 10px;
+    .program-logo {
+      img {
+        height: 75px;
+        border-radius: 50%;
+      }
+    }
+
+    .about-wrapper {
+      width: 100%;
+      padding-top: 24px;
     }
   }
-
 }
