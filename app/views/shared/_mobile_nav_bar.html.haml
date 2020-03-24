@@ -9,7 +9,7 @@
     %a.close-button
       %i.fa.fa-times
     .menu-options
-      = link_to root_path, class: "menu-option" do
+      = link_to root_path, class: ["menu-option btn-home", ('active' if params['controller'] == 'home')] do
         %i.fa.fa-home
         %div ទំព័រដើម
 
