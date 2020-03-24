@@ -66,3 +66,24 @@
     }
   }
 }
+
+// Sticky Menu
+.trigger-menu-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  transition: transform 0.4s;
+}
+
+.scroll-down .trigger-menu-wrapper {
+  transform: translate3d(0, -100%, 0);
+}
+
+.scroll-up .trigger-menu-wrapper {
+  transform: none;
+}
+
+.scroll-up:not(.menu-open) .trigger-menu-wrapper {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  background-color: #fff;
+}

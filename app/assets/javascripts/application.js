@@ -26,6 +26,7 @@
 
 //= require common/mobile_menu
 //= require home/index
+//= require abouts/show
 
 $(document).on('ready turbolinks:load', () => {
   const currentPage = OM.Util.getCurrentPage();
