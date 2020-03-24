@@ -17,6 +17,7 @@ OM.HomeIndex = (() => {
     initMobile();
     _renderMap();
     addEventToReport();
+    toggleTabDisplay();
   }
 
   function _renderMap() {
@@ -240,5 +241,21 @@ OM.HomeIndex = (() => {
 
   function getActiveCase(data) {
     return data.total_cases - data.recovered_cases - data.death_cases
+  }
+
+  function toggleTabDisplay() {
+    $(".close-region").click(function() {
+      $(".tabs").toggleClass("hidden");
+      let $closeTabIcon = $(".close-region .fas");
+      let caretLeft = "fa-caret-left";
+      let caretRight = "fa-caret-right"
+      if($closeTabIcon.hasClass(caretLeft)) {
+        $closeTabIcon.removeClass(caretLeft).addClass(caretRight);
+      } else {
+        $closeTabIcon.removeClass(caretRight).addClass(caretLeft);
+      }
+
+      window.dispatchEvent(new Event('resize'));
+    });
   }
 })();
