@@ -5,17 +5,22 @@
 
 .mobile-menu-panel{ style: "display: none;" }
   .overlay
-  .mobile-menu
+  .mobile-menu.d-flex.flex-column
     %a.close-button
       %i.fa.fa-times
     .menu-options
       = link_to root_path, class: "menu-option" do
         %i.fa.fa-home
         %div ទំព័រដើម
-      .menu-option
-        %i.fa.fa-info-circle
-        %div អំពីកម្មវិធី
 
       .menu-option.btn-share
         %i.fas.fa-share-square
         %div ចែករំលែក
+
+      .menu-option
+        %i.fa.fa-info-circle
+        %div អំពីកម្មវិធី
+
+    %small.text-center.pt-2= ENV['LAST_UPDATED_AT']
+
+    %small.flex-grow-1.d-flex.align-items-end.justify-content-center= "#{t('shared.version')}: #{ENV.fetch('APP_VERSION') { 'development' }}"

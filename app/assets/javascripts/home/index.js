@@ -169,7 +169,41 @@ OM.HomeIndex = (() => {
       addEventToArea();
       addEventToMunu();
       addEventToShare();
+      initDisplayLastUpdatedReport();
     }
+  }
+
+  function initDisplayLastUpdatedReport() {
+    if($('.by_date').data('locale') == 'km') {
+      d = new Date($('.by_date').data('date'));
+
+      kmDate = time_classify(d.getHours()) + "ថ្ងៃទី " + d.getDate() + " " + getKhmerMonth(d.getMonth()) + " " + d.getFullYear();
+
+      $('.by_date').html(kmDate);
+    }
+  }
+
+  function time_classify(hour) {
+    var text;
+
+    if (hour < 4) {
+      text = "យប់"
+    } else if (hour < 12) {
+      text = "ព្រឹក"
+    } else if (hour < 17) {
+      text = 'ពេលរសៀល'
+    } else if (hour < 20) {
+      text = 'ល្ងាច'
+    } else {
+      text = 'យប់'
+    }
+
+    return text;
+  }
+
+  function getKhmerMonth(month) {
+    months = ['មករា', 'កុម្ភៈ', 'មិនា', 'មេសា', 'ឧសភា', 'មិថុនា', 'កក្កដា', 'សីហា', 'កញ្ញា', 'តុលា', 'វិច្ឆិកា', 'ធ្នូ'];
+    return months[month];
   }
 
   function addEventToShare() {
