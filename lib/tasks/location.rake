@@ -1,12 +1,28 @@
 # frozen_string_literal: true
 
-namespace :missing_location do
+namespace :location do
   desc 'migrate missing locaiton'
-  task migrate: :environment do
+  task migrate_missing: :environment do
     migrate_locations
   end
 
+  desc 'migrate missing province'
+  task migrate_provinces: :environment do
+    migrate_provinces
+  end
+
   private
+    def migrate_provinces
+      provinces = get_data('provinces')
+      provinces.each do |province|
+        location = ::Location.find_by code: province['code']
+
+        next if location.nil?
+
+        location.update_attributes(latitude: province['latitude'], longitude: province['longitude'])
+      end
+    end
+
     def migrate_locations
       matched_location_files = %w(matched_communes matched_villages)
       new_location_files = %w(new_districts new_communes new_villages)
