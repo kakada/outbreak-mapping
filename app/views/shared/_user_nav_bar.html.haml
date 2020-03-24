@@ -8,7 +8,7 @@
       %i.fas.fa-share-square{style: 'font-size: 14px;'}
 
     .dropdown-menu.p-0
-      = social_share_button_tag('Outbreak mapping', :url => root_path, desc: 'Outbreak mapping')
+      = social_share_button_tag(t('shared.share_description'), :url => root_path, desc: t('shared.share_description'))
 
   %div{:title => t('shared.about')}
     = link_to '#' do
