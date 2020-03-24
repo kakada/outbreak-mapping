@@ -16,6 +16,12 @@
     justify-content: center;
     align-items: center;
     height: 20px;
+
+    &.divider {
+      height: 1px;
+      background: rgba(0, 0, 0, 0.2);
+      margin: 5px 0 4px 0;
+    }
   }
 
   .recovered {
@@ -37,6 +43,10 @@
     font-size: 13px;
     line-height: 20px;
     color: #333333;
+
+    &.total {
+      color: #DE3700;
+    }
   }
 
   .stat-count {
@@ -45,6 +55,10 @@
     line-height: 20px;
     text-align: right;
     color: #767676;
+
+    &.total {
+      color: #DE3700;
+    }
   }
 
   .legend-color {
@@ -66,6 +80,10 @@
   .country {
     z-index: 201;
     background-color: white;
+
+    .legend {
+      padding-top: 12px;
+    }
   }
 
   .page-name {
@@ -76,7 +94,7 @@
     text-align: center;
   }
 
-  .info-title {
+  .info-tile {
     border-bottom: #DDD 1px solid;
 
     .title {
@@ -116,7 +134,7 @@
       border-radius: 8px;
     }
 
-    .legend .total {
+    .total {
       color: #767676;
       text-align: right;
     }
@@ -312,7 +330,7 @@
   }
 
   .mobile-menu {
-    width: 300px;
+    width: 332px;
     background-color: white;
     padding: 16px;
     height: 100%;
@@ -340,7 +358,7 @@
     display: flex;
     font-size: 16px;
     line-height: 1.2em;
-    padding: 12px 0;
+    padding: 20px 6px;
     align-items: center;
     border-bottom: #DDD 1px solid;
     color: #000;
@@ -355,7 +373,7 @@
       cursor: auto;
     }
 
-    a:visited {
+    &:link, &:visited, &:hover {
         text-decoration: inherit;
         color: inherit;
         cursor: auto;
@@ -386,7 +404,28 @@
       background-color: #F5F5F5;
       transition: transform 200ms ease-out;
 
-      .info-title {
+      .legend {
+        padding-bottom: 0;
+      }
+
+      .info-tile {
+        background-color: white;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
+        border-radius: 6px;
+        padding: 8px 12px 12px 12px;
+        border-bottom: none;
+        margin-bottom: 20px;
+      }
+
+      .subtitle {
+        font-size: 13px;
+        line-height: 20px;
+        color: #767676;
+        margin-bottom: 16px;
+      }
+
+      .info-tile {
         background-color: white;
         border: 1px solid rgba(0, 0, 0, 0.1);
         box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
@@ -419,5 +458,11 @@
     width: 100%;
     padding-right: 0px;
     overflow: auto;
+  }
+
+  #case-detail-info {
+    font-size: 13px;
+    line-height: 1.8em;
+    margin-left: 14px;
   }
 }

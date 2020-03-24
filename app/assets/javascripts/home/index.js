@@ -66,10 +66,12 @@ OM.HomeIndex = (() => {
   function _buildMarkerPopupContent(data) {
     let $content = $("<div>");
     $titleInfo = $("<div>", { class: "title-info-box" }).text(data.location.name_km);
+    $totalCase = buildTotalStatLine(data.total_cases);
+    $statLineDevider = $("<div>", { class: "stat-line divider" });
     $activeCase = buildStatLine(locale.activeCase, "ongoing", getActiveCase(data));
     $recoveredCase = buildStatLine(locale.recoveredCase, "recovered", data.recovered_cases);
     $fatalCase = buildStatLine(locale.fatalCase, "fatal", data.death_cases);
-    $content.append([$titleInfo, $activeCase, $recoveredCase, $fatalCase]);
+    $content.append([$titleInfo, $totalCase, $statLineDevider, $activeCase, $recoveredCase, $fatalCase]);
 
     return $content[0];
   }
@@ -80,6 +82,15 @@ OM.HomeIndex = (() => {
     let $stat = $("<div>", { class: "stat" }).text(caseName);
     let $statCount = $("<div>", { class: "stat-count" }).text(count);
     $statLine.append([$caseLegend, $stat, $statCount]);
+
+    return $statLine;
+  }
+
+  function buildTotalStatLine(count) {
+    let $statLine = $("<div>", { class: "stat-line" });
+    let $stat = $("<div>", { class: "stat total" }).text("ចំនួនករណីឆ្លងសរុប");
+    let $statCount = $("<div>", { class: "stat-count total" }).text(count);
+    $statLine.append([$stat, $statCount]);
 
     return $statLine;
   }
@@ -108,8 +119,15 @@ OM.HomeIndex = (() => {
   }
 
   function updateInfo($area) {
-    $("#location-name").text($area.data("location"))
-    $(".info-title #confirmed-case").text($area.data("total"))
+    $("#location-name").text($area.data("location"));
+
+    if ($area[0].id == "00") {
+      $(".region .info-tile").hide();
+    } else {
+      $(".region .info-tile").show();
+    }
+
+    $(".info-tile #confirmed-case").text($area.data("total"))
     $(".legend #active-case").text($area.data("active"));
     $(".legend #recovered-case").text($area.data("recovered"));
     $(".legend #fatal-case").text($area.data("fatal"));
@@ -118,9 +136,23 @@ OM.HomeIndex = (() => {
     if (newCases > 0) {
       var $newCase = $("<span>", { class: "new-case" });
       $newCase.text(` (${newCases} ថ្មី)`);
-      $(".info-title #confirmed-case").append($newCase)
+      $(".info-tile #confirmed-case").append($newCase)
       $(".secondary-info .case-count").append($newCase)
     }
+
+    updateDetailInfo($area);
+  }
+
+  function updateDetailInfo($area) {
+    var detailInfo = $area.data("detail");
+
+    if (detailInfo && detailInfo[0].field_value) {
+      $("#case-detail-info").html(detailInfo[0].field_value.replace(/;/g, "<br />"));
+    } else {
+      $("#case-detail-info").parent(".info-tile").hide();
+    }
+
+
   }
 
   function updateHeight() {

@@ -50,7 +50,7 @@
       margin-bottom: 4px;
     }
 
-    .info-title {
+    .info-tile {
       border: none;
       padding: 0 16px;
     }
@@ -84,6 +84,18 @@
 
     .new-case {
       font-size: inherit;
+    }
+
+    .close-button {
+      font-size: 20px;
+      color: #0078d4;
+    }
+
+    .detail-info {
+      background-color: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 8px;
+      margin: 10px 0;
     }
   }
 
