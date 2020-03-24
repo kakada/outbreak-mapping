@@ -156,7 +156,7 @@ OM.HomeIndex = (() => {
   }
 
   function updateHeight() {
-    const mapHeight = $(window).height() - 187;
+    const mapHeight = $(window).height() - 270;
     $("#map").css({ "height": `${mapHeight}px`, "postion": "absolute" });
     $(".information").css({ "margin-top": `${mapHeight}px`, "position": "absolute", "min-height": "287px" });
   }
