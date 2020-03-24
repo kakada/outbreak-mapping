@@ -439,7 +439,14 @@
 
   .tabs {
     display: flex;
-    z-index: 400;
+    z-index: 410;
+
+    &.hidden {
+      transform: translateX(-100%);
+      left: 52px;
+      position: absolute;
+      animation: panelSlideOut 200ms ease-out;
+    }
   }
 
   .tab {
@@ -464,5 +471,17 @@
     font-size: 13px;
     line-height: 1.8em;
     margin-left: 14px;
+  }
+
+  .close-region {
+    position: absolute;
+    top: 20px;
+    left: 100%;
+    padding: 14px 9px 14px 6px;
+    background-color: #F5F5F5;
+    border-radius: 0 6px 6px 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.05);
+    border-left: none;
   }
 }
