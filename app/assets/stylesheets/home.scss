@@ -439,11 +439,11 @@
 
   .tabs {
     display: flex;
-    z-index: 999;
+    z-index: 410;
 
     &.hidden {
       transform: translateX(-100%);
-      left: 0px;
+      left: 52px;
       position: absolute;
       animation: panelSlideOut 200ms ease-out;
     }

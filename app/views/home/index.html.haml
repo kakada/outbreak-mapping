@@ -11,8 +11,7 @@
       .header
         = render "shared/user_nav_bar"
 
-      .tabs
-        = render "info_sidebar"
+      = render "info_sidebar"
 
       #map{ "data-covid-19": @json_reports, style: "height: 100%; width: 100%; overflow: hidden;" }
 
