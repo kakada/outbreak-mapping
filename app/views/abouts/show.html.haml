@@ -1,9 +1,9 @@
 - if @device.device_type == "smartphone" || @device.device_type == "phablet"
   .mobile
-    .trigger-menu-wrapper.text-right
-      %a.btn{ href: root_path, style: 'padding-right: 20px' }
+    .trigger-menu-wrapper
+      %a.btn{ href: root_path, style: 'padding: 10px' }
         %i.fas.fa-chevron-left
-        = t('about.back')
+        %font{size: 4}= t('about.back')
 
     = render "info"
 
