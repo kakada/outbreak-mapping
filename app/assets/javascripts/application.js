@@ -24,13 +24,17 @@
 
 //= require social-share-button
 
+//= require common/mobile_menu
 //= require home/index
+//= require abouts/show
 
 $(document).on('ready turbolinks:load', () => {
   const currentPage = OM.Util.getCurrentPage();
   if (OM[currentPage]) {
     OM[currentPage].init();
   }
+
+  OM.Common.MobileMenu.init();
 
   $('[data-toggle="tooltip"]').tooltip()
 

@@ -1,0 +1,89 @@
+// Place all the styles related to the abouts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.view-center {
+  margin: 0 auto;
+}
+
+#content {
+  width: 100%;
+  padding: 20px;
+  padding-bottom: 0;
+  min-height: 100vh;
+  transition: all 0.3s;
+  overflow: scroll;
+}
+
+#content:after {
+  content: "";
+  height: 20px;
+  display: block;
+}
+
+#abouts-show {
+  .introduction {
+    max-width: 900px;
+    text-align: justify;
+  }
+
+  .about-logo {
+    height: 80px;
+  }
+
+  .program-logo {
+    img {
+      height: 150px;
+      border-radius: 50%;
+    }
+  }
+
+  .about-wrapper {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #abouts-show {
+    .introduction {
+      max-width: auto;
+    }
+
+    .about-logo {
+      height: 40px;
+    }
+
+    .program-logo {
+      img {
+        height: 75px;
+        border-radius: 50%;
+      }
+    }
+
+    .about-wrapper {
+      width: 100%;
+      padding-top: 24px;
+    }
+  }
+}
+
+// Sticky Menu
+.trigger-menu-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  transition: transform 0.4s;
+}
+
+.scroll-down .trigger-menu-wrapper {
+  transform: translate3d(0, -100%, 0);
+}
+
+.scroll-up .trigger-menu-wrapper {
+  transform: none;
+}
+
+.scroll-up:not(.menu-open) .trigger-menu-wrapper {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  background-color: #fff;
+}
