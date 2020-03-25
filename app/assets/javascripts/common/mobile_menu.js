@@ -17,7 +17,7 @@ OM.Common.MobileMenu = (() => {
   }
 
   function addEventToShare() {
-    $('.btn-share').on('click', function() {
+    $('.btn-share').on('click', function(e) {
       if (navigator.share) {
         navigator.share({
           title: document.title,
@@ -26,6 +26,8 @@ OM.Common.MobileMenu = (() => {
         }).then(() => console.log('Successful share'))
         .catch(error => console.log('Error sharing:', error));
       }
+
+      e.preventDefault();
     });
   }
 
