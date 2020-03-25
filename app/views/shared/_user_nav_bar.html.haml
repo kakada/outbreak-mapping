@@ -15,4 +15,5 @@
       %i.fas.fa-info-circle{style: 'font-size: 20px;'}
 
   .text-white{ 'data-toggle' => 'tooltip', title: t('shared.number_of_visitor') }
+    %i.fas.fa-eye
     = number_to_human(Ahoy::Visit.count, :format => '%n%u', :units => { :thousand => 'K' })
