@@ -14,6 +14,7 @@
     = link_to about_path do
       %i.fas.fa-info-circle{style: 'font-size: 20px;'}
 
-  .text-white{ 'data-toggle' => 'tooltip', title: t('shared.number_of_visitor') }
-    %i.fas.fa-eye
-    = number_to_human(Ahoy::Visit.count, :format => '%n%u', :units => { :thousand => 'K' })
+  .visitor-wrapper.text-white{ 'data-toggle' => 'tooltip', title: t('shared.number_of_visitor') }
+    %div
+      %i.fas.fa-eye{style: 'font-size: 18px;'}
+    .visitor= number_to_human(Ahoy::Visit.count, :format => '%n%u', :units => { :thousand => 'K' })
