@@ -13,3 +13,6 @@
   %div{:title => t('shared.about')}
     = link_to about_path do
       %i.fas.fa-info-circle{style: 'font-size: 16px;'}
+
+  .text-white{title: t('shared.number_of_visitor')}
+    = Ahoy::Visit.count

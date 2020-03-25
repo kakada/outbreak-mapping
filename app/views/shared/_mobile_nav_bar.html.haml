@@ -19,4 +19,8 @@
 
     %small.text-center.pt-2= ENV['LAST_UPDATED_AT']
 
-    %small.flex-grow-1.d-flex.align-items-end.justify-content-center= "#{t('shared.version')}: #{ENV.fetch('APP_VERSION') { 'development' }}"
+    .flex-grow-1.d-flex.align-items-end
+      .d-flex.w-100
+        %small.flex-grow-1= "#{t('shared.number_of_visitor')}: #{Ahoy::Visit.count}"
+
+        %small= "#{t('shared.version')}: #{ENV.fetch('APP_VERSION') { 'development' }}"
