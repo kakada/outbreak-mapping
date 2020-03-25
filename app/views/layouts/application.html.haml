@@ -4,10 +4,19 @@
     %meta{ content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0, maximum-scale=2.0"}
     %meta{ content: "ប្រព័ន្ធតាមដានករណីឆ្លងកូវីដ១៩", property: "og:title"}
-    %meta{ content: asset_url('cdc.jpg'), property: "og:image"}
-    %meta{ content: t('shared.share_description'), property: "og:description"}
+    %meta{ content: asset_url("cdc.jpg"), property: "og:image"}
+    %meta{ content: t("shared.share_description"), property: "og:description"}
+    = favicon_link_tag asset_path("cdc-tran.png")
 
-    = favicon_link_tag asset_path('cdc-tran.png')
+    -# Global site tag (gtag.js) - Google Analytics
+    %script{ async: true, src: "https://www.googletagmanager.com/gtag/js?id=#{ENV['GA_TRACKING_ID']}" }
+    :javascript
+      window.dataLayer = window.dataLayer || [];
+      var GA_TRACKING_ID = "#{ENV["GA_TRACKING_ID"]}";
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", GA_TRACKING_ID);
+
 
     %title ប្រព័ន្ធតាមដានករណីឆ្លងកូវីដ១៩
     = csrf_meta_tags

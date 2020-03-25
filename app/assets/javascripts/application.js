@@ -28,7 +28,13 @@
 //= require home/index
 //= require abouts/show
 
-$(document).on('ready turbolinks:load', () => {
+$(document).on("ready turbolinks:load", () => {
+  if (typeof gtag === "function") {
+    gtag("config", GA_TRACKING_ID, {
+      "page_location": event.data.url
+    });
+  }
+
   const currentPage = OM.Util.getCurrentPage();
   if (OM[currentPage]) {
     OM[currentPage].init();
@@ -36,7 +42,7 @@ $(document).on('ready turbolinks:load', () => {
 
   OM.Common.MobileMenu.init();
 
-  $('[data-toggle="tooltip"]').tooltip()
+  $("[data-toggle='tooltip']").tooltip()
 
   Rails.refreshCSRFTokens();
 });
