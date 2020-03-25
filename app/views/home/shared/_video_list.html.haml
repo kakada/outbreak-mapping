@@ -6,8 +6,7 @@
       .thumbnail-container
         = image_tag youtube_thumbnail(video.url), class: "video-image"
         .play-icon
-          = render "play_icon"
-          -# %i.far.fa-play-circle
+          = render "/home/shared/play_icon"
       .info
         .title= video.title
         .source-container
