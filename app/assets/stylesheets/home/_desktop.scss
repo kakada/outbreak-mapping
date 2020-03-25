@@ -32,13 +32,19 @@
   }
 
   .header {
-    padding: 24px 14px;
+    padding: 24px 10px;
     background-color: #444;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     z-index: 500;
     margin-bottom: 0;
+  }
+
+  .logo-wrapper {
+    img {
+      width: 44px;
+    }
   }
 
   .header > * {

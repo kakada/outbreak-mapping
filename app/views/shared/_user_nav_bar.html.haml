@@ -1,18 +1,18 @@
-%div
-  = link_to root_path do
-    = image_tag 'cdc.jpg', width: '24', class: 'rounded-circle'
+.logo-wrapper
+  = link_to root_path, class: 'd-flex' do
+    = image_tag 'cdc.jpg', class: 'rounded-circle flex-grow-1'
 
-.headerButtons
-  %div.dropup.dropright{:title => t('shared.share')}
+.headerButtons.text-center
+  .dropup.dropright{'data-toggle' => 'tooltip', title: t('shared.share')}
     %a{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
-      %i.fas.fa-share-square{style: 'font-size: 14px;'}
+      %i.fas.fa-share-square{style: 'font-size: 18px;'}
 
     .dropdown-menu.p-0
       = social_share_button_tag(t('shared.share_description'), :url => root_url, desc: t('shared.share_description'))
 
-  %div{:title => t('shared.about')}
+  %div{'data-toggle' => 'tooltip', title: t('shared.about')}
     = link_to about_path do
-      %i.fas.fa-info-circle{style: 'font-size: 16px;'}
+      %i.fas.fa-info-circle{style: 'font-size: 20px;'}
 
-  .text-white{title: t('shared.number_of_visitor')}
-    = Ahoy::Visit.count
+  .text-white{ 'data-toggle' => 'tooltip', title: t('shared.number_of_visitor') }
+    = number_to_human(Ahoy::Visit.count, :format => '%n%u', :units => { :thousand => 'K' })
