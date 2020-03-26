@@ -111,6 +111,8 @@ OM.HomeIndex = (() => {
 
       selectedArea($area);
       updateInfo($area);
+      debugger
+      updateChart($area);
 
       if ($area.attr("id") == "00") {
         map.closePopup();
@@ -158,14 +160,24 @@ OM.HomeIndex = (() => {
     } else {
       $("#case-detail-info").parent(".info-tile").hide();
     }
-
-
   }
 
   function updateHeight() {
     const mapHeight = $(window).height() - 270;
     $("#map").css({ "height": `${mapHeight}px`, "postion": "absolute" });
     $(".information").css({ "margin-top": `${mapHeight}px`, "position": "absolute", "min-height": "287px" });
+  }
+
+  function updateChart($area) {
+    let data = {
+      total_cases: $area.data("total"),
+      active_cases: $area.data("active"),
+      recovered_cases: $area.data("recovered"),
+      fatal_cases: $area.data("fatal")
+    }
+
+    let $parent = $(".region.tab");
+    renderCaseGraph($parent, data);
   }
 
   function initMobile() {
@@ -197,7 +209,7 @@ OM.HomeIndex = (() => {
       closeDropdown();
       $area = $(e.currentTarget);
       $(".information .area-name").text($area.data("location"));
-      $(".secondary-info .case-count").text($area.data("total"))
+      $(".secondary-info .case-count").text($area.data("total"));
     });
   }
 
@@ -223,12 +235,16 @@ OM.HomeIndex = (() => {
 
   function renderOverallCaseGraph() {
     let $parent = $(".country.tab");
-    let data = $parent.data("info");
+    if ($parent.length == 0) {
+      $parent = $(".information");
+    }
+
+    let data = $parent.find(".bar").data("info");
     renderCaseGraph($parent, data);
   }
 
-  function renderCaseGraph($parentDom, data) {
-    let $bar = $parentDom.find(".bar");
+  function renderCaseGraph($parent, data) {
+    let $bar = $parent.find(".bar");
     let fullWidth = $bar.width();
     let graphData = constructGraphData(data);
     let $bars = [];

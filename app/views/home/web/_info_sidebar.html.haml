@@ -1,5 +1,5 @@
 .tabs
-  .country.tab{ data: { info: @summary_report.to_json }}
+  .country.tab
     .page-name
       = @summary_report.location.name_km
     .info-tile
@@ -9,6 +9,7 @@
         = @summary_report.total_cases
         - if @summary_report.new_cases.positive?
           %span.new-case=" (#{@summary_report.new_cases} ថ្មី)"
+      .bar{ data: { info: @summary_report.to_json }}
       .legend
         .color.ongoing
         .description= t('shared.active_case')
