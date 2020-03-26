@@ -1,27 +1,29 @@
-.tabs{ class: params[:tab] }
-  .country.tab
-    .page-name
-      = @summary_report.location.name_km
-    .info-tile
-      .title{ title: "ចំនួនករណីឆ្លងជំងឺ កូវីត ១៩ សរុប" }
-        ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
-      .confirmed
+-# .tabs{ class: params[:tab] }
+-#   .country.tab
+.m-2
+  .text-center
+    = link_to root_url, target: "_blank", class: "content" do
+      = image_tag asset_path("cdc-tran.png"), class: "logo", alt: "នាយកដ្ឋានប្រយុទ្ធនឹងជំងឺឆ្លង"
+      .page-name.d-inline-block
+        ប្រព័ន្ធតាមដានជំងឺឆ្លងកូវីត១៩
+
+  .reported-date.text-center
+    = ENV['LAST_UPDATED_AT']
+
+  .areas
+    .area
+      .area-name= @summary_report.location.name_km
+      .area-total
         = @summary_report.total_cases
-        - if @summary_report.new_cases.positive?
-          %span.new-case=" (#{@summary_report.new_cases} ថ្មី)"
-      .legend
-        .color.ongoing
-        .description= t('shared.active_case')
-        .total= active_cases(@summary_report)
+        %span
+          %i.fas.fa-caret-down
+    = render "detail_info", report: @summary_report
 
-        .color.recovered
-        .description= t('shared.recovered_case')
-        .total= @summary_report.recovered_cases
-
-        .color.fatal
-        .description= t('shared.fatal_case')
-        .total= @summary_report.death_cases
-      .title.text-center
-        = ENV['LAST_UPDATED_AT']
-    .areas
-      = render '/home/shared/info_details'
+    - @reports.each do |report|
+      .area
+        .area-name= report.location.name_km
+        .area-total
+          = report.total_cases
+          %span
+            %i.fas.fa-caret-down
+      = render "detail_info", report: report

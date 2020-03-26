@@ -1,0 +1,20 @@
+.region.tab{ style: "display: none;" }
+  .info-tile
+    .title{ title: "ចំនួនករណីឆ្លងជំងឺ កូវីត ១៩ សរុប" }
+      ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
+    .confirmed
+      = report.total_cases
+      - if report.new_cases.positive?
+        %span.new-case=" (#{report.new_cases} ថ្មី)"
+    .legend
+      .color.ongoing
+      .description= t('shared.active_case')
+      .total= active_cases(report)
+
+      .color.recovered
+      .description= t('shared.recovered_case')
+      .total= report.recovered_cases
+
+      .color.fatal
+      .description= t('shared.fatal_case')
+      .total= report.death_cases
