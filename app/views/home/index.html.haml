@@ -1,4 +1,4 @@
-- if @device.device_type == "smartphone" || @device.device_type == "phablet"
+- if @device.device_type == "smartphone" || @device.device_type == "phablet" || params[:display] == "embed"
   .mobile
     .content
       = render "shared/mobile_nav_bar"
