@@ -1,0 +1,15 @@
+.tab {
+  padding: 24px 24px 0 24px;
+  box-sizing: border-box;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.05);
+  z-index: 201;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs {
+  display: flex;
+  z-index: 401;
+}

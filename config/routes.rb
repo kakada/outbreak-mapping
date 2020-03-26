@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resources :sites, only: [:index, :new, :create]
 
   resource :about, only: [:show]
+
+  resources :list_views, only: [:index]
 end

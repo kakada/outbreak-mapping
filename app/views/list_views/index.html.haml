@@ -1,0 +1,27 @@
+.tabs{ class: params[:tab] }
+  .country.tab
+    .page-name
+      = @summary_report.location.name_km
+    .info-tile
+      .title{ title: "ចំនួនករណីឆ្លងជំងឺ កូវីត ១៩ សរុប" }
+        ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
+      .confirmed
+        = @summary_report.total_cases
+        - if @summary_report.new_cases.positive?
+          %span.new-case=" (#{@summary_report.new_cases} ថ្មី)"
+      .legend
+        .color.ongoing
+        .description= t('shared.active_case')
+        .total= active_cases(@summary_report)
+
+        .color.recovered
+        .description= t('shared.recovered_case')
+        .total= @summary_report.recovered_cases
+
+        .color.fatal
+        .description= t('shared.fatal_case')
+        .total= @summary_report.death_cases
+      .title.text-center
+        = ENV['LAST_UPDATED_AT']
+    .areas
+      = render '/home/shared/info_details'
