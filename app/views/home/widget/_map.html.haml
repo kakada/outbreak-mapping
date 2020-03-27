@@ -1,0 +1,10 @@
+.desktop
+  .content
+    = link_to root_url, target: "_blank", class: "float-brand-logo d-inline-block" do
+      = image_tag "cdc-tran.png", alt: "នាយកដ្ឋានប្រយុទ្ធនឹងជំងឺឆ្លង", class: "brand-logo"
+      .d-inline-block
+        ប្រព័ន្ធតាមដានជំងឺឆ្លងកូវីត១៩
+        %br
+        %span.reported-date= ENV['LAST_UPDATED_AT']
+
+    #map{ "data-covid-19": @json_reports, style: "height: 100%; width: 100%; overflow: hidden;" }

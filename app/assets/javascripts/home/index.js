@@ -60,7 +60,9 @@ OM.HomeIndex = (() => {
   function addEventToMarker(marker) {
     marker.on("click", function(e) {
       $(`.area#${e.target.id}`).click();
-      document.getElementById(e.target.id).scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+      if (document.getElementById(e.target.id)) {
+        document.getElementById(e.target.id).scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+      }
     });
   }
 
