@@ -27,12 +27,15 @@ OM.HomeIndex = (() => {
       _renderMarker();
     }
 
-    map.setView(new L.LatLng(cambodiaLat, cambodiaLng), 7);
+    map.fitBounds([
+      [10.4865436874, 102.3480994],
+      [14.5705838078, 107.614547968]
+    ])
     _renderOSM();
   }
 
   function _renderOSM() {
-    let osm = new L.TileLayer(osmUrl, { minZoom: 7, maxZoom: 10, attribution: osmAttrib });
+    let osm = new L.TileLayer(osmUrl, { minZoom: 5, maxZoom: 11, attribution: osmAttrib });
     map.addLayer(osm);
   }
 
