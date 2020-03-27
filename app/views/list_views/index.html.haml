@@ -1,12 +1,11 @@
 .m-2
   .text-center
-    = link_to root_url, target: "_blank", class: "content" do
-      = image_tag asset_path("cdc-tran.png"), class: "logo", alt: "នាយកដ្ឋានប្រយុទ្ធនឹងជំងឺឆ្លង"
-      .page-name.d-inline-block
+    = link_to root_url, target: "_blank", class: "header" do
+      = image_tag asset_path("cdc-tran.png"), class: "logo float-left", alt: "នាយកដ្ឋានប្រយុទ្ធនឹងជំងឺឆ្លង"
+      .d-inline-block.float-left.ml-2
         ប្រព័ន្ធតាមដានជំងឺឆ្លងកូវីត១៩
-
-  .reported-date.text-center
-    = ENV['LAST_UPDATED_AT']
+        %br
+        %span.reported-date= ENV['LAST_UPDATED_AT']
 
   .areas
     .area
