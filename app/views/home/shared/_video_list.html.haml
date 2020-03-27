@@ -6,7 +6,11 @@
       .thumbnail-container
         = image_tag youtube_thumbnail(video.url), class: "video-image"
         .play-icon
-          = render "/home/shared/play_icon"
+          %svg{:fill => "none", :height => "32", :viewbox => "0 0 32 32", :width => "32"}
+            %rect{:fill => "#000", "fill-opacity" => ".7", :height => "30", :rx => "15", :stroke => "#fff", "stroke-width" => "2", :width => "30", :x => "1", :y => "1"}
+            %path{:d => "m12 21.259v-10.518c0-.77175.8372-1.25263 1.5039-.86374l9.0153 5.25894c.6615.3859.6615 1.3417 0 1.7276l-9.0153 5.2589c-.6667.3889-1.5039-.0919-1.5039-.8637z", :fill => "#fff"}
+
+          -# = render "/home/shared/play_icon"
       .info
         .title= video.title
         .source-container
