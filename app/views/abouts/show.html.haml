@@ -1,4 +1,4 @@
-- if @device.device_type == "smartphone" || @device.device_type == "phablet"
+- if mobile_request?
   .mobile
     .trigger-menu-wrapper
       %a.btn{ href: root_path, style: 'padding: 10px' }

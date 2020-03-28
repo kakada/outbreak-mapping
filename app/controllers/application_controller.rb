@@ -3,7 +3,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_action :set_locale
+  before_action :set_locale, :set_device
 
   layout :layout_by_resource
 
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     def summary_report
       total_cases, recovered_cases, death_cases, new_cases = Report.pluck("SUM(total_cases)", "SUM(recovered_cases)", "SUM(death_cases)", "SUM(new_cases)").flatten
 
-      report = Report.new( {
+      report = Report.new({
         total_cases: total_cases,
         death_cases: death_cases,
         recovered_cases: recovered_cases,
@@ -33,5 +33,9 @@ class ApplicationController < ActionController::Base
       })
 
       report
+    end
+
+    def set_device
+      @device = DeviceDetector.new(request.user_agent)
     end
 end
