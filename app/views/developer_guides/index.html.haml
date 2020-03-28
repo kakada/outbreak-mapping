@@ -1,0 +1,16 @@
+- if mobile_request?
+  .mobile
+    .trigger-menu-wrapper
+      %a.btn{ href: root_path, style: 'padding: 10px' }
+        %i.fas.fa-chevron-left
+        %font{size: 4}= t('about.back')
+
+    = render "guide"
+
+- else
+  .desktop
+    .content
+      .header
+        = render "shared/user_nav_bar"
+
+      = render "guide"
