@@ -1,5 +1,5 @@
 .logo-wrapper
-  = link_to root_path(embed_type: params[:embed_type]), class: 'd-flex' do
+  = link_to root_path(display_mode: params[:display_mode]), class: 'd-flex' do
     = image_tag 'cdc.jpg', class: 'rounded-circle flex-grow-1'
 
 .headerButtons.text-center
@@ -14,7 +14,7 @@
       = social_share_button_tag(t('shared.share_description'), :url => root_url, desc: t('shared.share_description'))
 
   %div{'data-toggle' => 'tooltip', title: t('shared.about')}
-    = link_to about_path(embed_type: params[:embed_type]) do
+    = link_to about_path(display_mode: params[:display_mode]) do
       %i.fas.fa-info-circle{style: 'font-size: 20px;'}
 
   .visitor-wrapper.text-white{ 'data-toggle' => 'tooltip', title: t('shared.number_of_visitor') }

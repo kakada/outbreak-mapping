@@ -4,23 +4,23 @@
       .card-body
         %h3.mb-3.text-left Developer Guide
         %p
-          COVID-19 Tracking System provides you many UI style that you can use to embed them into your website.
+          COVID-19 Tracking System provides you many UI style that you can use to embed into your website.
 
         %h5.mt-3.mb-3 List View
-        %p Here's a list view widget. It's a responsive which will fit it the viewport you specify.
+        %p Here's a list view widget. It's a responsive which will fit the viewport you specify.
         %h6.my-2 Code
         %code
           %pre
-            = "<iframe src=\"#{request.base_url}/list_views\" style='width: 250px; height: 300px; border: 0;'></iframe>"
+            = "<iframe src=\"#{root_url}list_views\" style='width: 250px; height: 300px; border: 0;'></iframe>"
         %h6.my-2 Sample preview
         = image_tag "widget_preview/list_view.png", class: "widget-preview list-view"
 
         %h5.mt-5.mb-3 List View with "Cambodia" list open
-        %p Here's a list view widget with data in "Cambodia" open. It's a responsive which will fit it the viewport you specify.
+        %p Here's a list view widget with detail information in Cambodia. It's a responsive which will fit the viewport you specify.
         %h6.my-2 Code
         %code
           %pre
-            = "<iframe src=\"#{request.base_url}/list_views?location_info=00\" style='width: 250px; height: 300px; border: 0;'></iframe>"
+            = "<iframe src=\"#{root_url}list_views?location_info=00\" style='width: 250px; height: 300px; border: 0;'></iframe>"
         %h6.my-2 Sample preview
         = image_tag "widget_preview/list_view_open_tab.png", class: "widget-preview list-view"
 
@@ -29,7 +29,7 @@
         %h6.my-2 Code
         %code
           %pre
-            = "<iframe src=\"#{request.base_url}/list_views?embed_type=map\" style=\"height: 500px; width: 530; border: 0;\"'></iframe>"
+            = "<iframe src=\"#{root_url}?display_mode=map\" style=\"height: 500px; width: 530; border: 0;\"'></iframe>"
         %h6.my-2 Sample preview
         = image_tag "widget_preview/map_view.png", class: "widget-preview map-view"
 
@@ -38,16 +38,16 @@
         %h6.my-2 Code
         %code
           %pre
-            = "<iframe src=\"#{request.base_url}?embed_type=mobile\" style=\"width: 320px; height: 500px; border: 0;\"></iframe>"
+            = "<iframe src=\"#{root_url}?display_mode=mobile\" style=\"width: 320px; height: 500px; border: 0;\"></iframe>"
         %h6.my-2 Sample preview
         = image_tag "widget_preview/mobile_view.png", class: "widget-preview mobile-view"
 
         %h5.mt-5.mb-3 Desktop view
-        %p Here's a list view widget with data in "Cambodia" open. It's a responsive which will fit it the viewport you specify.
+        %p Here's a desktop view widget. It's a responsive which will fit the viewport you specify.
         %h6.my-2 Code
         %code
           %pre
-            = "<iframe src=\"#{request.base_url}?embed_type=map\" style=\"width: 1024px; height: 600px; border: 0;\"></iframe>"
+            = "<iframe src=\"#{root_url}\" style=\"width: 1024px; height: 600px; border: 0;\"></iframe>"
         %h6.my-2 Sample preview
         .row
           .col-12

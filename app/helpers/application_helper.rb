@@ -17,6 +17,6 @@ module ApplicationHelper
   end
 
   def mobile_request?
-    params[:embed_type] != "desktop" && (@device.device_type == "smartphone" || @device.device_type == "phablet" || params[:embed_type] == "mobile")
+    params[:display_mode] != "desktop" && (@device.device_type == "smartphone" || @device.device_type == "phablet" || params[:display_mode] == "mobile")
   end
 end
