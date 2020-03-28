@@ -1,0 +1,31 @@
+#developer_guides-index {
+  #developer-guides {
+    max-width: 800px;
+  }
+
+  .widget-preview {
+    border: 1px solid #eee;
+  }
+
+  .list-view {
+    width: 300px;
+  }
+
+  .mobile-view {
+    width: 322px;
+  }
+
+  .map-view {
+    width: 500px;
+  }
+
+  .desktop-view {
+    max-width: 600px;
+  }
+
+  .mobile {
+    #content {
+      padding-top: 46px;
+    }
+  }
+}

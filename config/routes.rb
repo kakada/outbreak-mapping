@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   resource :about, only: [:show]
 
   resources :list_views, only: [:index]
+
+  resources :developer_guides, only: [:index]
 end

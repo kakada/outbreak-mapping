@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 class AboutsController < ApplicationController
   def show
-    @device = DeviceDetector.new(request.user_agent)
   end
 end

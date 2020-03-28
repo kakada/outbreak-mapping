@@ -1,0 +1,54 @@
+#content
+  .mx-auto#developer-guides
+    .card.col-md-12.col-sm-12.p-0
+      .card-body
+        %h3.mb-3.text-left Developer Guide
+        %p
+          COVID-19 Tracking System provides you many UI style that you can use to embed into your website.
+
+        %h5.mt-3.mb-3 List View
+        %p Here's a list view widget. It's a responsive which will fit the viewport you specify.
+        %h6.my-2 Code
+        %code
+          %pre
+            = "<iframe src=\"#{root_url}list_views\" style='width: 250px; height: 300px; border: 0;'></iframe>"
+        %h6.my-2 Sample preview
+        = image_tag "widget_preview/list_view.png", class: "widget-preview list-view"
+
+        %h5.mt-5.mb-3 List View with "Cambodia" list open
+        %p Here's a list view widget with detail information in Cambodia. It's a responsive which will fit the viewport you specify.
+        %h6.my-2 Code
+        %code
+          %pre
+            = "<iframe src=\"#{root_url}list_views?location_info=00\" style='width: 250px; height: 300px; border: 0;'></iframe>"
+        %h6.my-2 Sample preview
+        = image_tag "widget_preview/list_view_open_tab.png", class: "widget-preview list-view"
+
+        %h5.mt-5.mb-3 Map View
+        %p You can embed map with data. It's best for giving your viewer overall overview of Covid-19 cases in Cambodia.
+        %h6.my-2 Code
+        %code
+          %pre
+            = "<iframe src=\"#{root_url}?display_mode=map\" style=\"height: 500px; width: 530; border: 0;\"'></iframe>"
+        %h6.my-2 Sample preview
+        = image_tag "widget_preview/map_view.png", class: "widget-preview map-view"
+
+        %h5.mt-5.mb-3 Mobile view
+        %p You can take advantage of application by embed mobile view into your page.
+        %h6.my-2 Code
+        %code
+          %pre
+            = "<iframe src=\"#{root_url}?display_mode=mobile\" style=\"width: 320px; height: 500px; border: 0;\"></iframe>"
+        %h6.my-2 Sample preview
+        = image_tag "widget_preview/mobile_view.png", class: "widget-preview mobile-view"
+
+        %h5.mt-5.mb-3 Desktop view
+        %p Here's a desktop view widget. It's a responsive which will fit the viewport you specify.
+        %h6.my-2 Code
+        %code
+          %pre
+            = "<iframe src=\"#{root_url}\" style=\"width: 1024px; height: 600px; border: 0;\"></iframe>"
+        %h6.my-2 Sample preview
+        .row
+          .col-12
+            = image_tag "widget_preview/desktop_view.png", class: "widget-preview desktop-view"

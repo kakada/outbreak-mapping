@@ -1,6 +1,6 @@
-- if params[:embed_type] == "map"
+- if params[:display_mode] == "map"
   = render "home/widget/map"
-- elsif @device.device_type == "smartphone" || @device.device_type == "phablet" || params[:embed_type] == "mobile"
+- elsif mobile_request?
   .mobile
     .content
       = render "shared/mobile_nav_bar"

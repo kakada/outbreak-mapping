@@ -8,7 +8,7 @@
         %span.reported-date= ENV['LAST_UPDATED_AT']
 
   .areas
-    .area
+    .area{ class: ("selected" if params[:location_info] == @summary_report.location_code) }
       .area-name= @summary_report.location.name_km
       .area-total
         = @summary_report.total_cases

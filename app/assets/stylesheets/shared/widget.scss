@@ -14,9 +14,27 @@
   border-radius: 6px;
   padding: 4px;
 
+  a {
+    color: #111;
+  }
+
   .brand-logo {
     width: 50px;
     float: left;
     margin-right: 2px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .reported-date {
+    font-size: 12px;
+  }
+
+  .float-brand-logo {
+    font-size: 15px;
+
+    .brand-logo {
+      width: 45px;
+    }
   }
 }

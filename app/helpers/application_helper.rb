@@ -15,4 +15,8 @@ module ApplicationHelper
   def active_cases(report)
     report.total_cases - report.recovered_cases - report.death_cases
   end
+
+  def mobile_request?
+    params[:display_mode] != "desktop" && (@device.device_type == "smartphone" || @device.device_type == "phablet" || params[:display_mode] == "mobile")
+  end
 end
