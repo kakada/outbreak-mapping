@@ -1,8 +1,11 @@
 .logo-wrapper
-  = link_to root_path(display: params[:display], tab: params[:tab]), class: 'd-flex' do
+  = link_to root_path(embed_type: params[:embed_type]), class: 'd-flex' do
     = image_tag 'cdc.jpg', class: 'rounded-circle flex-grow-1'
 
 .headerButtons.text-center
+  = link_to developer_guides_path, class: "text-white", data: { toggle: :tooltip, title: "Embed code" } do
+    %i.fas.fa-code
+
   .dropup.dropright{'data-toggle' => 'tooltip', title: t('shared.share')}
     %a{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
       %i.fas.fa-share-square{style: 'font-size: 18px;'}
@@ -11,7 +14,7 @@
       = social_share_button_tag(t('shared.share_description'), :url => root_url, desc: t('shared.share_description'))
 
   %div{'data-toggle' => 'tooltip', title: t('shared.about')}
-    = link_to about_path(display: params[:display], tab: params[:tab]) do
+    = link_to about_path(embed_type: params[:embed_type]) do
       %i.fas.fa-info-circle{style: 'font-size: 20px;'}
 
   .visitor-wrapper.text-white{ 'data-toggle' => 'tooltip', title: t('shared.number_of_visitor') }
