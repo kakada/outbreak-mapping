@@ -9,6 +9,10 @@ module ApplicationHelper
   end
 
   def get_css_active_class(name)
-    return 'active' if params['controller'] == name
+    return "active" if params["controller"] == name
+  end
+
+  def active_cases(report)
+    report.total_cases - report.recovered_cases - report.death_cases
   end
 end

@@ -27,6 +27,7 @@
 //= require common/mobile_menu
 //= require home/index
 //= require abouts/show
+//= require list_views/index
 
 $(document).on("ready turbolinks:load", () => {
   if (typeof gtag === "function") {

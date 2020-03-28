@@ -2,28 +2,28 @@
   .pullbar
   .page-title ប្រព័ន្ធតាមដានជំងឺ COVID-19
   .area
-    .area-name= @summary_report[:location][:name_km]
+    .area-name= @summary_report.location.name_km
     .area-total
       .secondary-info#confirmed-case
         .case-count
-          = "#{@summary_report[:total_cases]}"
-          - if @summary_report[:new_cases].positive?
-            %span.new-case= " (#{@summary_report[:new_cases]} ថ្មី)"
+          = @summary_report.total_cases
+          - if @summary_report.new_cases.positive?
+            %span.new-case= " (#{@summary_report.new_cases} ថ្មី)"
         %i.fa.fa-angle-down
 
   .info-tile
     .legend
       .color.ongoing
       .description= t('shared.active_case')
-      .total#active-case= @summary_report[:active_cases]
+      .total#active-case= active_cases(@summary_report)
 
       .color.recovered
       .description= t('shared.recovered_case')
-      .total#recovered-case= @summary_report[:recovered_cases]
+      .total#recovered-case= @summary_report.recovered_cases
 
       .color.fatal
       .description= t('shared.fatal_case')
-      .total#fatal-case= @summary_report[:death_cases]
+      .total#fatal-case= @summary_report.death_cases
     .title.text-center
       = ENV['LAST_UPDATED_AT']
 

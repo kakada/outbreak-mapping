@@ -1,26 +1,26 @@
 .tabs
   .country.tab
     .page-name
-      = @summary_report[:location][:name_km]
+      = @summary_report.location.name_km
     .info-tile
       .title{ title: "Total Confirm Cases" }
         ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
       .confirmed
-        = @summary_report[:total_cases]
-        - if @summary_report[:new_cases].positive?
-          %span.new-case=" (#{@summary_report[:new_cases]} ថ្មី)"
+        = @summary_report.total_cases
+        - if @summary_report.new_cases.positive?
+          %span.new-case=" (#{@summary_report.new_cases} ថ្មី)"
       .legend
         .color.ongoing
         .description= t('shared.active_case')
-        .total= "#{@summary_report[:active_cases]}"
+        .total= active_cases(@summary_report)
 
         .color.recovered
         .description= t('shared.recovered_case')
-        .total= @summary_report[:recovered_cases]
+        .total= @summary_report.recovered_cases
 
         .color.fatal
         .description= t('shared.fatal_case')
-        .total= @summary_report[:death_cases]
+        .total= @summary_report.death_cases
       .title.text-center
         = ENV['LAST_UPDATED_AT']
     .areas
@@ -28,27 +28,27 @@
 
   .region.tab
     #location-name.page-name
-      = @summary_report[:location][:name_km]
+      = @summary_report.location.name_km
     .subtitle
     .info-tile{ style: "display: none" }
       .title{ title: "Total Confirm Cases" }
         ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
       .confirmed#confirmed-case
-        = @summary_report[:total_cases]
-        - if @summary_report[:new_cases].positive?
-          %span.new-case=" (#{@summary_report[:new_cases]} ថ្មី)"
+        = @summary_report.total_cases
+        - if @summary_report.new_cases.positive?
+          %span.new-case=" (#{@summary_report.new_cases} ថ្មី)"
       .legend
         .color.ongoing
         .description= t('shared.active_case')
-        .total#active-case= "#{@summary_report[:active_cases]}"
+        .total#active-case= "#{active_cases(@summary_report)}"
 
         .color.recovered
         .description= t('shared.recovered_case')
-        .total#recovered-case= @summary_report[:recovered_cases]
+        .total#recovered-case= @summary_report.recovered_cases
 
         .color.fatal
         .description= t('shared.fatal_case')
-        .total#fatal-case= @summary_report[:death_cases]
+        .total#fatal-case= @summary_report.death_cases
 
     .segment-panel
       .info-tile{ style: "display: none" }

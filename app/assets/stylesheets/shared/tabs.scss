@@ -1,0 +1,157 @@
+.tab {
+  padding: 24px 24px 0 24px;
+  box-sizing: border-box;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.05);
+  z-index: 201;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs {
+  display: flex;
+  z-index: 401;
+}
+
+.areas {
+  padding: 24px 0;
+  width: 100%;
+  margin-left: 0;
+  height: calc(100% - 260px);
+  overflow: auto;
+
+  &:hover {
+    overflow-y: overlay;
+  }
+}
+
+.area {
+  display: grid;
+  background: #FFF;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 20px;
+  padding: 10px 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  user-select: none;
+  grid-template-columns: auto min-content;
+  grid-column-gap: 5px;
+
+  &:hover, &.expanded {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  &.selected {
+    background: radial-gradient(50% 351.19% at 50% 50%, rgba(0, 128, 157, 0.56) 0%, rgba(0, 128, 157, 0.7) 100%), #FFFFFF;
+  }
+
+  .area-name {
+    font-weight: 600;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .area-total {
+    color: #767676;
+  }
+
+  &.selected, &.selected .area-total, &.selected .area-name {
+    color: white;
+  }
+}
+
+.info-tile {
+  border-bottom: #DDD 1px solid;
+
+  .title {
+    color: #767676;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+
+  .confirmed {
+    font-size: 32px;
+    color: #DE3700;
+    font-weight: bold;
+    line-height: 40px;
+  }
+}
+
+.region {
+  .page-name {
+    margin-bottom: 4px;
+  }
+
+  &.tab {
+    position: relative;
+    background-color: #F5F5F5;
+    transition: transform 200ms ease-out;
+
+    .legend {
+      padding-bottom: 0;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      line-height: 20px;
+      color: #767676;
+      margin-bottom: 16px;
+    }
+
+    .info-tile {
+      background-color: white;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
+      border-radius: 6px;
+      padding: 8px 12px 12px 12px;
+      border-bottom: none;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.legend {
+  display: grid;
+  padding: 20px 0;
+  grid-template-columns: 8px auto min-content;
+  align-items: center;
+  grid-gap: 16px 8px;
+  font-size: 13px;
+  line-height: 20px;
+
+  .color {
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+  }
+
+  .total {
+    color: #767676;
+    text-align: right;
+  }
+}
+
+.recovered {
+  background-color: #60BB69;
+}
+
+.ongoing {
+  background-color: #F4C363;
+}
+
+.fatal {
+  background-color: #767676;
+}
+
+.new-case {
+  font-size: 22px;
+  color: #111;
+}

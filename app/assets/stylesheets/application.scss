@@ -1,12 +1,16 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "leaflet";
+// @import "animate";
 
 @import "application/theme";
 @import "shared/mobile_menu";
+@import "shared/tabs";
+@import "shared/widget";
 @import "home";
-@import "home/desktop";
+@import "shared/desktop";
 @import "home/mobile";
 
 @import "social-share-button";
 @import "abouts";
+@import "list_views";

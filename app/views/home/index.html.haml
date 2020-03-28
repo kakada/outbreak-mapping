@@ -1,4 +1,6 @@
-- if @device.device_type == "smartphone" || @device.device_type == "phablet"
+- if params[:embed_type] == "map"
+  = render "home/widget/map"
+- elsif @device.device_type == "smartphone" || @device.device_type == "phablet" || params[:embed_type] == "mobile"
   .mobile
     .content
       = render "shared/mobile_nav_bar"
@@ -10,7 +12,6 @@
     .content
       .header
         = render "shared/user_nav_bar"
-
       = render "home/web/info_sidebar"
 
       #map{ "data-covid-19": @json_reports, style: "height: 100%; width: 100%; overflow: hidden;" }

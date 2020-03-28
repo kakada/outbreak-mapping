@@ -1,0 +1,43 @@
+#list_views-index {
+  .header {
+    display: block;
+    margin: 0 auto;
+    width: 234px;
+    color: #111;
+  }
+
+  .logo {
+    width: 50px;
+    height: auto;
+  }
+
+  .tab {
+    padding: 0;
+    margin-bottom: 18px;
+    margin-top: 2px;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .region.tab {
+    .info-tile {
+      box-shadow: none;
+      margin-bottom: 0;
+    }
+  }
+
+  .areas {
+    padding: 4px 0;
+
+  }
+
+  .area {
+    margin-bottom: 0px;
+    margin-top: 12px;
+    grid-template-columns: auto max-content;
+
+    &:first-child {
+      margin-top: 6px;
+    }
+  }
+}

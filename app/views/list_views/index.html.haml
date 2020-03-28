@@ -1,0 +1,26 @@
+.m-2
+  .text-center
+    = link_to root_url, target: "_blank", class: "header" do
+      = image_tag asset_path("cdc-tran.png"), class: "logo float-left", alt: "នាយកដ្ឋានប្រយុទ្ធនឹងជំងឺឆ្លង"
+      .d-inline-block.float-left.ml-2
+        ប្រព័ន្ធតាមដានជំងឺឆ្លងកូវីត១៩
+        %br
+        %span.reported-date= ENV['LAST_UPDATED_AT']
+
+  .areas
+    .area
+      .area-name= @summary_report.location.name_km
+      .area-total
+        = @summary_report.total_cases
+        %span
+          %i.fas.fa-caret-down
+    = render "detail_info", report: @summary_report
+
+    - @reports.each do |report|
+      .area
+        .area-name= report.location.name_km
+        .area-total
+          = report.total_cases
+          %span
+            %i.fas.fa-caret-down
+      = render "detail_info", report: report
