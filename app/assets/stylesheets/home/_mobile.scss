@@ -70,7 +70,7 @@
       position: fixed;
       width: 100%;
       height: 53px;
-      z-index: 101;
+      z-index: 1;
 
       .logo {
         padding: 14px 16px;
@@ -96,6 +96,17 @@
       border: 1px solid rgba(0, 0, 0, 0.1);
       padding: 8px;
       margin: 10px 0;
+    }
+
+    .call-115 {
+      z-index: 401;
+      position: absolute;
+      right: 4px;
+      top: 50px;
+      display: block;
+      font-size: 14px;
+      color: #111;
+      font-weight: bold;
     }
   }
 

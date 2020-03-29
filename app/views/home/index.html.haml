@@ -4,7 +4,13 @@
   .mobile
     .content
       = render "shared/mobile_nav_bar"
+
       #map.map{ "data-covid-19": @json_reports }
+        = link_to 'tel:115', class: 'call-115 btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised', 'data-toggle' => 'tooltip', 'data-title' => t('shared.call_115') do
+          %i.fas.fa-phone-volume{style: 'position: absolute; top: 5px; left: calc(50% - 5.24px);'}
+          %div{style: 'position: absolute; line-height: 12px; bottom: 4px; left: calc(50% - 11.18px);'} 115
+
+
       = render "/home/mobile/info_sidebar"
     = render "/home/mobile/location_dropdown"
 - else
@@ -15,6 +21,9 @@
       = render "home/web/info_sidebar"
 
       #map{ "data-covid-19": @json_reports, style: "height: 100%; width: 100%; overflow: hidden;" }
+        = link_to 'tel:115', target: '_blank', class: 'call-115 btn pmd-btn-fab pmd-ripple-effect btn-dark pmd-btn-raised', 'data-toggle' => 'tooltip', 'data-title' => t('shared.call_115') do
+          %i.fas.fa-phone-volume
+          %span.ml-1 115
 
 :javascript
   locale = {
