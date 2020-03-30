@@ -1,24 +1,29 @@
 OM.HomeIndex = (() => {
   let map = null;
   let eventData = [];
+  let reports = [];
   let markers = {};
   const osmUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
   const osmAttrib="Map data © <a href='https://openstreetmap.org'>OpenStreetMap</a> contributors";
-  const cambodiaLat = 12.33233;
-  const cambodiaLng = 104.875305;
 
   return {
-    init
+    init,
+    getReports
   }
 
   function init() {
     eventData = $("#map").data("covid-19");
+    reports = eventData.concat([$("#map").data("summary")]);
 
     initMobile();
     _renderMap();
     addEventToReport();
     toggleTabDisplay();
     renderOverallCaseGraph();
+  }
+
+  function getReports() {
+    return reports || $("#map").data("covid-19");
   }
 
   function _renderMap() {
@@ -111,7 +116,6 @@ OM.HomeIndex = (() => {
 
       selectedArea($area);
       updateInfo($area);
-      debugger
       updateChart($area);
 
       if ($area.attr("id") == "00") {
@@ -169,15 +173,13 @@ OM.HomeIndex = (() => {
   }
 
   function updateChart($area) {
-    let data = {
-      total_cases: $area.data("total"),
-      active_cases: $area.data("active"),
-      recovered_cases: $area.data("recovered"),
-      fatal_cases: $area.data("fatal")
-    }
+    let id = $area.attr("id");
+
+    let report = reports.find( data => data.location_code == id)
+    report.active_case = OM.HomeHelper.activeCase(report);
 
     let $parent = $(".region.tab");
-    renderCaseGraph($parent, data);
+    OM.BarGraph.renderBarGraph($parent, report);
   }
 
   function initMobile() {
@@ -239,41 +241,7 @@ OM.HomeIndex = (() => {
       $parent = $(".information");
     }
 
-    let data = $parent.find(".bar").data("info");
-    renderCaseGraph($parent, data);
-  }
-
-  function renderCaseGraph($parent, data) {
-    let $bar = $parent.find(".bar");
-    let fullWidth = $bar.width();
-    let graphData = constructGraphData(data);
-    let $bars = [];
-
-    for(let i = 0, len = graphData.length; i < len; i++) {
-      $bars.push(buildBarGraph(graphData[i], fullWidth));
-    }
-
-    $bar.html($bars);
-  }
-
-  function constructGraphData(data) {
-    let activeCase = { count: data.active_cases, className: "ongoing", total: data.total_cases };
-    let recoveredCase = { count: data.recovered_cases, className: "recovered", total: data.total_cases };
-    let fatalCase = { count: data.fatal_cases, className: "fatal", margin: 0, total: data.total_cases };
-
-    activeCase.margin = (data.recovered_cases || data.fatal_cases) ? 4 : 0;
-    recoveredCase.margin = data.fatal_cases ? 4: 0;
-
-    return [activeCase, recoveredCase, fatalCase];
-  }
-
-  function buildBarGraph(graphData, fullWidth) {
-    let $bar;
-    if (graphData.count > 0) {
-      let width = (graphData.count * 1.0) / graphData.total * fullWidth - graphData.margin;
-
-      $bar = $("<div>", { class: `slice ${graphData.className}`, style: `width: ${width}px; margin-right: ${graphData.margin}px;` });
-    }
-    return $bar;
+    let report = reports.find(x => x.location_code == "00");
+    OM.BarGraph.renderBarGraph($parent, report);
   }
 })();

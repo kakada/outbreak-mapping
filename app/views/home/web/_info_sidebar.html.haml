@@ -9,7 +9,7 @@
         = @summary_report.total_cases
         - if @summary_report.new_cases.positive?
           %span.new-case=" (#{@summary_report.new_cases} ថ្មី)"
-      .bar{ data: { info: @summary_report.to_json }}
+      .bar
       .legend
         .color.ongoing
         .description= t('shared.active_case')
@@ -38,6 +38,7 @@
         = @summary_report.total_cases
         - if @summary_report.new_cases.positive?
           %span.new-case=" (#{@summary_report.new_cases} ថ្មី)"
+      .bar
       .legend
         .color.ongoing
         .description= t('shared.active_case')
