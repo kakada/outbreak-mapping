@@ -14,7 +14,11 @@
         %i.fas.fa-share-square
         %div ចែករំលែក
 
-      = link_to about_path(display: params[:display]), class: "menu-option" do
+      = link_to developer_guides_path(display_mode: params[:display_mode]), class: "menu-option" do
+        %i.fa.fa-code
+        %div Developer Guide
+
+      = link_to about_path(display_mode: params[:display_mode]), class: "menu-option" do
         %i.fa.fa-info-circle
         %div អំពីកម្មវិធី
 
