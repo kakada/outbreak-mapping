@@ -18,6 +18,8 @@
 //= require popper
 //= require bootstrap
 //= require leaflet
+//= require highlight.pack
+//= require clipboard.min
 
 //= require application/namespace
 //= require application/util
@@ -30,6 +32,7 @@
 //= require home/bar_graph
 //= require abouts/show
 //= require list_views/index
+//= require developer_guides/index
 
 $(document).on("ready turbolinks:load", () => {
   if (typeof gtag === "function") {
