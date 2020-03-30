@@ -178,7 +178,7 @@ OM.HomeIndex = (() => {
     let report = reports.find( data => data.location_code == id)
     report.active_case = OM.HomeHelper.activeCase(report);
 
-    let $parent = $(".region.tab");
+    let $parent = $(".region.tab").length > 0 ? $(".region.tab") : $(".information");
     OM.BarGraph.renderBarGraph($parent, report);
   }
 
