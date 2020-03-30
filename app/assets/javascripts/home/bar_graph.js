@@ -3,9 +3,9 @@ OM.BarGraph = (() => {
     renderBarGraph
   }
 
-  function renderBarGraph($parent, report) {
+  function renderBarGraph($parent, report, widthFromParent) {
     let $bar = $parent.find(".bar");
-    let fullWidth = $bar.width();
+    let fullWidth = widthFromParent ? $parent.width() : $bar.width();
     let graphData = constructGraphData(report);
     let $bars = [];
 
