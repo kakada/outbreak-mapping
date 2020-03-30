@@ -4,7 +4,8 @@ OM.Developer_guidesIndex = (() => {
   }
 
   function init() {
-    hljs.initHighlightingOnLoad();
+    hljs.initHighlighting.called = false;
+    hljs.initHighlighting();
     new ClipboardJS('.btn');
 
     $('button').tooltip({

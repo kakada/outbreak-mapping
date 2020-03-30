@@ -1,7 +1,7 @@
 - if mobile_request?
   .mobile
     .trigger-menu-wrapper
-      %a.btn{ href: root_path, style: 'padding: 10px' }
+      = link_to root_path(display_mode: params[:display_mode]), class: "btn", style: "padding: 10px;" do
         %i.fas.fa-chevron-left
         %font{size: 4}= t('about.back')
 
