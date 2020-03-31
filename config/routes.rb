@@ -14,5 +14,5 @@ Rails.application.routes.draw do
 
   resources :developer_guides, only: [:index]
 
-  resource :setting, only: [:show]
+  resource :setting, except: [:destroy]
 end
