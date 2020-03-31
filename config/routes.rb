@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   resources :list_views, only: [:index]
 
   resources :developer_guides, only: [:index]
+
+  resource :setting, only: [:show]
 end

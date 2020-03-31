@@ -3,8 +3,10 @@
   %span.navbar-toggler-icon
 #navbarNavDropdown.collapse.navbar-collapse
   %ul.navbar-nav.mr-auto
-    %li.nav-item.active
+    %li.nav-item{ class: ("active" if current_page?(reports_path)) }
       = link_to "Reports", reports_path, class: "nav-link"
-    %li.nav-item
+    %li.nav-item{ class: ("active" if current_page?(videos_path)) }
       = link_to "Videos", videos_path, class: "nav-link"
+    %li.nav-item{ class: ("active" if current_page?(setting_path)) }
+      = link_to "Setting", setting_path, class: "nav-link"
   = link_to "Sign out", destroy_user_session_path, method: :delete, data: { confirm: "Sign out?" }, class: 'btn btn-dark'
