@@ -5,6 +5,6 @@
       .d-inline-block
         ប្រព័ន្ធតាមដានជំងឺឆ្លងកូវីត១៩
         %br
-        %span.reported-date= ENV['LAST_UPDATED_AT']
+        %span.reported-date= "(គិតត្រឹម #{@setting.last_updated})"
 
     #map{ "data-covid-19": @json_reports, style: "height: 100%; width: 100%; overflow: hidden;", "data-summary": @summary_report.to_json }
