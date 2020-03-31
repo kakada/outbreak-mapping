@@ -25,7 +25,9 @@
 //= require social-share-button
 
 //= require common/mobile_menu
+//= require home/helper
 //= require home/index
+//= require home/bar_graph
 //= require abouts/show
 //= require list_views/index
 

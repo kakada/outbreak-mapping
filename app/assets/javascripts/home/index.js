@@ -1,23 +1,29 @@
 OM.HomeIndex = (() => {
   let map = null;
   let eventData = [];
+  let reports = [];
   let markers = {};
   const osmUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
   const osmAttrib="Map data © <a href='https://openstreetmap.org'>OpenStreetMap</a> contributors";
-  const cambodiaLat = 12.33233;
-  const cambodiaLng = 104.875305;
 
   return {
-    init
+    init,
+    getReports
   }
 
   function init() {
     eventData = $("#map").data("covid-19");
+    reports = eventData.concat([$("#map").data("summary")]);
 
     initMobile();
     _renderMap();
     addEventToReport();
     toggleTabDisplay();
+    renderOverallCaseGraph();
+  }
+
+  function getReports() {
+    return reports || $("#map").data("covid-19");
   }
 
   function _renderMap() {
@@ -110,6 +116,7 @@ OM.HomeIndex = (() => {
 
       selectedArea($area);
       updateInfo($area);
+      updateChart($area);
 
       if ($area.attr("id") == "00") {
         map.closePopup();
@@ -157,14 +164,22 @@ OM.HomeIndex = (() => {
     } else {
       $("#case-detail-info").parent(".info-tile").hide();
     }
-
-
   }
 
   function updateHeight() {
-    const mapHeight = $(window).height() - 270;
+    const mapHeight = $(window).height() - 294;
     $("#map").css({ "height": `${mapHeight}px`, "postion": "absolute" });
-    $(".information").css({ "margin-top": `${mapHeight}px`, "position": "absolute", "min-height": "287px" });
+    $(".information").css({ "margin-top": `${mapHeight}px`, "position": "absolute", "min-height": "294px" });
+  }
+
+  function updateChart($area) {
+    let id = $area.attr("id");
+
+    let report = reports.find( data => data.location_code == id)
+    report.active_case = OM.HomeHelper.activeCase(report);
+
+    let $parent = $(".region.tab").length > 0 ? $(".region.tab") : $(".information");
+    OM.BarGraph.renderBarGraph($parent, report);
   }
 
   function initMobile() {
@@ -196,7 +211,7 @@ OM.HomeIndex = (() => {
       closeDropdown();
       $area = $(e.currentTarget);
       $(".information .area-name").text($area.data("location"));
-      $(".secondary-info .case-count").text($area.data("total"))
+      $(".secondary-info .case-count").text($area.data("total"));
     });
   }
 
@@ -218,5 +233,15 @@ OM.HomeIndex = (() => {
 
       window.dispatchEvent(new Event('resize'));
     });
+  }
+
+  function renderOverallCaseGraph() {
+    let $parent = $(".country.tab");
+    if ($parent.length == 0) {
+      $parent = $(".information");
+    }
+
+    let report = reports.find(x => x.location_code == "00");
+    OM.BarGraph.renderBarGraph($parent, report);
   }
 })();

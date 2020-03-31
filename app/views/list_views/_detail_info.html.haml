@@ -6,6 +6,7 @@
       = report.total_cases
       - if report.new_cases.positive?
         %span.new-case=" (#{report.new_cases} ថ្មី)"
+    .bar{ data: { report: report.to_json } }
     .legend
       .color.ongoing
       .description= t('shared.active_case')

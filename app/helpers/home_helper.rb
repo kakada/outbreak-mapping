@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 module HomeHelper
-
-
   def youtube_thumbnail(url)
     id = get_youtube_id(url)
     "https://img.youtube.com/vi/#{id}/mqdefault.jpg"

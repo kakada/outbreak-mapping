@@ -25,6 +25,18 @@
   }
 }
 
+.info-tile {
+  .bar {
+    margin-top: 12px;
+    height: 8px;
+    display: flex;
+  }
+
+  .slice {
+    border-radius: 6px;
+  }
+}
+
 @media only screen and (max-width: 350px) {
   .reported-date {
     font-size: 12px;
