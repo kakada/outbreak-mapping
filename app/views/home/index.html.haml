@@ -1,3 +1,6 @@
+- content_for :head_tag do
+  %meta{ name: "turbolinks-cache-control", content: "no-cache" }
+
 - if params[:display_mode] == "map"
   = render "home/widget/map"
 - elsif mobile_request?

@@ -6,6 +6,7 @@
     %meta{ content: "ប្រព័ន្ធតាមដានករណីឆ្លងកូវីដ១៩", property: "og:title"}
     %meta{ content: asset_url("cdc.jpg"), property: "og:image"}
     %meta{ content: t("shared.share_description"), property: "og:description"}
+    = yield :head_tag
 
     -# Google Search Console
     - if ENV["GOOGLE_SITE_VERIFICATION"].present?
