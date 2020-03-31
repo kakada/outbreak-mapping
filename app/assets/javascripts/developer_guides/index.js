@@ -4,23 +4,43 @@ OM.Developer_guidesIndex = (() => {
   }
 
   function init() {
+    OM.Common.MobileMenu.onScrollContainer();
     initCodeHighlight();
   }
 
   function initCodeHighlight() {
-    var pres = document.querySelectorAll("pre>code");
-    for (var i = 0; i < pres.length; i++) {
-        hljs.highlightBlock(pres[i]);
-    }
+    hljs.initHighlightingOnLoad();
+    hljs.initHighlighting.called = false;
+    hljs.initHighlighting();
+    new ClipboardJS('.btn');
 
-    var options = {   // optional
-        contentSelector: "#ArticleBody",
+    $('button').tooltip({
+      trigger: 'click',
+      placement: 'bottom'
+    });
 
-        // CSS class(es) used to render the copy icon.
-        copyIconClass: "fas fa-copy",
-        // CSS class(es) used to render the done icon.
-        checkIconClass: "fas fa-check text-success"
-    };
-    window.highlightJsBadge(options);
+    var clipboard = new ClipboardJS('button');
+
+    clipboard.on('success', function(e) {
+      setTooltip(e.trigger, 'Copied!');
+      hideTooltip(e.trigger);
+    });
+
+    clipboard.on('error', function(e) {
+      setTooltip(e.trigger, 'Failed!');
+      hideTooltip(e.trigger);
+    });
+  }
+
+  function setTooltip(btn, message) {
+    $(btn).tooltip('hide')
+      .attr('data-original-title', message)
+      .tooltip('show');
+  }
+
+  function hideTooltip(btn) {
+    setTimeout(function() {
+      $(btn).tooltip('hide');
+    }, 1000);
   }
 })();

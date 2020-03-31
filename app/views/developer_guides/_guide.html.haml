@@ -6,49 +6,84 @@
         %p
           COVID-19 Tracking System provides you many UI style that you can use to embed into your website.
 
+    .card.col-md-12.col-sm-12.p-0.mt-2
+      .card-body
         %h5.mt-3.mb-3 List View
-        %p Here's a list view widget. It's a responsive which will fit the viewport you specify.
-        %h6.my-2 Code
-        %code
-          %pre
-            = "<iframe src=\"#{root_url}list_views\" style='width: 250px; height: 300px; border: 0;'></iframe>"
-        %h6.my-2 Sample preview
-        = image_tag "widget_preview/list_view.png", class: "widget-preview list-view"
-
-        %h5.mt-5.mb-3 List View with "Cambodia" list open
-        %p Here's a list view widget with detail information in Cambodia. It's a responsive which will fit the viewport you specify.
-        %h6.my-2 Code
-        %code
-          %pre
-            = "<iframe src=\"#{root_url}list_views?location_info=00\" style='width: 250px; height: 300px; border: 0;'></iframe>"
-        %h6.my-2 Sample preview
-        = image_tag "widget_preview/list_view_open_tab.png", class: "widget-preview list-view"
-
-        %h5.mt-5.mb-3 Map View
-        %p You can embed map with data. It's best for giving your viewer overall overview of Covid-19 cases in Cambodia.
-        %h6.my-2 Code
-        %code
-          %pre
-            = "<iframe src=\"#{root_url}?display_mode=map\" style=\"height: 500px; width: 530; border: 0;\"'></iframe>"
-        %h6.my-2 Sample preview
-        = image_tag "widget_preview/map_view.png", class: "widget-preview map-view"
-
-        %h5.mt-5.mb-3 Mobile view
-        %p You can take advantage of application by embed mobile view into your page.
-        %h6.my-2 Code
-        %code
-          %pre
-            = "<iframe src=\"#{root_url}?display_mode=mobile\" style=\"width: 320px; height: 500px; border: 0;\"></iframe>"
-        %h6.my-2 Sample preview
-        = image_tag "widget_preview/mobile_view.png", class: "widget-preview mobile-view"
-
-        %h5.mt-5.mb-3 Desktop view
-        %p Here's a desktop view widget. It's a responsive which will fit the viewport you specify.
-        %h6.my-2 Code
-        %code
-          %pre
-            = "<iframe src=\"#{root_url}\" style=\"width: 1024px; height: 600px; border: 0;\"></iframe>"
-        %h6.my-2 Sample preview
         .row
-          .col-12
-            = image_tag "widget_preview/desktop_view.png", class: "widget-preview desktop-view"
+          .col-md-7
+            %h6.my-2
+              Embeded Code
+            %button.btn.btn-sm.btn-primary.float-right{ data: { "clipboard-target" => "#list-view", tooltip: "Copied!" } }
+              Copy
+              %i.fa.fa-copy
+            %pre
+              %code#list-view.html
+                = "<iframe src=\"#{root_url}list_views\" style='width: 250px; height: 300px; border: 0;'></iframe>"
+          .col-md-5
+            %h6.my-2 Sample preview
+            = image_tag "widget_preview/list_view.png", class: "widget-preview list-view img-fluid"
+
+    .card.col-md-12.col-sm-12.p-0.mt-2
+      .card-body
+        %h5.mt-5.mb-3 List View with "Cambodia" list open
+        .row
+          .col-md-7
+            %h6.my-2
+              Embeded Code
+            %button.btn.btn-sm.btn-primary.float-right{ data: { "clipboard-target" => "#list-view-open", tooltip: "Copied!" } }
+              Copy
+              %i.fa.fa-copy
+            %pre
+              %code#list-view-open.html
+                = "<iframe src=\"#{root_url}list_views?location_info=00\" style='width: 250px; height: 300px; border: 0;'></iframe>"
+          .col-md-5
+            %h6.my-2 Sample preview
+            = image_tag "widget_preview/list_view_open_tab.png", class: "widget-preview list-view img-fluid"
+
+    .card.col-md-12.col-sm-12.p-0.mt-2
+      .card-body
+        %h5.mt-5.mb-3 Map View
+        .row
+          .col-md-7
+            %h6.my-2 Embeded Code
+            %button.btn.btn-sm.btn-primary.float-right{ data: { "clipboard-target" => "#map-view", tooltip: "Copied!" } }
+              Copy
+              %i.fa.fa-copy
+            %pre
+              %code#map-view
+                = "<iframe src=\"#{root_url}?display_mode=map\" style=\"height: 500px; width: 530; border: 0;\"'></iframe>"
+          .col-md-5
+            %h6.my-2 Sample preview
+            = image_tag "widget_preview/map_view.png", class: "widget-preview map-view img-fluid"
+
+    .card.col-md-12.col-sm-12.p-0.mt-2
+      .card-body
+        %h5.mt-5.mb-3 Mobile view
+        .row
+          .col-md-7
+            %h6.my-2 Embeded Code
+            %button.btn.btn-sm.btn-primary.float-right{ data: { "clipboard-target" => "#mobile-view", tooltip: "Copied!" } }
+              Copy
+              %i.fa.fa-copy
+            %pre
+              %code#mobile-view
+                = "<iframe src=\"#{root_url}?display_mode=mobile\" style=\"width: 320px; height: 500px; border: 0;\"></iframe>"
+          .col-md-5
+            %h6.my-2 Sample preview
+            = image_tag "widget_preview/mobile_view.png", class: "widget-preview mobile-view img-fluid"
+
+    .card.col-md-12.col-sm-12.p-0.mt-2
+      .card-body
+        %h5.mt-5.mb-3 Desktop view
+        .row
+          .col-md-7
+            %h6.my-2 Embeded Code
+            %button.btn.btn-sm.btn-primary.float-right{ data: { "clipboard-target" => "#desktop-view", tooltip: "Copied!" } }
+              Copy
+              %i.fa.fa-copy
+            %pre
+              %code#desktop-view
+                = "<iframe src=\"#{root_url}\" style=\"width: 1024px; height: 600px; border: 0;\"></iframe>"
+          .col-md-5
+            %h6.my-2 Sample preview
+            = image_tag "widget_preview/desktop_view.png", class: "widget-preview desktop-view img-fluid"
