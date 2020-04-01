@@ -3,8 +3,13 @@
     = image_tag 'cdc.jpg', class: 'rounded-circle flex-grow-1'
 
 .headerButtons.text-center
-  = link_to developer_guides_path, class: "text-white", data: { toggle: :tooltip, title: "Developer Guide" } do
-    %i.fas.fa-code
+  %div{'data-toggle' => 'tooltip', title: "សំណួរសួរញឹកញាប់"}
+    = link_to faqs_path , class: "text-white" do
+      %i.far.fa-question-circle{style: 'font-size: 20px;'}
+
+  %div{'data-toggle' => 'tooltip', title: "Developer Guide"}
+    = link_to developer_guides_path, class: "text-white" do
+      %i.fas.fa-code
 
   .dropup.dropright{'data-toggle' => 'tooltip', title: t('shared.share')}
     %a{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}

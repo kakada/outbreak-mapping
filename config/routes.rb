@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'faqs/index'
   root to: "home#index"
   devise_for :users, skip: [:registrations]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
   resources :developer_guides, only: [:index]
 
   resources :faq_admins
+  resources :faqs, only: [:index]
 end

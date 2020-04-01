@@ -33,6 +33,7 @@
 //= require abouts/show
 //= require list_views/index
 //= require developer_guides/index
+//= require faqs/index
 
 $(document).on("ready turbolinks:load", () => {
   if (typeof gtag === "function") {
