@@ -1,0 +1,34 @@
+.row.d-flex.justify-content-center
+  .col-md-12
+    .my-4
+      .d-flex
+        %h4.title.mr-auto FAQ
+        .pull-right
+          = link_to new_faq_admin_path, class: "btn btn-primary" do
+            %i.fa.fa-plus
+            New FAQ
+
+  .col-md-12
+    .my-4
+
+
+      %table.table
+        %thead
+        %tbody
+          %tr
+            %th.question{ scope: "col"} Question Khmer
+            %th.question{ scope: "col"} Question English
+            %th.answer{ scope: "col"} Answer Khmer
+            %th.answer{ scope: "col"} Answer English
+            %th.action{ scope: "col"}
+          - @faqs.each do |faq|
+            %tr
+              %td= faq.question_km
+              %td= faq.question_en
+              %td= faq.answer_km
+              %td= faq.answer_en
+              %td
+                = link_to edit_faq_admin_path(faq), class: "btn btn-sm btn-outline-primary mr-1", "data-tooltip" => "edit" do
+                  %i.fa.fa-pencil
+                = link_to faq_admin_path(faq), method: :delete, class: 'btn btn-sm btn-outline-danger', :data => { confirm: "Are you sure to delete this \"#{faq.question_km}\"?" } do
+                  %i.fa.fa-trash

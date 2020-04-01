@@ -4,7 +4,7 @@
       = @summary_report.location.name_km
     .info-tile
       .title{ title: "Total Confirm Cases" }
-        ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
+        ចំនួនករណីឆ្លងជំងឺកូវីដ១៩សរុប
       .confirmed
         = @summary_report.total_cases
         - if @summary_report.new_cases.positive?
@@ -33,7 +33,7 @@
     .subtitle
     .info-tile{ style: "display: none" }
       .title{ title: "Total Confirm Cases" }
-        ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
+        ចំនួនករណីឆ្លងជំងឺកូវីដ១៩សរុប
       .confirmed#confirmed-case
         = @summary_report.total_cases
         - if @summary_report.new_cases.positive?
@@ -56,6 +56,11 @@
       .info-tile{ style: "display: none" }
         .title{ title: "ព័ត៌មានលម្អិត" }ព័ត៌មានលម្អិត
         #case-detail-info
+      .card.mb-2
+        .card-body.text-center.p-1
+          = link_to faqs_path, class: "faq-link" do
+            %i.far.fa-hand-point-right
+            ព័ត៌មានទូទៅទាក់ទងនឹងជំងឺកូវីដ១៩
       = render "/home/shared/video_list"
     .close-region
       %i.fas.fa-caret-left

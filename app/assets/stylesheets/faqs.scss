@@ -1,0 +1,21 @@
+#faqs-index {
+  #faqs {
+    max-width: 800px;
+  }
+
+  .faq-question {
+    border-width: 0 0 1px;
+    border-style: solid;
+    border-color: #ddd;
+
+    &:last-child {
+      border-width: 0;
+    }
+  }
+
+  .mobile {
+    #content {
+      padding-top: 60px;
+    }
+  }
+}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_040324) do
+ActiveRecord::Schema.define(version: 2020_04_01_031124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(version: 2020_03_25_040324) do
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
   end
 
+  create_table "faqs", force: :cascade do |t|
+    t.text "question_km"
+    t.text "question_en"
+    t.text "answer_km"
+    t.text "answer_en"
+    t.integer "position"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "locations", primary_key: "code", id: :string, force: :cascade do |t|
     t.string "name_en", null: false
     t.string "name_km", null: false
@@ -84,6 +94,12 @@ ActiveRecord::Schema.define(version: 2020_03_25_040324) do
     t.integer "new_cases", default: 0
     t.integer "recovered_cases", default: 0
     t.integer "death_cases", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.string "last_updated"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,6 +1,6 @@
 .information
   .pullbar
-  .page-title ប្រព័ន្ធតាមដានជំងឺ COVID-19
+  .page-title ប្រព័ន្ធតាមដានជំងឺកូវីដ១៩
   .area
     .area-name= @summary_report.location.name_km
     .area-total
@@ -33,4 +33,9 @@
       .info-tile.detail-info{ style: "display: none" }
         .title{ title: "ព័ត៌មានលម្អិត" }ព័ត៌មានលម្អិត
         #case-detail-info
+    .card.my-3
+      .card-body.text-center.p-1
+        = link_to faqs_path, class: "faq-link" do
+          %i.far.fa-hand-point-right
+          ព័ត៌មានទូទៅទាក់ទងនឹងជំងឺកូវីដ១៩
     = render "/home/shared/video_list"

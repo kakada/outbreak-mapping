@@ -1,0 +1,9 @@
+= simple_form_for @faq, url: url do |f|
+  = f.input :question_km
+  = f.input :question_en
+  = f.input :answer_km
+  = f.input :answer_en
+
+  .actions
+    = f.button :submit, class: 'btn btn-primary'
+    = link_to "Cancel", faq_admins_path, class: 'btn btn-secondary'
