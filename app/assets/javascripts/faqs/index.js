@@ -8,12 +8,12 @@ OM.FaqsIndex = (() => {
 
     $(".collapse").on("show.bs.collapse", function(e) {
       let $faq = $(e.currentTarget).parent(".faq-question");
-      ($faq).find(".fa-angle-down").removeClass("fa-angle-down").addClass("fa-angle-up");
+      ($faq).find(".fa-angle-down").css({"transform": "rotate(180deg)", "transition-duration": "300ms"});
     });
 
     $(".collapse").on("hide.bs.collapse", function(e) {
       let $faq = $(e.currentTarget).parent(".faq-question");
-      ($faq).find(".fa-angle-up").removeClass("fa-angle-up").addClass("fa-angle-down");
+      ($faq).find(".fa-angle-down").css("transform", "");
     });
   }
 })();
