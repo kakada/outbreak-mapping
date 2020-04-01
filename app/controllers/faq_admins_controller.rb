@@ -35,6 +35,17 @@ class FaqAdminsController < AdminController
     end
   end
 
+  def destroy
+    @faq = Faq.find(params[:id])
+    if @faq.destroy
+      flash.now[:notice] = "Faq has been deleted."
+    else
+      flash.now[:alert] = @category.errors.full_messages
+    end
+
+    redirect_to faq_admins_path
+  end
+
   private
     def faq_params
       params.require(:faq).permit(:id, :question_km, :question_en, :answer_km, :answer_en)
