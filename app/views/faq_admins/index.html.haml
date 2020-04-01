@@ -1,0 +1,29 @@
+.row.d-flex.justify-content-center
+  .col-md-12
+    .card.mt-4
+      .card-header.d-flex
+        .card-title.mr-auto FAQ
+        .pull-right
+          = link_to new_faq_admin_path, class: "btn btn-primary" do
+            %i.fa.fa-plus
+            New FAQ
+
+      .card-body
+        %table.table
+          %thead
+          %tbody
+            %tr
+              %th{ scope: "col"} Question Khmer
+              %th{ scope: "col"} Question English
+              %th{ scope: "col"} Answer Khmer
+              %th{ scope: "col"} Answer English
+              %th{ scope: "col"}
+            - @faqs.each do |faq|
+              %tr
+                %td= faq.question_km
+                %td= faq.question_en
+                %td= faq.answer_km
+                %td= faq.answer_en
+                %td
+                  = link_to edit_faq_admin_path(faq), class: "btn btn-sm btn-outline-primary", "data-tooltip" => "edit" do
+                    %i.fa.fa-pencil
