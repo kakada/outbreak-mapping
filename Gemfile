@@ -47,6 +47,7 @@ group :development, :test do
   gem "ffaker", "~> 2.13.0"
   gem "rubocop-rails", "~> 2.4.2"
   gem "rubocop-performance", "~> 1.5.2"
+  gem "factory_bot_rails"
 end
 
 group :development do
