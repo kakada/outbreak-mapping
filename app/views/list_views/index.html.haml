@@ -5,7 +5,7 @@
       .d-inline-block.float-left.ml-2
         ប្រព័ន្ធតាមដានជំងឺឆ្លងកូវីត១៩
         %br
-        %span.reported-date= ENV['LAST_UPDATED_AT']
+        %span.reported-date= "(#{@setting.last_updated})"
 
   .areas
     .area{ class: ("selected" if params[:location_info] == @summary_report.location_code) }
@@ -18,7 +18,10 @@
 
     - @reports.each do |report|
       .area
-        .area-name= report.location.name_km
+        .area-name
+          = report.location.name_km
+          - if report.new_cases.positive?
+            .color.ongoing.d-inline-block.ml-1
         .area-total
           = report.total_cases
           %span

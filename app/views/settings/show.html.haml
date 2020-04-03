@@ -1,0 +1,24 @@
+.row.d-flex.justify-content-center
+  .col-md-8
+    .card.mt-4
+      .card-header
+        Setting
+      .card-body
+        - if @setting.present?
+          .row
+            .col-md-3
+              Last updated date:
+            .col.md-6
+              = @setting.last_updated
+          .form-group.mt-4
+            = link_to edit_setting_path, class: "btn btn-primary" do
+              %i.fa.fa-pencil
+              Edit Setting
+
+
+        - else
+          .text-center.p-5.mx-auto
+            %p.mb-5 There's no setting yet.
+            = link_to new_setting_path, class: "btn btn-primary" do
+              %i.fas.fa-plus
+              Create Setting
