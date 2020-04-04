@@ -20,24 +20,24 @@ OM.BarGraph = (() => {
     let activeCase = {
       count: OM.HomeHelper.activeCase(data),
       className: "ongoing",
-      total: data.total_cases
+      total: data.total_case
     };
 
     let recoveredCase = {
-      count: data.recovered_cases,
+      count: data.recovered_case,
       className: "recovered",
-      total: data.total_cases
+      total: data.total_case
     };
 
     let fatalCase = {
-      count: data.fatal_cases,
+      count: data.fatal_case,
       className: "fatal",
       margin: 0,
-      total: data.total_cases
+      total: data.total_case
     };
 
-    activeCase.margin = (data.recovered_cases || data.fatal_cases) ? 4 : 0;
-    recoveredCase.margin = data.fatal_cases ? 4: 0;
+    activeCase.margin = (data.recovered_case || data.fatal_case) ? 4 : 0;
+    recoveredCase.margin = data.fatal_case ? 4: 0;
 
     return [activeCase, recoveredCase, fatalCase];
   }

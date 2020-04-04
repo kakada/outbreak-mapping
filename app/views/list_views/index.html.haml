@@ -11,7 +11,7 @@
     .area{ class: ("selected" if params[:location_info] == @summary_report.location_code) }
       .area-name= @summary_report.location.name_km
       .area-total
-        = @summary_report.total_cases
+        = @summary_report.total_case
         %span
           %i.fas.fa-caret-down
     = render "detail_info", report: @summary_report
@@ -20,10 +20,10 @@
       .area
         .area-name
           = report.location.name_km
-          - if report.new_cases.positive?
+          - if report.new_case.positive?
             .color.ongoing.d-inline-block.ml-1
         .area-total
-          = report.total_cases
+          = report.total_case
           %span
             %i.fas.fa-caret-down
       = render "detail_info", report: report

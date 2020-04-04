@@ -47,7 +47,7 @@ OM.HomeIndex = (() => {
 
   function _renderMarker() {
     eventData.forEach( (data) => {
-      const extraRadius = data.total_cases / 2.5;
+      const extraRadius = data.total_case / 2.5;
       const latlng = [data.location.latitude, data.location.longitude];
 
       let marker = L.circleMarker(latlng, {
@@ -78,11 +78,11 @@ OM.HomeIndex = (() => {
   function _buildMarkerPopupContent(data) {
     let $content = $("<div>");
     $titleInfo = $("<div>", { class: "title-info-box" }).text(data.location.name_km);
-    $totalCase = buildTotalStatLine(data.total_cases);
+    $totalCase = buildTotalStatLine(data.total_case);
     $statLineDevider = $("<div>", { class: "stat-line divider" });
     $activeCase = buildStatLine(locale.activeCase, "ongoing", getActiveCase(data));
-    $recoveredCase = buildStatLine(locale.recoveredCase, "recovered", data.recovered_cases);
-    $fatalCase = buildStatLine(locale.fatalCase, "fatal", data.death_cases);
+    $recoveredCase = buildStatLine(locale.recoveredCase, "recovered", data.recovered_case);
+    $fatalCase = buildStatLine(locale.fatalCase, "fatal", data.death_case);
     $content.append([$titleInfo, $totalCase, $statLineDevider, $activeCase, $recoveredCase, $fatalCase]);
 
     return $content[0];
@@ -216,7 +216,7 @@ OM.HomeIndex = (() => {
   }
 
   function getActiveCase(data) {
-    return data.total_cases - data.recovered_cases - data.death_cases
+    return data.total_case - data.recovered_case - data.death_case
   }
 
   function toggleTabDisplay() {

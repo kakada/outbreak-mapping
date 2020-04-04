@@ -6,22 +6,22 @@
       .title{ title: "Total Confirm Cases" }
         ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
       .confirmed
-        = @summary_report.total_cases
-        - if @summary_report.new_cases.positive?
-          %span.new-case=" (#{@summary_report.new_cases} ថ្មី)"
+        = @summary_report.total_case
+        - if @summary_report.new_case.positive?
+          %span.new-case=" (#{@summary_report.new_case} ថ្មី)"
       .bar
       .legend
         .color.ongoing
         .description= t('shared.active_case')
-        .total= active_cases(@summary_report)
+        .total= active_case(@summary_report)
 
         .color.recovered
         .description= t('shared.recovered_case')
-        .total= @summary_report.recovered_cases
+        .total= @summary_report.recovered_case
 
         .color.fatal
         .description= t('shared.fatal_case')
-        .total= @summary_report.death_cases
+        .total= @summary_report.death_case
       .title.text-center
         = "(#{@setting.last_updated})"
     .areas
@@ -35,22 +35,22 @@
       .title{ title: "Total Confirm Cases" }
         ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
       .confirmed#confirmed-case
-        = @summary_report.total_cases
-        - if @summary_report.new_cases.positive?
-          %span.new-case=" (#{@summary_report.new_cases} ថ្មី)"
+        = @summary_report.total_case
+        - if @summary_report.new_case.positive?
+          %span.new-case=" (#{@summary_report.new_case} ថ្មី)"
       .bar
       .legend
         .color.ongoing
-        .description= t('shared.active_case')
-        .total#active-case= "#{active_cases(@summary_report)}"
+        .description= t('shared.active_cases')
+        .total#active-case= "#{active_case(@summary_report)}"
 
         .color.recovered
-        .description= t('shared.recovered_case')
-        .total#recovered-case= @summary_report.recovered_cases
+        .description= t('shared.recovered_cases')
+        .total#recovered-case= @summary_report.recovered_case
 
         .color.fatal
         .description= t('shared.fatal_case')
-        .total#fatal-case= @summary_report.death_cases
+        .total#fatal-case= @summary_report.death_case
 
     .segment-panel
       .info-tile{ style: "display: none" }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_054130) do
+ActiveRecord::Schema.define(version: 2020_04_04_055852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,10 +80,10 @@ ActiveRecord::Schema.define(version: 2020_04_04_054130) do
 
   create_table "reports", force: :cascade do |t|
     t.string "location_code", null: false
-    t.integer "total_cases", default: 0
-    t.integer "new_cases", default: 0
-    t.integer "recovered_cases", default: 0
-    t.integer "death_cases", default: 0
+    t.integer "total_case", default: 0
+    t.integer "new_case", default: 0
+    t.integer "recovered_case", default: 0
+    t.integer "death_case", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "new_recovered_case", default: 0
