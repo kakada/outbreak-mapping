@@ -17,13 +17,15 @@ class ApplicationController < ActionController::Base
     end
 
     def summary_report
-      total_case, recovered_case, death_case, new_case = Report.pluck("SUM(total_case)", "SUM(recovered_case)", "SUM(death_case)", "SUM(new_case)").flatten
+      total_case, recovered_case, death_case, new_case, new_recovered_case, new_death_case = Report.pluck("SUM(total_case)", "SUM(recovered_case)", "SUM(death_case)", "SUM(new_case)", "SUM(new_recovered_case)", "SUM(new_death_case)").flatten
 
       report = Report.new({
         total_case: total_case,
         death_case: death_case,
         recovered_case: recovered_case,
         new_case: new_case,
+        new_recovered_case: new_recovered_case,
+        new_death_case: new_death_case,
         location_code: "00"
       })
 

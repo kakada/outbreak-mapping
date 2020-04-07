@@ -3,9 +3,9 @@
   .area-total= @summary_report.total_case
 
 - @reports.each do |report|
-  .area{ id: report.location.code, data: { total: report.total_case, active: active_case(report), recovered: report.recovered_case, fatal: report.death_case, new_case: report.new_case, location: report.location.name_km, detail: report.report_details.to_json } }
+  .area{ id: report.location.code }
     .area-name
       = report.location.name_km
-      - if report.new_case.positive?
-        .color.ongoing.d-inline-block.ml-1
+      - if report.new_case.positive? || report.new_recovered_case.positive? || report.new_death_case.positive?
+        .color.has-change.d-inline-block.ml-1
     .area-total= report.total_case

@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(version: 2020_04_04_055852) do
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
   end
 
+  create_table "faqs", force: :cascade do |t|
+    t.text "question_km"
+    t.text "question_en"
+    t.text "answer_km"
+    t.text "answer_en"
+    t.integer "position"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "locations", primary_key: "code", id: :string, force: :cascade do |t|
     t.string "name_en", null: false
     t.string "name_km", null: false

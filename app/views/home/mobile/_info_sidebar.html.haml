@@ -17,15 +17,15 @@
       .color.ongoing
       .description= t('shared.active_case')
       .total#active-case= active_case(@summary_report)
-
+    .legend
       .color.recovered
       .description= t('shared.recovered_case')
       .total#recovered-case= @summary_report.recovered_case
-
+    .legend
       .color.fatal
       .description= t('shared.fatal_case')
       .total#fatal-case= @summary_report.death_case
-    .title.text-center
+    .last-update.text-center.mt-3
       = "(#{@setting.last_updated})"
 
   .segment-panel

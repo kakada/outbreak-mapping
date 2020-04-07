@@ -109,8 +109,10 @@ OM.HomeIndex = (() => {
 
   function addEventToReport() {
     $(".area").click(function(e) {
-      $area = $(e.currentTarget);
-      if (!$area.attr("id")) {
+      let $area = $(e.currentTarget);
+      let id = $area.attr("id");
+
+      if (!id) {
         return;
       }
 
@@ -118,10 +120,10 @@ OM.HomeIndex = (() => {
       updateInfo($area);
       updateChart($area);
 
-      if ($area.attr("id") == "00") {
+      if (id == "00") {
         map.closePopup();
       } else {
-        markers[$area.attr("id")].openPopup();
+        markers[id].openPopup();
       }
     })
   }
@@ -132,23 +134,26 @@ OM.HomeIndex = (() => {
   }
 
   function updateInfo($area) {
-    $("#location-name").text($area.data("location"));
+    let id = $area[0].id;
+    let report = findReport(id);
 
-    if ($area[0].id == "00") {
+    $("#location-name").text(report.location.name_km);
+
+    if (id == "00") {
       $(".region .info-tile").hide();
     } else {
       $(".region .info-tile").show();
     }
 
-    $(".info-tile #confirmed-case").text($area.data("total"))
-    $(".legend #active-case").text($area.data("active"));
-    $(".legend #recovered-case").text($area.data("recovered"));
-    $(".legend #fatal-case").text($area.data("fatal"));
+    $(".info-tile #confirmed-case").html(report.total_case)
 
-    var newCases = $area.data("new-cases");
-    if (newCases > 0) {
+    updateActiveCase(report);
+    updateRecoveredCase(report);
+    updateFatalCase(report);
+
+    if (report.new_case > 0) {
       var $newCase = $("<span>", { class: "new-case" });
-      $newCase.text(` (${newCases} ថ្មី)`);
+      $newCase.text(` (${report.new_case} ថ្មី)`);
       $(".info-tile #confirmed-case").append($newCase)
       $(".secondary-info .case-count").append($newCase)
     }
@@ -156,8 +161,38 @@ OM.HomeIndex = (() => {
     updateDetailInfo($area);
   }
 
+  function findReport(id) {
+    let report = reports.find(data => { return data.location_code == id});
+    return report;
+  }
+
+  function updateActiveCase(report) {
+    $(".legend #active-case").html(OM.HomeHelper.activeCase(report));
+
+    if (report.new_case > 0) {
+      $(".legend #active-case").append(`<span class='delta'>(${report.new_case} ថ្មី)</span>`)
+    }
+  }
+
+  function updateRecoveredCase(report) {
+    $(".legend #recovered-case").html(report.recovered_case);
+
+    if (report.new_recovered_case > 0) {
+      $(".legend #recovered-case").append(`<span class='delta'>(${report.new_recovered_case} ថ្មី)</span>`)
+    }
+  }
+
+  function updateFatalCase(report) {
+    $(".legend #fatal-case").html(report.death_case);
+
+    if (report.new_death_case > 0) {
+      $(".legend #fatal-case").append(`<span class='delta'>(${report.new_death_case} ថ្មី)</span>`)
+    }
+  }
+
   function updateDetailInfo($area) {
-    var detailInfo = $area.data("detail");
+    let report = findReport($area.attr("id"));
+    var detailInfo = report.report_details;
 
     if (detailInfo && detailInfo[0].field_value) {
       $("#case-detail-info").html(detailInfo[0].field_value.replace(/;/g, "<br />"));
@@ -209,9 +244,10 @@ OM.HomeIndex = (() => {
   function addEventToArea() {
     $(".dropdown-options .area").click(function(e) {
       closeDropdown();
-      $area = $(e.currentTarget);
-      $(".information .area-name").text($area.data("location"));
-      $(".secondary-info .case-count").text($area.data("total"));
+      let report = findReport(e.currentTarget.id);
+
+      $(".information .area-name").text(report.location.name_km);
+      $(".secondary-info .case-count").text(report.total_case);
     });
   }
 

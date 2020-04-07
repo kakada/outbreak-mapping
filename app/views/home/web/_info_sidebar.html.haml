@@ -1,29 +1,40 @@
 .tabs
   .country.tab
-    .page-name
-      = @summary_report.location.name_km
     .info-tile
       .title{ title: "Total Confirm Cases" }
-        ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
+        ចំនួនករណីឆ្លងជំងឺកូវីដសរុប
+      .last-update
+        = "#{@setting.last_updated}"
       .confirmed
         = @summary_report.total_case
-        - if @summary_report.new_case.positive?
-          %span.new-case=" (#{@summary_report.new_case} ថ្មី)"
       .bar
-      .legend
-        .color.ongoing
-        .description= t('shared.active_case')
-        .total= active_case(@summary_report)
 
-        .color.recovered
-        .description= t('shared.recovered_case')
-        .total= @summary_report.recovered_case
+      .info-tile-delta
+        .legend
+          .color.ongoing
+          .description= t('shared.active_case')
+          .total
+            = active_case(@summary_report)
+            - if @summary_report.new_case.positive?
+              %span.delta
+                = "(#{@summary_report.new_case} ថ្មី)"
+        .legend
+          .color.recovered
+          .description= t('shared.recovered_case')
+          .total
+            = @summary_report.recovered_case
+            - if @summary_report.new_recovered_case.positive?
+              %span.delta
+                = "(#{@summary_report.new_recovered_case} ថ្មី)"
+        .legend
+          .color.fatal
+          .description= t('shared.fatal_case')
+          .total
+            = @summary_report.death_case
+            - if @summary_report.new_death_case.positive?
+              %span.delta
+                = "(#{@summary_report.new_death_case} ថ្មី)"
 
-        .color.fatal
-        .description= t('shared.fatal_case')
-        .total= @summary_report.death_case
-      .title.text-center
-        = "(#{@setting.last_updated})"
     .areas
       = render '/home/shared/info_details'
 
@@ -41,13 +52,13 @@
       .bar
       .legend
         .color.ongoing
-        .description= t('shared.active_cases')
+        .description= t('shared.active_case')
         .total#active-case= "#{active_case(@summary_report)}"
-
+      .legend
         .color.recovered
-        .description= t('shared.recovered_cases')
+        .description= t('shared.recovered_case')
         .total#recovered-case= @summary_report.recovered_case
-
+      .legend
         .color.fatal
         .description= t('shared.fatal_case')
         .total#fatal-case= @summary_report.death_case
