@@ -151,13 +151,6 @@ OM.HomeIndex = (() => {
     updateRecoveredCase(report);
     updateFatalCase(report);
 
-    if (report.new_case > 0) {
-      var $newCase = $("<span>", { class: "new-case" });
-      $newCase.text(` (${report.new_case} ថ្មី)`);
-      $(".info-tile #confirmed-case").append($newCase)
-      $(".secondary-info .case-count").append($newCase)
-    }
-
     updateDetailInfo($area);
   }
 
@@ -167,7 +160,7 @@ OM.HomeIndex = (() => {
   }
 
   function updateActiveCase(report) {
-    $(".legend #active-case").html(OM.HomeHelper.activeCase(report));
+    $(".legend #active-case").html(`<span>${OM.HomeHelper.activeCase(report)}</span>`);
 
     if (report.new_case > 0) {
       $(".legend #active-case").append(`<span class='delta'>(${report.new_case} ថ្មី)</span>`)
@@ -175,7 +168,7 @@ OM.HomeIndex = (() => {
   }
 
   function updateRecoveredCase(report) {
-    $(".legend #recovered-case").html(report.recovered_case);
+    $(".legend #recovered-case").html(`<span>${report.recovered_case}</span>`);
 
     if (report.new_recovered_case > 0) {
       $(".legend #recovered-case").append(`<span class='delta'>(${report.new_recovered_case} ថ្មី)</span>`)
@@ -183,7 +176,7 @@ OM.HomeIndex = (() => {
   }
 
   function updateFatalCase(report) {
-    $(".legend #fatal-case").html(report.death_case);
+    $(".legend #fatal-case").html(`<span>${report.death_case}</span>`);
 
     if (report.new_death_case > 0) {
       $(".legend #fatal-case").append(`<span class='delta'>(${report.new_death_case} ថ្មី)</span>`)

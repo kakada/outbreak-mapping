@@ -20,8 +20,8 @@
       .area
         .area-name
           = report.location.name_km
-          - if report.new_case.positive?
-            .color.ongoing.d-inline-block.ml-1
+          - if report.new_case.positive? || report.new_recovered_case.positive? || report.new_death_case.positive?
+            .color.has-change.d-inline-block.ml-1
         .area-total
           = report.total_case
           %span
