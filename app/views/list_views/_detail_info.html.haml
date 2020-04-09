@@ -3,19 +3,29 @@
     .title{ title: "ចំនួនករណីឆ្លងជំងឺ កូវីត ១៩ សរុប" }
       ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
     .confirmed
-      = report.total_cases
-      - if report.new_cases.positive?
-        %span.new-case=" (#{report.new_cases} ថ្មី)"
+      = report.total_case
     .bar{ data: { report: report.to_json } }
     .legend
       .color.ongoing
       .description= t('shared.active_case')
-      .total= active_cases(report)
-
+      .total
+        = active_case(report)
+        - if report.new_case.positive?
+          %span.delta
+            = "(#{report.new_case} ថ្មី)"
+    .legend
       .color.recovered
       .description= t('shared.recovered_case')
-      .total= report.recovered_cases
-
+      .total
+        = report.recovered_case
+        - if report.new_recovered_case.positive?
+          %span.delta
+            = "(#{report.new_recovered_case} ថ្មី)"
+    .legend
       .color.fatal
       .description= t('shared.fatal_case')
-      .total= report.death_cases
+      .total
+        = report.death_case
+        - if report.new_death_case.positive?
+          %span.delta
+            = "(#{report.new_death_case} ថ្មី)"

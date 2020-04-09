@@ -16,28 +16,28 @@ OM.BarGraph = (() => {
     $bar.html($bars);
   }
 
-  function constructGraphData(data) {
+  function constructGraphData(report) {
     let activeCase = {
-      count: OM.HomeHelper.activeCase(data),
+      count: OM.HomeHelper.activeCase(report),
       className: "ongoing",
-      total: data.total_cases
+      total: report.total_case
     };
 
     let recoveredCase = {
-      count: data.recovered_cases,
+      count: report.recovered_case,
       className: "recovered",
-      total: data.total_cases
+      total: report.total_case
     };
 
     let fatalCase = {
-      count: data.fatal_cases,
+      count: report.death_case,
       className: "fatal",
       margin: 0,
-      total: data.total_cases
+      total: report.total_case
     };
 
-    activeCase.margin = (data.recovered_cases || data.fatal_cases) ? 4 : 0;
-    recoveredCase.margin = data.fatal_cases ? 4: 0;
+    activeCase.margin = (report.recovered_case || report.death_case) ? 4 : 0;
+    recoveredCase.margin = report.death_case ? 4: 0;
 
     return [activeCase, recoveredCase, fatalCase];
   }

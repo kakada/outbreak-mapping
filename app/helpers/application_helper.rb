@@ -12,8 +12,8 @@ module ApplicationHelper
     return "active" if params["controller"] == name
   end
 
-  def active_cases(report)
-    report.total_cases - report.recovered_cases - report.death_cases
+  def active_case(report)
+    report.total_case - report.recovered_case - report.death_case
   end
 
   def mobile_request?

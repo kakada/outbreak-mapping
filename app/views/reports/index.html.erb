@@ -5,21 +5,25 @@
 
 <%
   i = 0
-  total_cases = 0
-  total_cases = 0
-  total_new_cases = 0
-  total_recovered_cases = 0
-  total_death_cases = 0
+  total_case = 0
+  total_case = 0
+  total_new_case = 0
+  total_recovered_case = 0
+  total_new_recovered_case = 0
+  total_death_case = 0
+  total_new_death_case = 0
 %>
 
 <table class="table">
   <tr>
     <th>#</th>
-    <th>Location Name</th>
-    <th>Total Cases</th>
-    <th>New cases</th>
-    <th>Recovered cases</th>
-    <th>Death cases</th>
+    <th>Location name</th>
+    <th>Total case</th>
+    <th>New case</th>
+    <th>Recovered case</th>
+    <th>New recovered case</th>
+    <th>Death case</th>
+    <th>New death case</th>
     <% @cols.each do |field| %>
       <th><%= field %></th>
     <% end %>
@@ -27,35 +31,40 @@
 
   <% @reports.each do |r| %>
     <%
-      total_cases += r.total_cases
-      total_new_cases += r.new_cases
-      total_recovered_cases += r.recovered_cases
-      total_death_cases += r.death_cases
+      total_case += r.total_case
+      total_new_case += r.new_case
+      total_recovered_case += r.recovered_case
+      total_new_recovered_case += r.new_recovered_case
+      total_death_case += r.death_case
+      total_new_death_case += r.new_death_case
     %>
     <tr>
       <td><%= i+=1 %></td>
       <td><%= r.location.try(:name_km) %></td>
-      <td><%= r.total_cases %></td>
+      <td><%= r.total_case %></td>
       <td>
-        <%if r.new_cases > 0 %>
-          <font color='blue'><%= r.new_cases %></font>
+        <%if r.new_case > 0 %>
+          <font color='blue'><%= r.new_case %></font>
         <% else %>
           -
         <% end %>
       </td>
+      <td><%= r.recovered_case %></td>
       <td>
-        <%if r.recovered_cases > 0 %>
-          <font color='green'><%= r.recovered_cases %></font>
+        <%if r.new_recovered_case > 0 %>
+          <font color='green'><%= r.new_recovered_case %></font>
         <% else %>
           -
         <% end %>
+      </td>
+      <td><%= r.death_case %></td>
       <td>
-        <%if r.death_cases > 0 %>
-          <font color='red'><%= r.death_cases %></font>
+        <%if r.new_death_case > 0 %>
+          <font color='red'><%= r.new_death_case %></font>
         <% else %>
           -
         <% end %>
-        </td>
+      </td>
       <% ReportDetail.where(report_id: r.id).each do |rd| %>
         <% @cols.each do |c| %>
           <% if rd.field_name == c %>
@@ -67,24 +76,28 @@
   <% end %>
   <tr>
     <td colspan=2><h3>Total:</h3></td>
-    <td><h3><%= total_cases %></h3></td>
+    <td><h3><%= total_case %></h3></td>
     <td>
-      <%if total_new_cases > 0 %>
-        <h3><font color='blue'><%= total_new_cases %></font></h3>
+      <%if total_new_case > 0 %>
+        <h3><font color='blue'><%= total_new_case %></font></h3>
       <% else %>
         -
       <% end %>
     </td>
+    <td><h3><%= total_recovered_case %></h3></td>
     <td>
-      <%if total_recovered_cases > 0 %>
-        <h3><font color='green'><%= total_recovered_cases %></font></h3>
+      <%if total_new_recovered_case > 0 %>
+        <h3><font color='green'><%= total_new_recovered_case %></font></h3>
       <% else %>
         -
       <% end %>
     </td>
+    <td><h3><%= total_death_case %></h3>
+      
+    </td>
     <td>
-      <%if total_death_cases > 0 %>
-        <h3><font color='red'><%= total_death_cases %></font></h3>
+      <%if total_new_death_case > 0 %>
+        <h3><font color='red'><%= total_new_death_case %></font></h3>
       <% else %>
         -
       <% end %>

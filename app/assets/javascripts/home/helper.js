@@ -4,6 +4,6 @@ OM.HomeHelper = ( () => {
   }
 
   function activeCase(report) {
-    return report.total_cases - report.recovered_cases - report.death_cases
+    return report.total_case - report.recovered_case - report.death_case
   }
 })();
