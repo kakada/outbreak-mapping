@@ -10,6 +10,8 @@ gem "rails", "~> 6.0.2", ">= 6.0.2.1"
 
 gem 'active_model_serializers', '~> 0.10.0'
 
+gem 'rack-attack'
+
 gem "pg", ">= 0.18", "< 2.0"
 
 # Use Puma as the app server

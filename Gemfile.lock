@@ -190,6 +190,8 @@ GEM
     puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
+    rack-attack (6.2.2)
+      rack (>= 1.0, < 3)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -372,6 +374,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   pumi!
+  rack-attack
   rails (~> 6.0.2, >= 6.0.2.1)
   rspec-rails (~> 4.0.0.rc1)
   rubocop-performance (~> 1.5.2)
