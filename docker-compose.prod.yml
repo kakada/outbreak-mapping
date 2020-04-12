@@ -23,6 +23,8 @@ services:
     environment:
       - LANG=C.UTF-8
       - DATABASE_URL=postgres://postgres@CHANGEME/outbreak_mapping
+      - THROTTLE_PER_SECOND=5
+      - THROTTLE_IN_SECOND=1
       - GOOGLE_SITE_VERIFICATION=UPDATE_ME
       - RAILS_SERVE_STATIC_FILES=true
       - VIRTUAL_HOST=example.com
