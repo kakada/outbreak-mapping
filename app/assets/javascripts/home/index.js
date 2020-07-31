@@ -47,7 +47,7 @@ OM.HomeIndex = (() => {
 
   function _renderMarker() {
     eventData.forEach( (data) => {
-      const extraRadius = data.total_case / 2.5;
+      const extraRadius = data.total_case / 10;
       const latlng = [data.location.latitude, data.location.longitude];
 
       let marker = L.circleMarker(latlng, {
@@ -56,7 +56,7 @@ OM.HomeIndex = (() => {
         fillOpacity: 0.8,
         weight: 1,
         opacity: 1,
-        radius: 5 + extraRadius
+        radius: 3 + extraRadius
       }).addTo(map);
 
       marker.id = data.location_code;
