@@ -36,6 +36,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "social-share-button", "~> 1.2.1"
 
 gem "ahoy_matey",  "~> 3.0.1"
+gem "maxminddb", "~> 0.1.22"
 gem "sentry-raven", "~> 2.13.0"
 
 group :development, :test do
