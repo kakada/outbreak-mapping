@@ -26,9 +26,11 @@ Temporary Items
 
 # Docker
 Dockerfile
+Dockerfile.*
 app.env
+app.env.*
 docker-env
-docker-compose.prod.yml
+docker-compose.*
 
 # Rails
 .env
@@ -43,7 +45,8 @@ db/*.sqlite3-journal
 public/system
 public/uploads
 coverage/
-spec/tmp
+test/
+spec/
 **.orig
 
 .bundle
@@ -52,6 +55,13 @@ spec/tmp
 .ruby-gemset
 
 .rvmrc
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+
+# Ignore Byebug command history file.
+.byebug_history
 
 # if using bower-rails ignore default bower_components path bower.json files
 vendor/assets/bower_components
