@@ -25,6 +25,7 @@ services:
       - DATABASE_URL=postgres://postgres@CHANGEME/outbreak_mapping
       - GOOGLE_SITE_VERIFICATION=UPDATE_ME
       - RAILS_SERVE_STATIC_FILES=true
+      - MAP_MARKER_RADIUS_BASELINE=100
       - VIRTUAL_HOST=example.com
       - VIRTUAL_PORT=80
       - LETSENCRYPT_HOST=example.com
