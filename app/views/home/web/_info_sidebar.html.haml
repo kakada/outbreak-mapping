@@ -63,12 +63,11 @@
         .description= t('shared.fatal_case')
         .total#fatal-case= number_with_delimiter @summary_report.death_case.to_i
 
-    - if @has_detail_info
-      .segment-panel
+    .segment-panel
+      - if @has_detail_info
         .info-tile{ style: "display: none" }
           .title{ title: "ព័ត៌មានលម្អិត" }ព័ត៌មានលម្អិត
           #case-detail-info
-    
-    = render "/home/shared/video_list"
-    .close-region
-      %i.fas.fa-caret-left
+      = render "/home/shared/video_list"
+      .close-region
+        %i.fas.fa-caret-left
