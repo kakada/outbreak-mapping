@@ -21,7 +21,6 @@ class ReportImportService < CsvImportService
   protected
 
   def self.whitelist_columns hash
-    p ENV.fetch('UNUSED_CSV_COLUMNS') { [] }
     unused_columns = ENV.fetch('UNUSED_CSV_COLUMNS') { [] }
 
     unused_columns.split(',').each do |column_name|

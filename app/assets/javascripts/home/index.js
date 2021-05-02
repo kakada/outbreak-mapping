@@ -92,7 +92,7 @@ OM.HomeIndex = (() => {
     let $statLine = $("<div>", { class: "stat-line" });
     let $caseLegend = $("<div>", { class: `legend-color ${caseClass}` });
     let $stat = $("<div>", { class: "stat" }).text(caseName);
-    let $statCount = $("<div>", { class: "stat-count" }).text(count);
+    let $statCount = $("<div>", { class: "stat-count" }).text(count.toLocaleString());
     $statLine.append([$caseLegend, $stat, $statCount]);
 
     return $statLine;
@@ -101,7 +101,7 @@ OM.HomeIndex = (() => {
   function buildTotalStatLine(count) {
     let $statLine = $("<div>", { class: "stat-line" });
     let $stat = $("<div>", { class: "stat total" }).text("ចំនួនករណីឆ្លងសរុប");
-    let $statCount = $("<div>", { class: "stat-count total" }).text(count);
+    let $statCount = $("<div>", { class: "stat-count total" }).text(count.toLocaleString());
     $statLine.append([$stat, $statCount]);
 
     return $statLine;
@@ -145,7 +145,7 @@ OM.HomeIndex = (() => {
       $(".region .info-tile").show();
     }
 
-    $(".info-tile #confirmed-case").html(report.total_case)
+    $(".info-tile #confirmed-case").html(report.total_case.toLocaleString())
 
     updateActiveCase(report);
     updateRecoveredCase(report);
@@ -160,26 +160,26 @@ OM.HomeIndex = (() => {
   }
 
   function updateActiveCase(report) {
-    $(".legend #active-case").html(`<span>${OM.HomeHelper.activeCase(report)}</span>`);
+    $(".legend #active-case").html(`<span>${OM.HomeHelper.activeCase(report).toLocaleString()}</span>`);
 
     if (report.new_case > 0) {
-      $(".legend #active-case").append(`<span class='delta'>(${report.new_case} ថ្មី)</span>`)
+      $(".legend #active-case").append(`<span class='delta'>(${report.new_case.toLocaleString()} ថ្មី)</span>`)
     }
   }
 
   function updateRecoveredCase(report) {
-    $(".legend #recovered-case").html(`<span>${report.recovered_case}</span>`);
+    $(".legend #recovered-case").html(`<span>${report.recovered_case.toLocaleString()}</span>`);
 
     if (report.new_recovered_case > 0) {
-      $(".legend #recovered-case").append(`<span class='delta'>(${report.new_recovered_case} ថ្មី)</span>`)
+      $(".legend #recovered-case").append(`<span class='delta'>(${report.new_recovered_case.toLocaleString()} ថ្មី)</span>`)
     }
   }
 
   function updateFatalCase(report) {
-    $(".legend #fatal-case").html(`<span>${report.death_case}</span>`);
+    $(".legend #fatal-case").html(`<span>${report.death_case.toLocaleString()}</span>`);
 
     if (report.new_death_case > 0) {
-      $(".legend #fatal-case").append(`<span class='delta'>(${report.new_death_case} ថ្មី)</span>`)
+      $(".legend #fatal-case").append(`<span class='delta'>(${report.new_death_case.toLocaleString()} ថ្មី)</span>`)
     }
   }
 
@@ -187,7 +187,7 @@ OM.HomeIndex = (() => {
     let report = findReport($area.attr("id"));
     var detailInfo = report.report_details;
 
-    if (detailInfo && detailInfo[0].field_value) {
+    if (detailInfo && detailInfo[0] && detailInfo[0].field_value) {
       $("#case-detail-info").html(detailInfo[0].field_value.replace(/;/g, "<br />"));
     } else {
       $("#case-detail-info").parent(".info-tile").hide();
@@ -240,7 +240,7 @@ OM.HomeIndex = (() => {
       let report = findReport(e.currentTarget.id);
 
       $(".information .area-name").text(report.location.name_km);
-      $(".secondary-info .case-count").text(report.total_case);
+      $(".secondary-info .case-count").text(report.total_case.toLocaleString());
     });
   }
 

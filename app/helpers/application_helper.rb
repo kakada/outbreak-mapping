@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def active_case(report)
-    report.total_case - report.recovered_case - report.death_case
+    report.total_case.to_i - report.recovered_case.to_i - report.death_case.to_i
   end
 
   def mobile_request?

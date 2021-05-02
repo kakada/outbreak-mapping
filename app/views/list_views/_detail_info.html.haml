@@ -1,31 +1,31 @@
 .region.tab{ style: ("display: none;" if params[:location_info] != report.location_code) }
   .info-tile
-    .title{ title: "ចំនួនករណីឆ្លងជំងឺ កូវីត ១៩ សរុប" }
-      ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
+    .title{ title: "ចំនួនករណីឆ្លងជំងឺ កូវីដ ១៩ សរុប" }
+      ចំនួនករណីឆ្លងជំងឺកូវីដ១៩សរុប
     .confirmed
-      = report.total_case
+      = number_with_delimiter report.total_case
     .bar{ data: { report: report.to_json } }
     .legend
       .color.ongoing
       .description= t('shared.active_case')
       .total
-        = active_case(report)
+        = number_with_delimiter active_case(report)
         - if report.new_case.positive?
           %span.delta
-            = "(#{report.new_case} ថ្មី)"
+            = "(#{number_with_delimiter report.new_case} ថ្មី)"
     .legend
       .color.recovered
       .description= t('shared.recovered_case')
       .total
-        = report.recovered_case
+        = number_with_delimiter report.recovered_case
         - if report.new_recovered_case.positive?
           %span.delta
-            = "(#{report.new_recovered_case} ថ្មី)"
+            = "(#{number_with_delimiter report.new_recovered_case} ថ្មី)"
     .legend
       .color.fatal
       .description= t('shared.fatal_case')
       .total
-        = report.death_case
+        = number_with_delimiter report.death_case
         - if report.new_death_case.positive?
           %span.delta
-            = "(#{report.new_death_case} ថ្មី)"
+            = "(#{number_with_delimiter report.new_death_case} ថ្មី)"

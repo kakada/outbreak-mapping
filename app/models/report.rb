@@ -11,4 +11,8 @@ class Report < ApplicationRecord
   validates :new_death_case, numericality: { greater_than_or_equal_to: 0 }
 
   belongs_to :location, class_name: "Location", foreign_key: "location_code"
+
+  def self.has_detail?
+    ReportDetail.count > 0
+  end
 end
