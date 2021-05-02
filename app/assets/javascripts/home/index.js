@@ -47,7 +47,7 @@ OM.HomeIndex = (() => {
 
   function _renderMarker() {
     eventData.forEach( (data) => {
-      const extraRadius = data.total_case * (data.total_case < window.markerRadiusBaseline ? 0.065 : 0.03);
+      const extraRadius = data.total_case * (data.total_case < window.markerRadiusBaseline ? 0.012 : 0.004);
       const latlng = [data.location.latitude, data.location.longitude];
 
       let marker = L.circleMarker(latlng, {
