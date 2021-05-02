@@ -2,11 +2,11 @@
   .country.tab
     .info-tile
       .title{ title: "Total Confirm Cases" }
-        ចំនួនករណីឆ្លងជំងឺកូវីដសរុប
+        ចំនួនករណីឆ្លងជំងឺកូវីដ១៩សរុប
       .last-update
         = "#{@setting.last_updated}"
       .confirmed
-        = @summary_report.total_case
+        = number_with_delimiter @summary_report.total_case.to_i
       .bar
 
       .info-tile-delta
@@ -14,26 +14,26 @@
           .color.ongoing
           .description= t('shared.active_case')
           .total
-            = active_case(@summary_report)
-            - if @summary_report.new_case.positive?
+            = number_with_delimiter active_case(@summary_report).to_i
+            - if @summary_report.new_case&.positive?
               %span.delta
-                = "(#{@summary_report.new_case} ថ្មី)"
+                = "(#{number_with_delimiter @summary_report.new_case.to_i} ថ្មី)"
         .legend
           .color.recovered
           .description= t('shared.recovered_case')
           .total
-            = @summary_report.recovered_case
-            - if @summary_report.new_recovered_case.positive?
+            = number_with_delimiter @summary_report.recovered_case.to_i
+            - if @summary_report.new_recovered_case&.positive?
               %span.delta
-                = "(#{@summary_report.new_recovered_case} ថ្មី)"
+                = "(#{number_with_delimiter @summary_report.new_recovered_case.to_i} ថ្មី)"
         .legend
           .color.fatal
           .description= t('shared.fatal_case')
           .total
-            = @summary_report.death_case
-            - if @summary_report.new_death_case.positive?
+            = number_with_delimiter @summary_report.death_case.to_i
+            - if @summary_report.new_death_case&.positive?
               %span.delta
-                = "(#{@summary_report.new_death_case} ថ្មី)"
+                = "(#{number_with_delimiter @summary_report.new_death_case.to_i} ថ្មី)"
 
     .areas
       = render '/home/shared/info_details'
@@ -44,29 +44,31 @@
     .subtitle
     .info-tile{ style: "display: none" }
       .title{ title: "Total Confirm Cases" }
-        ចំនួនករណីឆ្លងជំងឺ Covid-19 សរុប
+        ចំនួនករណីឆ្លងសរុប
       .confirmed#confirmed-case
-        = @summary_report.total_case
-        - if @summary_report.new_case.positive?
-          %span.new-case=" (#{@summary_report.new_case} ថ្មី)"
+        = number_with_delimiter @summary_report.total_case.to_i
+        - if @summary_report.new_case&.positive?
+          %span.new-case= "(#{number_with_delimiter @summary_report.new_case.to_i} ថ្មី)"
       .bar
       .legend
         .color.ongoing
         .description= t('shared.active_case')
-        .total#active-case= "#{active_case(@summary_report)}"
+        .total#active-case= number_with_delimiter active_case(@summary_report).to_i
       .legend
         .color.recovered
         .description= t('shared.recovered_case')
-        .total#recovered-case= @summary_report.recovered_case
+        .total#recovered-case= number_with_delimiter @summary_report.recovered_case.to_i
       .legend
         .color.fatal
         .description= t('shared.fatal_case')
-        .total#fatal-case= @summary_report.death_case
+        .total#fatal-case= number_with_delimiter @summary_report.death_case.to_i
 
-    .segment-panel
-      .info-tile{ style: "display: none" }
-        .title{ title: "ព័ត៌មានលម្អិត" }ព័ត៌មានលម្អិត
-        #case-detail-info
-      = render "/home/shared/video_list"
+    - if @has_detail_info
+      .segment-panel
+        .info-tile{ style: "display: none" }
+          .title{ title: "ព័ត៌មានលម្អិត" }ព័ត៌មានលម្អិត
+          #case-detail-info
+    
+    = render "/home/shared/video_list"
     .close-region
       %i.fas.fa-caret-left

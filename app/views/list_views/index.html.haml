@@ -3,15 +3,16 @@
     = link_to root_url, target: "_blank", class: "header" do
       = image_tag asset_path("cdc-tran.png"), class: "logo float-left", alt: "នាយកដ្ឋានប្រយុទ្ធនឹងជំងឺឆ្លង"
       .d-inline-block.float-left.ml-2
-        ប្រព័ន្ធតាមដានជំងឺឆ្លងកូវីត១៩
+        ប្រព័ន្ធតាមដានជំងឺឆ្លងកូវីដ១៩
         %br
-        %span.reported-date= "(#{@setting.last_updated})"
+        - if @setting.last_updated.present?
+          %span.reported-date= "(#{@setting.last_updated})"
 
   .areas
     .area{ class: ("selected" if params[:location_info] == @summary_report.location_code) }
       .area-name= @summary_report.location.name_km
       .area-total
-        = @summary_report.total_case
+        = number_with_delimiter @summary_report.total_case
         %span
           %i.fas.fa-caret-down
     = render "detail_info", report: @summary_report
@@ -23,7 +24,7 @@
           - if report.new_case.positive? || report.new_recovered_case.positive? || report.new_death_case.positive?
             .color.has-change.d-inline-block.ml-1
         .area-total
-          = report.total_case
+          = number_with_delimiter report.total_case
           %span
             %i.fas.fa-caret-down
       = render "detail_info", report: report

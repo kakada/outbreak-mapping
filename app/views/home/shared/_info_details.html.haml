@@ -1,6 +1,6 @@
 .area.selected#00{ data: { total: @summary_report.total_case, active: active_case(@summary_report), recovered: @summary_report.recovered_case, fatal: @summary_report.death_case, new_case: @summary_report.new_case, location: @summary_report.location.name_km } }
   .area-name= @summary_report.location.name_km
-  .area-total= @summary_report.total_case
+  .area-total= number_with_delimiter @summary_report.total_case.to_i
 
 - @reports.each do |report|
   .area{ id: report.location.code }
@@ -8,4 +8,4 @@
       = report.location.name_km
       - if report.new_case.positive? || report.new_recovered_case.positive? || report.new_death_case.positive?
         .color.has-change.d-inline-block.ml-1
-    .area-total= report.total_case
+    .area-total= number_with_delimiter report.total_case.to_i
