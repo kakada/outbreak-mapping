@@ -107,28 +107,7 @@
       font-size: 14px;
       color: #111;
       font-weight: bold;
-    }
-
-    .pulse.red {
-      box-shadow: 0 0 0 0 rgba(255, 82, 82, 1);
-      animation: pulse-red 2s infinite;
-    }
-
-    @keyframes pulse-red {
-      0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
-      }
-
-      70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
-      }
-
-      100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
-      }
+      border: 2px solid #df1919b3;
     }
 
     .bar {
@@ -141,6 +120,11 @@
     -webkit-tap-highlight-color: transparent;
     font-size: 14px;
     line-height: 20px;
+  }
+
+  #total-case > span {
+    color: red;
+    font-size: 1.8em;
   }
 
   .mobile .information .area-name,

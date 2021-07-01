@@ -6,9 +6,9 @@
 
   .info-tile
     .legend
-      .color.active
+      .color.total
       .description= t('shared.total_case')
-      .total#active-case
+      .total#total-case
         %span
           = number_with_delimiter @summary_report.total_case.to_i
 
