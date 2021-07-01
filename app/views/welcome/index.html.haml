@@ -17,6 +17,10 @@
       = render "info_sidebar"
 
       #map{ data: { "covid-19" => @json_reports, summary: @json_summary_report }, style: "height: 100%; width: 100%; overflow: hidden;" }
-        = link_to 'tel:115', target: '_blank', class: 'call-115 btn pmd-btn-fab pmd-ripple-effect btn-dark pmd-btn-raised', 'data-toggle' => 'tooltip', 'data-title' => t('shared.call_115') do
-          %i.fas.fa-phone-volume
-          %span.ml-1 115
+        .d-inline-block.mt-3
+          .d-flex.align-items-center.m-0.ml-3{ style: "border: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0px 3px 5px rgb(0 0 0 / 5%);background-color: white; padding: 12px; margin: 0 10px;"}
+            %span= t('shared.call_115')
+            &nbsp;
+            = link_to 'tel:115', target: '_blank', class: 'call-115 btn pmd-btn-fab pmd-ripple-effect btn-dark pmd-btn-raised' do
+              %i.fas.fa-phone-volume
+              %span.ml-1 115

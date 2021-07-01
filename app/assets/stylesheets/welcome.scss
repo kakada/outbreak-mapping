@@ -284,6 +284,18 @@
     box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.05);
     border-left: none;
   }
+
+  .desktop .call-115 {
+    z-index: 401;
+    position: relative;
+    right: 0;
+    top: 0;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 // Fab Button
