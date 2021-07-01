@@ -4,9 +4,9 @@
       .title{ title: "Total Confirm Cases" }
         ចំនួនករណីឆ្លងជំងឺកូវីដ១៩សរុប
       .last-update
-        = "#{@setting.last_updated}"
+        = "#{@setting&.last_updated}"
       .confirmed
-        = number_with_delimiter @summary_report.total_case.to_i
+        = number_with_delimiter @summary_report&.total_case.to_i
       .bar
 
       .info-tile-delta
@@ -15,7 +15,7 @@
           .description= t('shared.active_case')
           .total
             = number_with_delimiter active_case(@summary_report).to_i
-            - if @summary_report.new_case&.positive?
+            - if @summary_report&.new_case&.positive?
               %span.delta
                 = "(#{number_with_delimiter @summary_report.new_case.to_i} ថ្មី)"
         .legend
