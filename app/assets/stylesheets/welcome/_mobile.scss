@@ -1,10 +1,10 @@
-#home-index {
+#welcome-index {
   .mobile {
     .content {
       display: unset;
       overflow-x: hidden;
       overflow-y: auto;
-      background-color: #C8C8C8;
+      background-color: #c8c8c8;
       height: 100vh;
     }
 
@@ -39,7 +39,7 @@
     .pullbar {
       height: 5px;
       width: 75px;
-      background-color: #C4C4C4;
+      background-color: #c4c4c4;
       border-radius: 100px;
       position: relative;
       left: 50%;
@@ -52,7 +52,7 @@
 
     .info-tile {
       border: none;
-      padding: 0 16px;
+      padding: 0;
     }
 
     .user-navbar {
@@ -62,12 +62,12 @@
 
     .mobile-header {
       display: flex;
-      padding: 14px 16px;
+      padding: 14px 0 14px 16px;
       box-sizing: border-box;
       line-height: 1.2em;
       align-items: center;
-      justify-content: space-between;
-      position: fixed;
+      justify-content: flex-end;
+      // position: fixed;
       width: 100%;
       height: 53px;
       z-index: 1;
@@ -100,13 +100,35 @@
 
     .call-115 {
       z-index: 401;
-      position: absolute;
-      right: 4px;
-      top: 66px;
+      // position: absolute;
+      // right: 4px;
+      // top: 66px;
       display: block;
       font-size: 14px;
       color: #111;
       font-weight: bold;
+    }
+
+    .pulse.red {
+      box-shadow: 0 0 0 0 rgba(255, 82, 82, 1);
+      animation: pulse-red 2s infinite;
+    }
+
+    @keyframes pulse-red {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+      }
+
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+      }
+
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
+      }
     }
 
     .bar {
@@ -114,14 +136,16 @@
     }
   }
 
-  .mobile .area, .mobile .legend {
+  .mobile .area,
+  .mobile .legend {
     -webkit-tap-highlight-color: transparent;
     font-size: 14px;
     line-height: 20px;
   }
 
-  .mobile .information .area-name, .mobile .information .secondary-info > * {
-    color: #DE3700;
+  .mobile .information .area-name,
+  .mobile .information .secondary-info > * {
+    color: #de3700;
   }
 
   .dropdown {

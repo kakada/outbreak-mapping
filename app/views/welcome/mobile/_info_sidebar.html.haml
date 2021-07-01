@@ -1,15 +1,17 @@
 .information
-  .pullbar
-  .page-title ប្រព័ន្ធតាមដានជំងឺកូវីដ១៩
-  .new-area
-    .area-name= @summary_report.location.name_km
-    .area-total
-      .secondary-info#confirmed-case
-        .case-count
-          = number_with_delimiter @summary_report.total_case.to_i
+  .pullbar.d-none
+  .page-title.d-flex.align-items-center
+    %span.flex-shrink-0 ប្រព័ន្ធតាមដានជំងឺកូវីដ១៩
+    = render "mobile_nav_bar"
 
   .info-tile
-    .bar
+    .legend
+      .color.active
+      .description= t('shared.total_case')
+      .total#active-case
+        %span
+          = number_with_delimiter @summary_report.total_case.to_i
+
     .legend
       .color.ongoing
       .description= t('shared.active_case')

@@ -28,7 +28,7 @@
 
 .area {
   display: grid;
-  background: #FFF;
+  background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
@@ -41,13 +41,19 @@
   grid-template-columns: auto min-content;
   grid-column-gap: 5px;
 
-  &:hover, &.expanded {
+  &:hover,
+  &.expanded {
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
   }
 
   &.selected {
-    background: radial-gradient(50% 351.19% at 50% 50%, rgba(0, 128, 157, 0.56) 0%, rgba(0, 128, 157, 0.7) 100%), #FFFFFF;
+    background: radial-gradient(
+        50% 351.19% at 50% 50%,
+        rgba(0, 128, 157, 0.56) 0%,
+        rgba(0, 128, 157, 0.7) 100%
+      ),
+      #ffffff;
   }
 
   .area-name {
@@ -61,13 +67,15 @@
     color: #767676;
   }
 
-  &.selected, &.selected .area-total, &.selected .area-name {
+  &.selected,
+  &.selected .area-total,
+  &.selected .area-name {
     color: white;
   }
 }
 
 .info-tile {
-  border-bottom: #DDD 1px solid;
+  border-bottom: #ddd 1px solid;
 
   .title {
     color: #767676;
@@ -79,7 +87,7 @@
 
   .confirmed {
     font-size: 32px;
-    color: #DE3700;
+    color: #de3700;
     font-weight: bold;
     line-height: 40px;
   }
@@ -108,7 +116,7 @@
 
   &.tab {
     position: relative;
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
     transition: transform 200ms ease-out;
 
     .legend {
@@ -160,7 +168,9 @@
   }
 }
 
-.legend, .area-name, .segment-panel {
+.legend,
+.area-name,
+.segment-panel {
   .color {
     width: 8px;
     height: 8px;
@@ -168,12 +178,16 @@
   }
 }
 
+.active {
+  background-color: #b6071e;
+}
+
 .recovered {
-  background-color: #60BB69;
+  background-color: #60bb69;
 }
 
 .ongoing {
-  background-color: #F4C363;
+  background-color: #f4c363;
 }
 
 .fatal {

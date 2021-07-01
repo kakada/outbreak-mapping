@@ -1,4 +1,10 @@
 .mobile-header
-  .a.logo
-  .mobile-menu-button
-    %i.fa.fa-bars
+  .btn-115.mr-3.pulse.red{ style: "border-radius: 50%;" }
+    = link_to 'tel:115', class: 'call-115 btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised', 'data-toggle' => 'tooltip', 'data-title' => t('shared.call_115') do
+      %i.fas.fa-phone-volume{style: 'position: absolute; top: 5px; left: calc(50% - 5.24px);'}
+      %div{style: 'position: absolute; line-height: 10px; bottom: 4px; left: calc(50% - 11.18px);'} 115
+
+  .btn-menu
+    -# .a.logo
+    .mobile-menu-button
+      %i.fa.fa-bars
