@@ -319,3 +319,19 @@
   overflow: hidden;
   -webkit-transform: translate3d(0, 0, 0);
 }
+
+.call-container {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  padding: 12px;
+  margin: 0 10px;
+  position: absolute;
+  top: calc(50% - 10px);
+  right: -374px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  &:hover {
+    right: 0;
+  }
+}
