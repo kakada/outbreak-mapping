@@ -170,10 +170,10 @@
   }
 
   .mini-video-card {
-    width: calc(50% - 4px);
+    width: 32.8%;
 
     .video-image {
-      height: 88px;
+      height: 150px;
       flex: 1 0 auto;
     }
 
@@ -237,7 +237,9 @@
   }
 
   .tabs {
-    display: flex;
+    // display: -webkit-box;
+    width: 100%;
+    flex: 0 0 100%;
     z-index: 410;
 
     &.hidden {
@@ -331,6 +333,7 @@
   right: -374px;
   cursor: pointer;
   transition: all 0.5s ease;
+  z-index: 415;
   &:hover {
     right: 0;
   }
