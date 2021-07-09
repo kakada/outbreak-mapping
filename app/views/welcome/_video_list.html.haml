@@ -2,7 +2,7 @@
   វីដេអូ
 .video-content
   - @videos.each_with_index do |video, index|
-    = link_to video.url, target: "_blank", rel: "noopener", class: ["video-card", ("mini-video-card" if index.positive?)] do
+    = link_to video.url, target: "_blank", rel: "noopener", class: "video-card mini-video-card" do
       .thumbnail-container
         = image_tag youtube_thumbnail(video.url), class: "video-image"
         .play-icon

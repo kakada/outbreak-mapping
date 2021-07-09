@@ -16,7 +16,7 @@
       = render "info_sidebar"
 
       #map{ data: { "covid-19" => @json_reports, summary: @json_summary_report }, style: "height: 100%; width: 100%; overflow: hidden;" }
-        .d-flex.align-items-center.m-0.ml-3.call-container{ style: "border: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0px 3px 5px rgb(0 0 0 / 5%);background-color: white; padding: 12px; margin: 0 10px; position: absolute; top: calc(50% - 10px);"}
+        .d-flex.align-items-center.m-0.ml-3.call-container
           %span.mr-2 &laquo;
           %span= t('shared.call_115')
           &nbsp;
