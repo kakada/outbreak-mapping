@@ -1,5 +1,6 @@
 #list_views-index,
-#welcome-index[data-display_mode] {
+#welcome-index[data-display_mode="map"],
+#welcome-index[data-display_mode="mobile"] {
   overflow: hidden;
 
   .header {
@@ -41,5 +42,15 @@
     &:first-child {
       margin-top: 6px;
     }
+  }
+}
+
+#welcome-index[data-display_mode="desktop"] {
+  .region.tab {
+    display: none;
+  }
+
+  .country.tab {
+    width: calc(100% - 33px);
   }
 }

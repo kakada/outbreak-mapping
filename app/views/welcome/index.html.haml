@@ -8,7 +8,7 @@
 
 
       = render "welcome/mobile/info_sidebar"
-- elsif params[:display_mode].present?
+- elsif params[:display_mode].present? && params[:display_mode] != 'desktop'
   = render template: "list_views/index"
 - else
   .desktop

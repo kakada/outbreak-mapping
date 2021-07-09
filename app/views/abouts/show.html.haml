@@ -1,16 +1,18 @@
-- if mobile_request?
-  .mobile
-    .trigger-menu-wrapper
-      = link_to root_path(display_mode: params[:display_mode]), class: "btn", style: "padding: 10px;" do
-        %i.fas.fa-chevron-left
-        %font{size: 4}= t('about.back')
+<iframe src="http://localhost:3000/?display_mode=desktop" style="width: 1024px; height: 730px; border: 0;"></iframe>
 
-    = render "info"
+-# - if mobile_request?
+-#   .mobile
+-#     .trigger-menu-wrapper
+-#       = link_to root_path(display_mode: params[:display_mode]), class: "btn", style: "padding: 10px;" do
+-#         %i.fas.fa-chevron-left
+-#         %font{size: 4}= t('about.back')
 
-- else
-  .desktop
-    .content
-      .header
-        = render "shared/user_nav_bar"
+-#     = render "info"
 
-      = render "info"
+-# - else
+-#   .desktop
+-#     .content
+-#       .header
+-#         = render "shared/user_nav_bar"
+
+-#       = render "info"

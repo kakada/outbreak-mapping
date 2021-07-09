@@ -170,10 +170,10 @@
   }
 
   .mini-video-card {
-    width: 32.8%;
+    width: calc(50% - 4px);
 
     .video-image {
-      height: 150px;
+      height: 88px;
       flex: 1 0 auto;
     }
 
