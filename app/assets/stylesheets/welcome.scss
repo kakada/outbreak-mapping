@@ -296,13 +296,17 @@
   .desktop .call-115 {
     z-index: 401;
     position: relative;
-    right: 0;
-    top: 0;
+    right: 5px;
+    top: calc(50% - 10px);
     color: #fff;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+  }
+
+  .desktop .call-115:hover + .call-info {
+    right: 0;
   }
 }
 
@@ -332,14 +336,15 @@
   border: 2px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
   background-color: #dedede;
-  padding: 12px;
+  padding: 18px 64px 18px 15px;
   margin: 0 10px;
   position: absolute;
-  top: calc(50% - 10px);
-  right: -374px;
-  cursor: pointer;
-  transition: all 0.5s ease;
+  top: calc(50% - 14px);
+  right: -404px;
+  transition: all 0.3s ease;
   z-index: 415;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
   &:hover {
     right: 0;
   }
