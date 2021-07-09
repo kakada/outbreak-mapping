@@ -8,6 +8,8 @@
 
 
       = render "welcome/mobile/info_sidebar"
+- elsif params[:display_mode].present?
+  = render template: "list_views/index"
 - else
   .desktop
     .content{ style: 'overflow-x: hidden'}
