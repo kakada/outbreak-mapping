@@ -1,4 +1,8 @@
-#list_views-index {
+#list_views-index,
+#welcome-index[data-display_mode="map"],
+#welcome-index[data-display_mode="mobile"] {
+  overflow: hidden;
+
   .header {
     display: block;
     margin: 0 auto;
@@ -28,7 +32,6 @@
 
   .areas {
     padding: 4px 0;
-
   }
 
   .area {
@@ -39,5 +42,15 @@
     &:first-child {
       margin-top: 6px;
     }
+  }
+}
+
+#welcome-index[data-display_mode="desktop"] {
+  .region.tab {
+    display: none;
+  }
+
+  .country.tab {
+    width: calc(100% - 33px);
   }
 }

@@ -4,11 +4,11 @@ en:
     recovered_case: Recovered case
     fatal_case: Fatal case
     total_case: Total case
-    share: 'Share'
-    share_description: 'គេហទំព័រនេះបង្កើតឡើងដើម្បីបង្ហាញទិន្នន័យ(ដកស្រង់ពី CDC)ទាក់ទងនឹងករណីជំងឺឆ្លងកូវីដ១៩នៅតាមបណ្តាខេត្តនានាទូទាំងព្រះរាជាណាចក្រកម្ពុជា'
-    version: 'Version'
-    last_updated: 'Data was last updated by'
-    home: 'Home'
-    about: 'About us'
-    number_of_visitor: '# of visitor'
-    call_115: 'Please call to 115 for hot news'
+    share: "Share"
+    share_description: "គេហទំព័រនេះបង្កើតឡើងដើម្បីបង្ហាញទិន្នន័យ(ដកស្រង់ពី CDC)ទាក់ទងនឹងករណីជំងឺឆ្លងកូវីដ១៩នៅតាមបណ្តាខេត្តនានាទូទាំងព្រះរាជាណាចក្រកម្ពុជា"
+    version: "Version"
+    last_updated: "Data was last updated by"
+    home: "Home"
+    about: "About us"
+    number_of_visitor: "# of visitor"
+    call_115: "For hot news, Please call to "

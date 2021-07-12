@@ -1,0 +1,27 @@
+- if mobile_request?
+  .mobile
+    .content
+      #map.map{ data: { "covid-19" => @json_reports, summary: @json_summary_report } }
+        = link_to 'tel:115', class: 'call-115 btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised', 'data-toggle' => 'tooltip', 'data-title' => t('shared.call_115') do
+          %i.fas.fa-phone-volume{style: 'position: absolute; top: 5px; left: calc(50% - 5.24px);'}
+          %div{style: 'position: absolute; line-height: 12px; bottom: 4px; left: calc(50% - 11.18px);'} 115
+
+
+      = render "welcome/mobile/info_sidebar"
+- elsif params[:display_mode].present? && params[:display_mode] != 'desktop'
+  = render template: "list_views/index"
+- else
+  .desktop
+    .content{ style: 'overflow-x: hidden'}
+      .header
+        = render "shared/user_nav_bar"
+      = render "info_sidebar"
+
+      #map{ data: { "covid-19" => @json_reports, summary: @json_summary_report }, style: "height: 100%; width: 100%; overflow: hidden;" }
+        .d-flex.align-items-center.m-0.ml-3.call-container
+          = link_to 'tel:115', target: '_blank', class: 'call-115 btn pmd-btn-fab pmd-ripple-effect btn-dark pmd-btn-raised', style: "position:fixed" do
+            %i.fas.fa-phone-volume
+            %span.ml-1 115
+          .call-info
+            %span.mr-2 &laquo;
+            %span= t('shared.call_115')

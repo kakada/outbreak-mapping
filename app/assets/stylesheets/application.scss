@@ -9,11 +9,13 @@
 @import "shared/tabs";
 @import "shared/widget";
 @import "home";
+@import "welcome";
 @import "shared/desktop";
 @import "home/mobile";
+@import "welcome/mobile";
 
 @import "social-share-button";
 @import "abouts";
 @import "list_views";
 
-@import "developer_guides"
+@import "developer_guides";

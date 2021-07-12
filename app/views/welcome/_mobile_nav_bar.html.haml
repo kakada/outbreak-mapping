@@ -1,0 +1,38 @@
+.mobile-header
+  .btn-115.mr-3
+    = link_to 'tel:115', class: 'call-115 btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised', 'data-toggle' => 'tooltip', 'data-placement' => 'left', 'data-title' => t('shared.call_115') do
+      %i.fas.fa-phone-volume{style: 'position: absolute; top: 5px; left: calc(50% - 5.24px);'}
+      %div{style: 'position: absolute; line-height: 10px; bottom: 4px; left: calc(50% - 8.5px); font-size: 11px;'} 115
+
+  .btn-menu
+    -# .a.logo
+    .mobile-menu-button
+      %i.fa.fa-bars
+
+.mobile-menu-panel{ style: "display: none;" }
+  .overlay
+  .mobile-menu.d-flex.flex-column
+    %a.close-button
+      %i.fa.fa-times
+
+    .menu-options
+      = link_to "#", class: "menu-option btn-share" do
+        %i.fas.fa-share-square
+        %div ចែករំលែក
+
+      = link_to developer_guides_path(display_mode: params[:display_mode]), class: "menu-option" do
+        %i.fa.fa-code
+        %div Developer Guide
+
+      = link_to about_path(display_mode: params[:display_mode]), class: "menu-option" do
+        %i.fa.fa-info-circle
+        %div អំពីកម្មវិធី
+
+    %small.text-center.mt-3= "(#{@setting.last_updated})"
+
+    .flex-grow-1.d-flex.align-items-end
+      .d-flex.w-100
+        %small.flex-grow-1
+          = "#{t('shared.number_of_visitor')}: #{number_to_human(Ahoy::Visit.count, :format => '%n%u', :units => { :thousand => 'K' })}"
+
+        %small= "#{t('shared.version')}: #{ENV.fetch('APP_VERSION') { 'development' }}"

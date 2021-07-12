@@ -1,30 +1,12 @@
 .m-2
   .text-center
-    = link_to root_url, target: "_blank", class: "header" do
+    = link_to root_url, target: "_blank", class: "header d-flex align-items-center" do
       = image_tag asset_path("cdc-tran.png"), class: "logo float-left", alt: "នាយកដ្ឋានប្រយុទ្ធនឹងជំងឺឆ្លង"
-      .d-inline-block.float-left.ml-2
+      %small.d-inline-block.float-left.ml-2
         ប្រព័ន្ធតាមដានជំងឺឆ្លងកូវីដ១៩
         %br
         - if @setting.last_updated.present?
           %span.reported-date= "(#{@setting.last_updated})"
 
-  .areas
-    .area{ class: ("selected" if params[:location_info] == @summary_report.location_code) }
-      .area-name= @summary_report.location.name_km
-      .area-total
-        = number_with_delimiter @summary_report.total_case
-        %span
-          %i.fas.fa-caret-down
-    = render "detail_info", report: @summary_report
-
-    - @reports.each do |report|
-      .area
-        .area-name
-          = report.location.name_km
-          - if report.new_case.positive? || report.new_recovered_case.positive? || report.new_death_case.positive?
-            .color.has-change.d-inline-block.ml-1
-        .area-total
-          = number_with_delimiter report.total_case
-          %span
-            %i.fas.fa-caret-down
-      = render "detail_info", report: report
+  
+  <iframe width="100%" height="370" src="https://datastudio.google.com/embed/reporting/b0d8e746-7f2e-44fe-a8ab-ee6004f828a6/page/2kxSC" frameborder="0" style="border:0;height: calc(100vh - 52px)" allowfullscreen></iframe>
