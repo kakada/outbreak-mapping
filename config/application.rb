@@ -30,5 +30,7 @@ module OutbreakMapping
     config.action_dispatch.default_headers = {
       "X-Frame-Options" => "ALLOWAll"
     }
+
+    config.middleware.use Rack::Attack
   end
 end
